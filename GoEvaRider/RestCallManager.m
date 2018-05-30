@@ -49,8 +49,8 @@
 -(NSString *)getBaseUrl
 {
    
-    return @"http://goeva.co/goevaapp/webservice/";
-    //return @"http://goeva.co/goevaapp/webservice-beta/";
+    //return @"http://goeva.co/goevaapp/webservice/";
+    return @"http://goeva.co/goevaapp/webservice-beta/";
     
 }
 
