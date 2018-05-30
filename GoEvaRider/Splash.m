@@ -30,7 +30,7 @@
     [super viewDidLoad];
     appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    NSLog(@"Jasim");
 }
 
 

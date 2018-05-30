@@ -1066,7 +1066,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.183774"
+            timestampString = "549364635.795328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -1327,8 +1327,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "-application:openURL:options:"
-            landmarkType = "7">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3305,7 +3305,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
             endingLineNumber = "173"
-            landmarkName = "@implementation AppDelegate"
+            landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3716,7 +3716,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.190362"
+            timestampString = "549364635.796946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -3780,7 +3780,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.1905431"
+            timestampString = "549364635.797042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -3796,7 +3796,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.190588"
+            timestampString = "549364635.797094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -3844,7 +3844,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.190717"
+            timestampString = "549364635.797173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -3908,7 +3908,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "548844217.1908931"
+            timestampString = "549364635.797259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -4400,7 +4400,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
@@ -4448,7 +4448,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
@@ -4464,7 +4464,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
@@ -4512,7 +4512,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
