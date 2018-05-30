@@ -1,0 +1,837 @@
+//
+//  AfterBooking.m
+//  GoEvaRider
+//
+//  Created by Kalyan Paul on 15/06/17.
+//  Copyright © 2017 Kalyan Paul. All rights reserved.
+//
+
+#import "AfterBooking.h"
+#import "CompleteRide.h"
+#import "RestCallManager.h"
+#import "DataStore.h"
+#import "CarMaster.h"
+#import "MyUtils.h"
+#import "SideMenuViewController.h"
+#import "MFSideMenu.h"
+#import "Dashboard.h"
+#import "AsyncImageView.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+#import "CancelTrip.h"
+#import "DashboardCaller.h"
+#import "UIView+Toast.h"
+#import "Constant.h"
+#import <Stripe/Stripe.h>
+#import "CardMaster.h"
+#import <AFNetworking/AFNetworking.h>
+
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+@interface AfterBooking ()
+
+@end
+
+@implementation AfterBooking{
+    GMSMapView *_mapView;
+    GMSMarker *driverMarker;
+    GMSMarker *pickerMarker;
+    UIView *_londonView;
+    NSTimer *timer;
+    int j;
+    AVAudioPlayer *player;
+    NSArray *cardBrand;    
+}
+@synthesize notificationDriverDetailsDict;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    bookedDriver.layer.cornerRadius = bookedDriver.frame.size.width / 2;
+    bookedDriver.layer.borderWidth = 2.5f;
+    bookedDriver.layer.borderColor = [UIColor whiteColor].CGColor;
+    bookedDriver.clipsToBounds = YES;
+    
+    bookedCarNumber.layer.cornerRadius = bookedCarNumber.frame.size.width / 2;
+    bookedCarNumber.layer.borderWidth = 2.5f;
+    bookedCarNumber.layer.borderColor = [UIColor whiteColor].CGColor;
+    bookedCarNumber.clipsToBounds = YES;
+    
+    bookedCarType.layer.cornerRadius = bookedCarType.frame.size.width / 2;
+    bookedCarType.layer.borderWidth = 2.5f;
+    bookedCarType.layer.borderColor = [UIColor whiteColor].CGColor;
+    bookedCarType.clipsToBounds = YES;
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.center = CGPointMake(viewCard.frame.size.width / 2, viewCard.frame.size.height / 2);
+    [self.view addSubview:activityIndicator];
+    cardBrand = [NSArray arrayWithObjects:@"Visa", @"MasterCard",@"JCB", @"Diners Club", @"Discover",@"American Express", nil];
+    [imgCard setHidden:YES];
+    [lblCardNameWithLast4 setHidden:YES];
+    
+    [viewOnTheWay setHidden:YES];
+    _arrayPolylineGreen = [[NSMutableArray alloc] init];
+    _path2 = [[GMSMutablePath alloc]init];
+    
+    // For Driver Arrive and Start Trip
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForDriverArrivalAndStartTrip:) name:@"pushNotificationForDriverArrivalAndStartTrip" object:nil];
+    
+    // For Cancel Trip By Driver
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForCancelTrip:) name:@"pushNotificationForCancelTrip" object:nil];
+    
+    // For Fare Summary after Complete Trip
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForTripComplete:) name:@"pushNotificationForTripComplete" object:nil];
+    
+    /* Transaparent Background view */
+    backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    backgroundView.alpha = 0.5;
+   
+//    imgRidepath.userInteractionEnabled=YES;
+//    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                           action:@selector(fareSummary)];
+//    [imgRidepath addGestureRecognizer:tap2];
+    
+//    NSLog(@"Jasim: %@",[[NSBundle mainBundle] resourcePath]);
+//    NSString *soundFilePath = [NSString stringWithFormat:@"%@/foo.mp3",[[NSBundle mainBundle] resourcePath]];
+//    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+//    NSError *error;
+//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:&error];
+//    player.numberOfLoops = 1; //Infinite
+//    [player play];
+    
+    btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
+    [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
+    btnRefreshDriver.layer.cornerRadius=5;
+    btnRefreshDriver.clipsToBounds=YES;
+    btnRefreshDriver.userInteractionEnabled=YES;
+    
+    [self setData];
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:22.619160
+                                                            longitude:88.398099
+                                                                 zoom:12];
+    _mapView = [GMSMapView mapWithFrame:_mapViewContainer.bounds camera:camera];
+    _mapView.settings.compassButton = YES;
+    //_mapView.settings.myLocationButton = YES;
+    _mapView.padding = UIEdgeInsetsMake(80, 0, 20, 0);
+    _mapView.delegate=self;
+    
+    [_mapView addObserver:self
+               forKeyPath:@"myLocation"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+    [_mapViewContainer addSubview:_mapView];
+    // Ask for My Location data after the map has already been added to the UI.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _mapView.myLocationEnabled = YES;
+    });
+    
+    
+    driverMarker = [[GMSMarker alloc] init];
+    //pickupMarker.title = @"Pickup Location";
+    driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
+    //pickupMarker.snippet = pickupLocation.locationAddress;
+    lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
+    _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+    driverMarker.iconView = _londonView;
+    driverMarker.position = CLLocationCoordinate2DMake([[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue],[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue]);
+    //    pickupMarker.appearAnimation = kGMSMarkerAnimationPop;
+    //    pickupMarker.flat = YES;
+    //    pickupMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    driverMarker.map = _mapView;
+    [_mapView setSelectedMarker:driverMarker];
+    
+    
+    pickerMarker = [[GMSMarker alloc] init];
+    pickerMarker.title = @"My Pickup Location";
+    pickerMarker.snippet = pickupLocation.locationAddress;
+    _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+    pickerMarker.iconView = _londonView;
+    pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
+    //    dropMarker.appearAnimation = kGMSMarkerAnimationPop;
+    //    dropMarker.flat = YES;
+    //    dropMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    pickerMarker.map = _mapView;
+    
+    [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
+    
+}
+
+
+-(void) setData{
+    
+    NSString *driver_id = [notificationDriverDetailsDict valueForKey:@"driver_id"];
+    NSString *total_distance_in_mile = [notificationDriverDetailsDict valueForKey:@"total_distance_in_mile"];
+    
+    _bookingID = [notificationDriverDetailsDict valueForKey:@"request_id"];
+    
+    lblDriverName.text = [notificationDriverDetailsDict valueForKey:@"driver_name"];
+    lblPlateNo.text = [notificationDriverDetailsDict valueForKey:@"car_plate_no"];
+    lblCarName.text = [notificationDriverDetailsDict valueForKey:@"car_name"];
+    //lblPricePerMile.text = [NSString stringWithFormat:@"Starting at just $%@ / miles",[notificationDriverDetailsDict valueForKey:@"base_fare"]];
+    
+    lblRating.text = ([[notificationDriverDetailsDict valueForKey:@"driver_ratting"] isEqualToString:@""] || [notificationDriverDetailsDict valueForKey:@"driver_ratting"] == nil)?@"0.0":[NSString stringWithFormat:@"%0.1f", [[notificationDriverDetailsDict valueForKey:@"driver_ratting"] floatValue]];
+    
+    AsyncImageView *asyncImageView;
+    asyncImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
+    NSURL *url=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"driver_profile_pic"]];
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView];
+    asyncImageView.contentMode = UIViewContentModeScaleAspectFill;
+    asyncImageView.clipsToBounds = YES;
+    asyncImageView.tag = 99;
+    asyncImageView.imageURL = url;
+    [imgProfile addSubview:asyncImageView];
+    [imgProfile setImage:[UIImage imageNamed:@"no_image.png"]];
+    
+    
+    AsyncImageView *asyncImageView2;
+    asyncImageView2 = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
+    NSURL *url2=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_plate_no_pic"]];
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView2];
+    asyncImageView2.contentMode = UIViewContentModeScaleAspectFill;
+    asyncImageView2.clipsToBounds = YES;
+    asyncImageView2.tag = 99;
+    asyncImageView2.imageURL = url2;
+    [imgPlateNo addSubview:asyncImageView2];
+    [imgPlateNo setImage:[UIImage imageNamed:@"no_image.png"]];
+    
+    AsyncImageView *asyncImageView3;
+    asyncImageView3 = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
+    NSURL *url3=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_pic"]];
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView3];
+    asyncImageView3.contentMode = UIViewContentModeScaleAspectFill;
+    asyncImageView3.clipsToBounds = YES;
+    asyncImageView3.tag = 99;
+    asyncImageView3.imageURL = url3;
+    [imgCar addSubview:asyncImageView3];
+    [imgCar setImage:[UIImage imageNamed:@"no_image.png"]];
+    
+    
+    
+    pickupLocation = [MyUtils loadCustomObjectWithKey:@"pickupLocation"];
+    dropLocation = [MyUtils loadCustomObjectWithKey:@"dropLocation"];
+    
+    NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:[[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"] integerValue]*60];
+    //To get date in  `hour:minute` format.
+    NSDateFormatter *dateFormatterHHMM=[NSDateFormatter new];
+    [dateFormatterHHMM setDateFormat:@"hh:mm a"];
+    NSString *timeString=[dateFormatterHHMM stringFromDate:dateToFire];
+    [lblArrivalTime setText:[NSString stringWithFormat:@"Expected Time of Arrival %@", timeString]];
+    
+    [lblPickupAddress setText:[NSString stringWithFormat:@"%@",pickupLocation.locationAddress]];
+    /*
+    //code for my location on map
+     
+    */
+    
+    //Get Card Details
+    [self setCardData];
+    
+}
+
+
+-(void)createPolyLine:(float)pickupLat pickupLong:(float)pickupLong dropLat:(float)dropLat dropLong:(float)dropLong timeInterval:(float)timeInterval{
+    NSString *urlString = [NSString stringWithFormat:
+                           @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
+                           @"https://maps.googleapis.com/maps/api/directions/json",
+                           pickupLat,
+                           pickupLong,
+                           dropLat,
+                           dropLong,
+                           @"AIzaSyAoXqu16phq9wtepWIuO1RpJierSCX88yg"];
+    NSURL *directionsURL = [NSURL URLWithString:urlString];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:directionsURL];
+    [request startSynchronous];
+    NSError *error = [request error];
+    if (!error) {
+        
+        @try {
+            NSString *response = [request responseString];
+            //NSLog(@"%@",response);
+            NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
+            GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+            GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+            
+            singleLine.strokeWidth = 3;
+            singleLine.strokeColor = [UIColor blackColor];
+            singleLine.map = _mapView;
+            
+            GMSCoordinateBounds* bounds =  [[GMSCoordinateBounds alloc] init];
+            
+            for (int i=0; i<path.count; i++) {
+                //NSLog(@"%f, %f",[path coordinateAtIndex:i].latitude,[path coordinateAtIndex:i].longitude);
+                bounds = [bounds includingCoordinate:[path coordinateAtIndex:i]];
+            }
+            [_mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds]];
+            
+            // animate green path with timer
+            /*timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:true block:^(NSTimer * _Nonnull timer) {
+                [self animate:path];
+            }];*/
+            
+        }
+        @catch (NSException * e) {
+            //NSLog(@"Exception: %@", e);
+            /* UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Oops!!!" message:@"There is no any routes available. Please choose another drop location." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [loginAlert show];*/
+        }
+    }
+    else {
+        //NSLog(@"%@",[request error]);
+    }
+}
+
+-(void)animate:(GMSPath *)path {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (j < path.count) {
+            [_path2 addCoordinate:[path coordinateAtIndex:j]];
+            _polylineGreen = [GMSPolyline polylineWithPath:_path2];
+            _polylineGreen.strokeColor = [UIColor redColor];
+            _polylineGreen.strokeWidth = 3;
+            _polylineGreen.map = _mapView;
+            [_arrayPolylineGreen addObject:_polylineGreen];
+            j++;
+        }
+        else {
+            j = 0;
+            _path2 = [[GMSMutablePath alloc] init];
+            
+            for (GMSPolyline *line in _arrayPolylineGreen) {
+                line.map = nil;
+            }
+            
+        }
+    });
+}
+
+
+
+//- (void)dealloc {
+//    [_mapView removeObserver:self
+//                  forKeyPath:@"myLocation"
+//                     context:NULL];
+//}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_mapView removeObserver:self
+                  forKeyPath:@"myLocation"
+                     context:NULL];
+}
+
+#pragma mark - KVO updates
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+    //NSLog(@"Jasim %f, %f",location.coordinate.latitude,location.coordinate.longitude);
+    _userCurrentLat = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
+    _userCurrentLong = [NSString stringWithFormat:@"%f",location.coordinate.longitude];
+    
+}
+
+- (void) pushNotificationForDriverArrivalAndStartTrip:(NSNotification *)notification{
+    
+    NSDictionary *dict = [notification userInfo];
+    NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+    NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
+    [self.view setUserInteractionEnabled:YES];
+
+    UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+    [currentWindow addSubview:backgroundView];
+    viewNotification.frame = CGRectMake(0, -117, 320, 117);
+    [UIView animateWithDuration:0.3
+                          delay:0.2
+                        options: UIViewAnimationCurveEaseIn
+                     animations:^{
+                         viewNotification.frame = CGRectMake(0, 20, 320, 117);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [self performSelector:@selector(dismissNotificationView) withObject:self afterDelay:3.0 ];
+                         
+                     }];
+    [currentWindow addSubview:viewNotification];
+    viewInnerNotification.layer.cornerRadius = 10;
+    viewInnerNotification.clipsToBounds = YES;
+    viewImgDriverNotification.layer.cornerRadius = viewImgDriverNotification.frame.size.width / 2;
+    viewImgDriverNotification.layer.borderWidth = 2.0f;
+    viewImgDriverNotification.layer.borderColor = [UIColor whiteColor].CGColor;
+    viewImgDriverNotification.clipsToBounds = YES;
+    AsyncImageView *asyncImageView;
+    asyncImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,55, 55)];
+    NSURL *url=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"driver_profile_pic"]];
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView];
+    asyncImageView.contentMode = UIViewContentModeScaleAspectFill;
+    asyncImageView.clipsToBounds = YES;
+    asyncImageView.tag = 99;
+    asyncImageView.imageURL = url;
+    [imgProfileNotification addSubview:asyncImageView];
+    [imgProfileNotification setImage:[UIImage imageNamed:@"no_image.png"]];
+    [lblDriverNameNotification setText:[notificationDriverDetailsDict valueForKey:@"driver_name"]];
+    [lblCarNameAndNumberNotification setText:[NSString stringWithFormat:@"%@ - %@",[notificationDriverDetailsDict valueForKey:@"car_name"],[notificationDriverDetailsDict valueForKey:@"car_plate_no"]]];
+    lblRatingANotification.text = ([[notificationDriverDetailsDict valueForKey:@"driver_ratting"] isEqualToString:@""] || [notificationDriverDetailsDict valueForKey:@"driver_ratting"] == nil)?@"0.0":[NSString stringWithFormat:@"%0.1f", [[notificationDriverDetailsDict valueForKey:@"driver_ratting"] floatValue]];
+    
+    if (notification_mode == 3) {
+        [lblStatusNotification setText:[notificationDict valueForKey:@"alert"]];
+        [viewOnTheWay setHidden:NO];
+        [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+        [animation setToValue:[NSNumber numberWithFloat:0.0]];
+        [animation setDuration:0.5f];
+        [animation setTimingFunction:[CAMediaTimingFunction
+                                      functionWithName:kCAMediaTimingFunctionLinear]];
+        [animation setAutoreverses:YES];
+        [animation setRepeatCount:20000];
+        [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
+        
+        [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
+        
+    }
+    else if(notification_mode == 4){
+        
+        [lblStatusNotification setText:[notificationDict valueForKey:@"alert"]];
+        [viewOnTheWay setHidden:NO];
+        [lblDriverRunningStatus setText:@"ON THE WAY"];
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+        [animation setToValue:[NSNumber numberWithFloat:0.0]];
+        [animation setDuration:0.5f];
+        [animation setTimingFunction:[CAMediaTimingFunction
+                                      functionWithName:kCAMediaTimingFunctionLinear]];
+        [animation setAutoreverses:YES];
+        [animation setRepeatCount:20000];
+        [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
+        
+        [lblPickupAddress setText:dropLocation.locationAddress];
+        
+        [btnContactDriver setHidden:YES];
+        [btnCancelBook setHidden:YES];
+        
+        NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:[[notificationDict valueForKey:@"total_duration_in_min"] integerValue]*60];
+        //To get date in  `hour:minute` format.
+        NSDateFormatter *dateFormatterHHMM=[NSDateFormatter new];
+        [dateFormatterHHMM setDateFormat:@"hh:mm a"];
+        NSString *timeString=[dateFormatterHHMM stringFromDate:dateToFire];
+        [lblArrivalTime setText:[NSString stringWithFormat:@"Expected Time of Arrival %@", timeString]];
+        [_mapView clear];
+        
+        
+        
+        driverMarker = [[GMSMarker alloc] init];
+        //pickupMarker.title = @"Pickup Location";
+        driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[notificationDict valueForKey:@"total_duration_in_min"]];
+        
+        lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDict valueForKey:@"total_duration_in_min"]];
+        
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        driverMarker.iconView = _londonView;
+        driverMarker.position = CLLocationCoordinate2DMake([_userCurrentLat floatValue],[_userCurrentLong floatValue]);
+        //    pickupMarker.appearAnimation = kGMSMarkerAnimationPop;
+        //    pickupMarker.flat = YES;
+        //    pickupMarker.groundAnchor = CGPointMake(0.5, 0.5);
+        driverMarker.map = _mapView;
+        [_mapView setSelectedMarker:driverMarker];
+        
+        
+        pickerMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"Drop Location";
+        pickerMarker.snippet = dropLocation.locationAddress;
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        pickerMarker.iconView = _londonView;
+        pickerMarker.position = CLLocationCoordinate2DMake([dropLocation.latitude floatValue],[dropLocation.longitude floatValue]);
+        //    dropMarker.appearAnimation = kGMSMarkerAnimationPop;
+        //    dropMarker.flat = YES;
+        //    dropMarker.groundAnchor = CGPointMake(0.5, 0.5);
+        pickerMarker.map = _mapView;
+        
+        
+        [self createPolyLine:[_userCurrentLat floatValue] pickupLong:[_userCurrentLong floatValue] dropLat:[dropLocation.latitude floatValue] dropLong:[dropLocation.longitude floatValue] timeInterval:0.003];
+    }
+}
+
+- (void) pushNotificationForCancelTrip:(NSNotification *)notification{
+    [self.view setUserInteractionEnabled:YES];
+    NSDictionary *dict = [notification userInfo];
+    NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+    NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
+    
+    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Driver cancelled the Trip"
+                                                                  message:@""
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [MyUtils removeParticularObjectFromNSUserDefault:@"pickupLocation"];
+                                    [MyUtils removeParticularObjectFromNSUserDefault:@"dropLocation"];
+                                    //[DashboardCaller homepageSelector:self];
+                                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void) pushNotificationForTripComplete:(NSNotification *)notification{
+    
+    
+    [self.view setUserInteractionEnabled:YES];
+    NSDictionary *dict = [notification userInfo];
+    NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+    BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
+    
+    [self.view setUserInteractionEnabled:YES];
+    [loadingView setHidden:YES];
+    CompleteRide *registerController;
+    if (appDel.iSiPhone5) {
+        registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
+    }
+    else{
+        registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
+    }
+    registerController.bookingObj = bookingObj;
+    registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    [self presentViewController:registerController animated:YES completion:nil];
+}
+
+
+-(void)dismissNotificationView{
+    viewNotification.frame = CGRectMake(0, 20, 320, 117);
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.1
+                        options: UIViewAnimationCurveEaseIn
+                     animations:^{
+                         viewNotification.frame = CGRectMake(0, -117, 320, 117);
+                     }
+                     completion:^(BOOL finished){
+                         [viewNotification removeFromSuperview];
+                         [backgroundView removeFromSuperview];
+                         
+                     }];
+}
+
+- (IBAction)contactDriver:(UIButton *)sender{
+    UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+    [currentWindow addSubview:backgroundView];
+//    viewContact.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+//    [currentWindow addSubview:viewContact];
+    
+    
+    viewContact.frame = CGRectMake(20, 568, 280, 143);
+    [UIView animateWithDuration:0.3
+                          delay:0.1
+                        options: UIViewAnimationCurveEaseIn
+                     animations:^{
+                         viewContact.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+    [currentWindow addSubview:viewContact];
+    
+    [viewLblName setText:[notificationDriverDetailsDict valueForKey:@"driver_name"]];
+    [viewLblMobile setText:[notificationDriverDetailsDict valueForKey:@"driver_contact_no"]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(messageDriver)];
+    
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                           action:@selector(callDriver)];
+    [btnCall setUserInteractionEnabled:YES];
+    [btnMessage setUserInteractionEnabled:YES];
+    [btnMessage addGestureRecognizer:tap];
+    [btnCall addGestureRecognizer:tap2];
+}
+
+- (void)callDriver{
+    [viewContact removeFromSuperview];
+    [backgroundView removeFromSuperview];
+    NSString *mobileNo = [notificationDriverDetailsDict valueForKey:@"driver_contact_no"];
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",mobileNo]];
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    } else
+    {
+        UIAlertView *calert = [[UIAlertView alloc]initWithTitle:@"Oops!!!" message:@"Call facility is not available!!!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [calert show];
+    }
+}
+
+- (void)messageDriver{
+    [viewContact removeFromSuperview];
+    [backgroundView removeFromSuperview];
+    NSString *mobileNo = [notificationDriverDetailsDict valueForKey:@"driver_contact_no"];
+    NSURL *messageUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"sms:%@",mobileNo]];
+    if ([[UIApplication sharedApplication] canOpenURL:messageUrl]) {
+        [[UIApplication sharedApplication] openURL:messageUrl];
+    } else
+    {
+        UIAlertView *messalert = [[UIAlertView alloc]initWithTitle:@"Oops!!!" message:@"Message facility is not available!!!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [messalert show];
+    }
+}
+
+- (IBAction)closeContactPopup:(UIButton *)sender{
+    
+    viewContact.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options: UIViewAnimationCurveEaseIn
+                     animations:^{
+                         viewContact.frame = CGRectMake(20, 568, 280, 143);
+                     }
+                     completion:^(BOOL finished){
+                         [viewContact removeFromSuperview];
+                         [backgroundView removeFromSuperview];
+                     }];
+   
+    
+    
+}
+- (void)cancelBooking:(UIButton *)sender{
+    if([RestCallManager hasConnectivity]){
+        [self.view setUserInteractionEnabled:NO];
+        UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+        loadingView = [MyUtils customLoaderFullWindowWithText:self.window loadingText:@"REQUESTING..."];
+        [currentWindow addSubview:loadingView];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForFetchReason) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+-(void)requestToServerForFetchReason{
+    BOOL bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] fetchCancelReason:@"1"];
+    if(bSuccess)
+    {
+        [self performSelectorOnMainThread:@selector(responsefetchCancelReason) withObject:nil waitUntilDone:YES];
+    }
+    else{
+        [self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
+    }
+}
+
+-(void) responsefetchCancelReason{
+    [loadingView removeFromSuperview];
+    [self.view setUserInteractionEnabled:YES];
+    CancelTrip *cancelTripController;
+    if (appDel.iSiPhone5) {
+        cancelTripController = [[CancelTrip alloc] initWithNibName:@"CancelTrip" bundle:nil];
+    }
+    else{
+        cancelTripController = [[CancelTrip alloc] initWithNibName:@"CancelTripLow" bundle:nil];
+    }
+    cancelTripController.bookingID = _bookingID;
+    cancelTripController.userCurrentLat = _userCurrentLat;
+    cancelTripController.userCurrentLong = _userCurrentLong;
+    cancelTripController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:cancelTripController animated:YES completion:nil];
+}
+
+
+-(void)responseFailed{
+    
+    [loadingView removeFromSuperview];
+    [self.view setUserInteractionEnabled:YES];
+    
+}
+
+//- (IBAction)backTo:(id)sender {
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    [UIView commitAnimations];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+
+
+- (IBAction)refreshDriverLocation:(UIButton *)sender{
+    if([RestCallManager hasConnectivity]){
+        
+        btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
+        [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
+        [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
+        btnRefreshDriver.layer.cornerRadius=5;
+        btnRefreshDriver.clipsToBounds=YES;
+        btnRefreshDriver.userInteractionEnabled=NO;
+        [self.view setUserInteractionEnabled:NO];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForFetchDriverLocation) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+-(void)requestToServerForFetchDriverLocation{
+    BOOL bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] getDriverLocation:[notificationDriverDetailsDict valueForKey:@"driver_id"] bookingID:_bookingID];
+    if(bSuccess)
+    {
+        [self performSelectorOnMainThread:@selector(responseGetDriverLocation) withObject:nil waitUntilDone:YES];
+    }
+    else{
+        [self performSelectorOnMainThread:@selector(responseLocationFailed) withObject:nil waitUntilDone:YES];
+    }
+}
+
+-(void) responseGetDriverLocation{
+    
+    [self.view setUserInteractionEnabled:YES];
+    
+        btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
+        [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
+        btnRefreshDriver.layer.cornerRadius=5;
+        btnRefreshDriver.clipsToBounds=YES;
+        btnRefreshDriver.userInteractionEnabled=YES;
+        
+    driverLiveArray = [NSMutableArray arrayWithArray:[[DataStore sharedInstance] getDriverLiveLocation]];
+    if (driverLiveArray.count>0 && [[driverLiveArray objectAtIndex:0] current_lat]!= (id)[NSNull null]) {
+        
+        int minAway = [[[driverLiveArray objectAtIndex:0] remaining_time] intValue];
+        lblAwayTime.text = [NSString stringWithFormat:@"%d min away",minAway];
+        driverMarker.map=nil;
+        driverMarker = [[GMSMarker alloc] init];
+        driverMarker.snippet = [NSString stringWithFormat:@"%d MINS AWAY", minAway];
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        driverMarker.iconView = _londonView;
+        driverMarker.position = CLLocationCoordinate2DMake([[[driverLiveArray objectAtIndex:0] current_lat] floatValue],[[[driverLiveArray objectAtIndex:0] current_long] floatValue]);
+        driverMarker.map = _mapView;
+        [_mapView setSelectedMarker:driverMarker];
+    }
+    else{
+        UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+        [currentWindow makeToast:@"Unknown Location. Please try again after sometime."];
+    }
+    
+    
+}
+
+-(void)responseLocationFailed{
+    
+    [self.view setUserInteractionEnabled:YES];
+    
+    btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
+    [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
+    btnRefreshDriver.layer.cornerRadius=5;
+    btnRefreshDriver.clipsToBounds=YES;
+    btnRefreshDriver.userInteractionEnabled=YES;
+    
+    
+    UIAlertController * alert=[UIAlertController alertControllerWithTitle:@""
+                                                                  message:@"Failed to find your location. Please try again."
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    //[self homepageSelector];
+                                }];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    // My OK button
+    
+    if (alertView.tag==200) {
+        
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            [MyUtils removeParticularObjectFromNSUserDefault:@"pickupLocation"];
+            [MyUtils removeParticularObjectFromNSUserDefault:@"dropLocation"];
+            [DashboardCaller homepageSelector:self];
+        }
+    }
+}
+
+
+-(void)setCardData{
+    [self.view setUserInteractionEnabled:YES];
+    [activityIndicator stopAnimating];
+    [imgCard setHidden:NO];
+    [lblCardNameWithLast4 setHidden:NO];
+    cardArray = [NSMutableArray arrayWithArray:[[DataStore sharedInstance] getAllCard]];
+    CardMaster * cardObj = [cardArray objectAtIndex:0];
+    NSInteger item = [cardBrand indexOfObject:[cardObj valueForKey:@"brand"]];
+    switch (item) {
+        case 0:
+            imgCard.image = [UIImage imageNamed:@"card_visa"];
+            break;
+        case 1:
+            imgCard.image = [UIImage imageNamed:@"card_mastercard"];
+            break;
+        case 2:
+            imgCard.image = [UIImage imageNamed:@"card_jcb"];
+            break;
+        case 3:
+            imgCard.image = [UIImage imageNamed:@"card_diners"];
+            break;
+        case 4:
+            imgCard.image = [UIImage imageNamed:@"card_discover"];
+            break;
+        case 5:
+            imgCard.image = [UIImage imageNamed:@"card_amex"];
+            break;
+        default:
+            imgCard.image = [UIImage imageNamed:@"card_unknown"];
+            break;
+    }
+    
+    UIColor *color = [UIColor blueColor];
+    NSString *card = @"Card";
+    NSString *endingIn = @"Ending In";
+    
+    NSString *lblCardDetails = [NSString stringWithFormat:@"%@ %@ XXXX%@",card,endingIn,[cardObj valueForKey:@"last4"]];
+    NSMutableAttributedString *mutAttrStr = [[NSMutableAttributedString alloc]initWithString:lblCardDetails attributes:nil];
+    NSString *endingShortStr = endingIn;
+    NSDictionary *attributes = @{NSForegroundColorAttributeName:color};
+    [mutAttrStr setAttributes:attributes range:NSMakeRange([card length]+1, endingShortStr.length)];
+    lblCardNameWithLast4.attributedText = mutAttrStr;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end
