@@ -80,6 +80,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    UILabel *lblTitle = [[UILabel alloc] init];
+    lblTitle.text = @"My Profile and Settings";
+    lblTitle.backgroundColor = [UIColor clearColor];
+    lblTitle.textColor = [UIColor whiteColor];
+    lblTitle.shadowOffset = CGSizeMake(0, 1);
+    lblTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0];
+    [lblTitle sizeToFit];
+    self.navigationItem.titleView = lblTitle;
+    
     MyUtils *utils= [[MyUtils alloc] init];
     [utils setupMenuBarButtonItems:self tilteLable:@"My Profile and Settings"];
     self.navigationItem.rightBarButtonItem = nil;

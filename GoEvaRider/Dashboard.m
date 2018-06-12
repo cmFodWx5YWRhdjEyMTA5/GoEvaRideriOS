@@ -198,6 +198,15 @@ alpha:1.0]
     }
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    UILabel *lblTitle = [[UILabel alloc] init];
+    lblTitle.text = @"Home";
+    lblTitle.backgroundColor = [UIColor clearColor];
+    lblTitle.textColor = [UIColor whiteColor];
+    lblTitle.shadowOffset = CGSizeMake(0, 1);
+    lblTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0];
+    [lblTitle sizeToFit];
+    self.navigationItem.titleView = lblTitle;
+    
     MyUtils *utils= [[MyUtils alloc] init];
     [utils setupMenuBarButtonItems:self tilteLable:self.pageTitle];
     
@@ -498,11 +507,11 @@ alpha:1.0]
 }
 
 
-- (void)dealloc {
+/*- (void)dealloc {
     [_mapView removeObserver:self
                   forKeyPath:@"myLocation"
                      context:NULL];
-}
+}*/
 
 #pragma mark - KVO updates
 

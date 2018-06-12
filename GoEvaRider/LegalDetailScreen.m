@@ -31,6 +31,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    UILabel *lblTitle = [[UILabel alloc] init];
+    if (_screenModeForLegalHelp==1) {
+        lblTitle.text = [legalObj cat_name];
+    }
+    else if (_screenModeForLegalHelp==2) {
+        lblTitle.text = @"Learn more";
+    }
+    lblTitle.backgroundColor = [UIColor clearColor];
+    lblTitle.textColor = [UIColor whiteColor];
+    lblTitle.shadowOffset = CGSizeMake(0, 1);
+    lblTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0];
+    [lblTitle sizeToFit];
+    self.navigationItem.titleView = lblTitle;
+    
     MyUtils *utils= [[MyUtils alloc] init];
     if (_screenModeForLegalHelp==1) {
         [utils setupMenuBarButtonItems:self tilteLable:[legalObj cat_name]];

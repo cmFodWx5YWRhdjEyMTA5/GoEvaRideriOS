@@ -93,20 +93,7 @@ alpha:1.0]
     backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     backgroundView.backgroundColor = [UIColor blackColor];
     backgroundView.alpha = 0.5;
-   
-//    imgRidepath.userInteractionEnabled=YES;
-//    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                                           action:@selector(fareSummary)];
-//    [imgRidepath addGestureRecognizer:tap2];
-    
-//    NSLog(@"Jasim: %@",[[NSBundle mainBundle] resourcePath]);
-//    NSString *soundFilePath = [NSString stringWithFormat:@"%@/foo.mp3",[[NSBundle mainBundle] resourcePath]];
-//    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-//    NSError *error;
-//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:&error];
-//    player.numberOfLoops = 1; //Infinite
-//    [player play];
-    
+       
     btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
     [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
@@ -664,19 +651,9 @@ alpha:1.0]
 
 
 -(void)responseFailed{
-    
     [loadingView removeFromSuperview];
     [self.view setUserInteractionEnabled:YES];
-    
 }
-
-//- (IBAction)backTo:(id)sender {
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//    [UIView commitAnimations];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
     if([RestCallManager hasConnectivity]){
@@ -709,9 +686,7 @@ alpha:1.0]
 }
 
 -(void) responseGetDriverLocation{
-    
     [self.view setUserInteractionEnabled:YES];
-    
         btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
         [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
@@ -737,8 +712,6 @@ alpha:1.0]
         UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
         [currentWindow makeToast:@"Unknown Location. Please try again after sometime."];
     }
-    
-    
 }
 
 -(void)responseLocationFailed{

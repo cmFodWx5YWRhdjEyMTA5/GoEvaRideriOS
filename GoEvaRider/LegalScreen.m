@@ -54,6 +54,22 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    UILabel *lblTitle = [[UILabel alloc] init];
+    if (_pageModeForHelpAndLegalMenu==1) {
+        lblTitle.text = @"Home";
+    }
+    else{
+        lblTitle.text = [helpObj valueForKey:@"cat_name"];
+    }
+    lblTitle.backgroundColor = [UIColor clearColor];
+    lblTitle.textColor = [UIColor whiteColor];
+    lblTitle.shadowOffset = CGSizeMake(0, 1);
+    lblTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0];
+    [lblTitle sizeToFit];
+    self.navigationItem.titleView = lblTitle;
+    
+    
     MyUtils *utils= [[MyUtils alloc] init];
     if (_pageModeForHelpAndLegalMenu==1) {
         [utils setupMenuBarButtonItems:self tilteLable:@"Legal"];

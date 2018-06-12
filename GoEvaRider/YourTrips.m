@@ -33,6 +33,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     MyUtils *utils= [[MyUtils alloc] init];
+    UILabel *lblTitle = [[UILabel alloc] init];
+    lblTitle.text = @"Your Trips";
+    lblTitle.backgroundColor = [UIColor clearColor];
+    lblTitle.textColor = [UIColor whiteColor];
+    lblTitle.shadowOffset = CGSizeMake(0, 1);
+    lblTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0];
+    [lblTitle sizeToFit];
+    self.navigationItem.titleView = lblTitle;
     [utils setupMenuBarButtonItems:self tilteLable:@"Your Trips"];
     self.navigationItem.rightBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem.enabled = NO;

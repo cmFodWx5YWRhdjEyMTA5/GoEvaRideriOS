@@ -161,7 +161,7 @@ static NSString *titleLable;
     titleLable = title;
     
     controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
-    if(controller.menuContainerViewController.menuState == MFSideMenuStateClosed &&
+    /*if(controller.menuContainerViewController.menuState == MFSideMenuStateClosed &&
        ![[controller.navigationController.viewControllers objectAtIndex:0] isEqual:controller]) {
         controller.navigationItem.leftBarButtonItem = [self backBarButtonItem:controller];
     }
@@ -170,6 +170,17 @@ static NSString *titleLable;
     }
     else {
         controller.navigationItem.leftBarButtonItems = @[[self leftMenuBarButtonItem:controller],[self leftMenuBarButtonItem2:controller]];
+    }*/
+    controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
+    if(controller.menuContainerViewController.menuState == MFSideMenuStateClosed &&
+       ![[controller.navigationController.viewControllers objectAtIndex:0] isEqual:controller]) {
+        controller.navigationItem.leftBarButtonItem = [self backBarButtonItem:controller];
+    }
+    if(controller.navigationController.viewControllers.count>1) {
+        controller.navigationItem.leftBarButtonItem = [self backBarButtonItem:controller];
+    }
+    else {
+        controller.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem:controller];
     }
 }
 
