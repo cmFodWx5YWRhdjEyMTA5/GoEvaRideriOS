@@ -612,10 +612,10 @@
 }
 
 
--(BOOL)cancelRide:(NSString *)bookingID userType:(NSString *)userType riderCurrentLat:(NSString *)riderCurrentLat riderCurrentLong:(NSString *)riderCurrentLong cancelReasonID:(NSString *)cancelReasonID{
+-(BOOL)cancelRide:(NSString *)bookingID userType:(NSString *)userType isCharged:(NSString *)isCharged riderCurrentLat:(NSString *)riderCurrentLat riderCurrentLong:(NSString *)riderCurrentLong cancelReasonID:(NSString *)cancelReasonID{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&user_current_lat=%@&user_current_long=%@&cancel_reason_id=%@",bookingID,userType,riderCurrentLat,riderCurrentLong,cancelReasonID];
+    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&is_charged=%@&user_current_lat=%@&user_current_long=%@&cancel_reason_id=%@",bookingID,userType,isCharged,riderCurrentLat,riderCurrentLong,cancelReasonID];
     NSString *strURL=[NSString stringWithFormat:@"%@cancel_trip",baseUrl];
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
@@ -938,10 +938,10 @@
 }
 
 
--(BOOL)getDriverLocation:(NSString *)driverID bookingID:(NSString *)bookingID{
+-(NSString *)getDriverLocationForArriving:(NSString *)driverID bookingID:(NSString *)bookingID{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *strURL=[NSString stringWithFormat:@"%@get_driver_location?driver_id=%@&booking_id=%@",baseUrl,driverID,bookingID];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_driver_location_for_arriving?driver_id=%@&booking_id=%@",baseUrl,driverID,bookingID];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
@@ -957,15 +957,45 @@
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addDriverLiveLocation:arr];
-            return true;
+            return webResponse.StatusCode;
         }
     }
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
-        return false;
+        return webResponse.StatusCode;
     }
-    return false;
+    return nil;
+}
+
+-(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID bookingID:(NSString *)bookingID driverCurrentlat:(NSString *)driverCurrentlat driverCurrentLong:(NSString *)driverCurrentLong{
+    
+    NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_estimated_timeOf_ride_after_startTrip?driver_id=%@&booking_id=%@&driver_current_lat=%@&driver_current_long=%@",baseUrl,driverID,bookingID,driverCurrentlat,driverCurrentLong];
+    WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
+    if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
+        if (JSONdata != nil) {
+            NSError * error =nil;
+            
+            NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
+            
+            NSMutableArray * arr = [[NSMutableArray alloc]init];
+            for (int i = 0; i < [jsonUserInfo count]; i++) {
+                DriverLiveLocation *fund = [[DriverLiveLocation alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
+                [arr addObject:fund];
+            }
+            [[DataStore sharedInstance] addDriverLiveLocation:arr];
+            return webResponse.StatusCode;
+        }
+    }
+    else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        [GlobalVariable setGlobalMessage:webResponse.Data];
+        return webResponse.StatusCode;
+    }
+   return nil;
 }
 
 
@@ -986,6 +1016,39 @@
         return false;
     }
     [GlobalVariable setGlobalMessage:@"We are having an issue connecting to the server. Please try again."];
+    return false;
+}
+
+// Get settings
+-(BOOL)getSettings:(NSString *)userType{
+    NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    NSString *dataUrl = [NSString stringWithFormat:@"user_type=%@",userType];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_setting",baseUrl];
+    WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
+    if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
+        if (JSONdata != nil) {
+            NSError * error =nil;
+            NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
+            NSMutableArray * arr = [[NSMutableArray alloc]init];
+            for (int i = 0; i < [jsonUserInfo count]; i++) {
+                SettingMaster * fund = [[SettingMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
+                [arr addObject:fund];
+            }
+            [[DataStore sharedInstance] addSetting:arr];
+            return true;
+        }
+    }
+    else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        [GlobalVariable setGlobalMessage:webResponse.Data];
+        return false;
+    }
+    else{
+        [GlobalVariable setGlobalMessage:@"There are some problem with Server. Try after some time."];
+        return false;
+    }
     return false;
 }
 

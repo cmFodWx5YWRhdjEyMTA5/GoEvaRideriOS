@@ -51,6 +51,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) NSString *userCurrentLat, *userCurrentLong, *bookingID;
+@property (nonatomic) BOOL isCancellationCharge;
 @property (nonatomic) NSDictionary *notificationDriverDetailsDict;
 @property (nonatomic,strong) GMSMutablePath *path2;
 @property (nonatomic,strong)NSMutableArray *arrayPolylineGreen;

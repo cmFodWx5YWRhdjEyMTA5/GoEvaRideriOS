@@ -514,7 +514,7 @@ alpha:1.0]
         [timer invalidate];
         timer = nil;
         [loadingView setHidden:NO];
-        _carAvailablityModeFor30Sec=@"0";// For checking Cab Availablity For 30 sec
+        //_carAvailablityModeFor30Sec=@"0";// For checking Cab Availablity For 30 sec
         [self.view setUserInteractionEnabled:NO];
         self.navigationController.navigationBar.userInteractionEnabled = NO;
         self.navigationController.view.userInteractionEnabled = NO;
@@ -524,7 +524,7 @@ alpha:1.0]
         [NSThread detachNewThreadSelector:@selector(requestToServer) toTarget:self withObject:nil];
     }
     else{
-        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is connected to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [loginAlert show];
     }
 }
@@ -536,7 +536,7 @@ alpha:1.0]
         [NSThread detachNewThreadSelector:@selector(requestToServerForCheckBookingStatus) toTarget:self withObject:nil];
     }
     else{
-        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is connected to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [loginAlert show];
     }
 }
@@ -565,17 +565,28 @@ alpha:1.0]
     
     BOOL bSuccess;
     bSuccess =  [[RestCallManager sharedInstance] requestBooking:[MyUtils getUserDefault:@"riderID"] availabilityID:self.availabilityID carTypeID:self.selectedCar pickupLocation:pickupLocation.locationAddress dropLocation:dropLocation.locationAddress sourceLat:pickupLocation.latitude sourceLong:pickupLocation.longitude descLat:dropLocation.latitude descLong:dropLocation.longitude pickCar:@"0"];
-    
     if(bSuccess)
     {
             [self performSelectorOnMainThread:@selector(showContactDialog) withObject:nil waitUntilDone:YES];
     }
     else{
-        
                 dispatch_async(dispatch_get_main_queue(), ^{
-        
-                    /* UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Oops!!!" message:[NSString stringWithFormat:@"No Cab available"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [loginAlert show];*/
+                    [timerForCheckBooking invalidate];
+                    timerForCheckBooking = nil;
+                    [self.view setUserInteractionEnabled:YES];
+                    [loadingView setHidden:YES];
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry, We are not getting any GoEva rides nearest your location. Please try after some time." message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                        
+                        [UIView beginAnimations:nil context:NULL];
+                        [UIView setAnimationDuration:0.3];
+                        [UIView commitAnimations];
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
+                    }];
+                    [alertController addAction:action];
+                    [self presentViewController:alertController animated:YES completion:nil];
+
                 });
     }
 }
@@ -638,7 +649,7 @@ alpha:1.0]
  -(void)requestToServerForCancelRequest{
     
     BOOL bSuccess;
-    bSuccess =  [[RestCallManager sharedInstance] cancelRequestByRider:[GlobalVariable getGlobalMessage]];
+    bSuccess =  [[RestCallManager sharedInstance] cancelRequestByRider:[GlobalVariable getBookingID]];
     
     if(bSuccess)
     {
@@ -687,6 +698,10 @@ alpha:1.0]
     [lblCardName setHidden:YES];
     [lblCardNameWithLast4 setHidden:YES];
     [btnAddOrChangeCard setHidden:YES];
+    
+    btnConfirmBooking.backgroundColor = [UIColor lightGrayColor];
+    [btnConfirmBooking setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
+    btnConfirmBooking.userInteractionEnabled=NO;
     
     if (!BackendBaseURL) {
         NSError *error = [NSError errorWithDomain:StripeDomain
@@ -748,6 +763,11 @@ alpha:1.0]
     [self.view setUserInteractionEnabled:YES];
     [activityIndicator stopAnimating];
     [activityIndicator setHidesWhenStopped:YES];
+    
+    btnConfirmBooking.backgroundColor = UIColorFromRGB(0xC0392B);
+    [btnConfirmBooking setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnConfirmBooking.userInteractionEnabled=YES;
+    
     [lblCardName setHidden:NO];
     [lblCardNameWithLast4 setHidden:NO];
     [btnAddOrChangeCard setHidden:NO];

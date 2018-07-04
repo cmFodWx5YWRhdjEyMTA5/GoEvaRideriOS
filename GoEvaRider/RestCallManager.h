@@ -39,7 +39,7 @@
 
 -(BOOL)fetchCancelReason:(NSString *)userType;
 
--(BOOL)cancelRide:(NSString *)bookingID userType:(NSString *)userType riderCurrentLat:(NSString *)riderCurrentLat riderCurrentLong:(NSString *)riderCurrentLong cancelReasonID:(NSString *)cancelReasonID;
+-(BOOL)cancelRide:(NSString *)bookingID userType:(NSString *)userType isCharged:(NSString *)isCharged riderCurrentLat:(NSString *)riderCurrentLat riderCurrentLong:(NSString *)riderCurrentLong cancelReasonID:(NSString *)cancelReasonID;
 
 -(BOOL)rateUsDriver:(NSString *)bookingID userType:(NSString *)userType ratingValue:(NSString *)ratingValue comments: (NSString *)comments;
 
@@ -56,8 +56,9 @@
 -(BOOL)forgotPasswordStep2:(NSString *)mobileOrEmail otpValue:(NSString *)otpValue;
 -(BOOL)forgotPasswordStep3:(NSString *)mobileOrEmail newPassword:(NSString *)newPassword;
 -(BOOL)getTripList:(NSString *)riderID;
--(BOOL)getDriverLocation:(NSString *)driverID bookingID:(NSString *)bookingID;
-
+-(NSString *)getDriverLocationForArriving:(NSString *)driverID bookingID:(NSString *)bookingID;
+-(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID bookingID:(NSString *)bookingID driverCurrentlat:(NSString *)driverCurrentlat driverCurrentLong:(NSString *)driverCurrentLong;
 -(BOOL)cancelRequestByRider:(NSString *)requestID;
+-(BOOL)getSettings:(NSString *)userType;
 
 @end

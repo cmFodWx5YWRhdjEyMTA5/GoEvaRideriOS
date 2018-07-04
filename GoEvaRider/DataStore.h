@@ -20,6 +20,7 @@
 #import "BookingDetailMaster.h"
 #import "CardMaster.h"
 #import "DriverLiveLocation.h"
+#import "SettingMaster.h"
 
 @interface DataStore : NSObject{
     
@@ -35,6 +36,7 @@
     NSMutableDictionary *helpDict;
     NSMutableDictionary *cardDict;
     NSMutableDictionary *driverLiveLocationDict;
+    NSMutableDictionary *settingDict;
     
 }
 + (id)sharedInstance;
@@ -89,4 +91,6 @@
 -(void)addDriverLiveLocation:(NSArray *)driverArray;
 -(NSArray *)getDriverLiveLocation;
 
+-(void)addSetting:(NSArray *)settingArray;
+-(NSArray *)getSetting;
 @end

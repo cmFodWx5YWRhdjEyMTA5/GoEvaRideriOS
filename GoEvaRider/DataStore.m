@@ -37,6 +37,7 @@
         helpDict = [[NSMutableDictionary alloc] init];
         cardDict = [[NSMutableDictionary alloc] init];
         driverLiveLocationDict = [[NSMutableDictionary alloc] init];
+        settingDict = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -353,7 +354,7 @@
     return fund;
 }
 
-#pragma Get Driver Live Location
+#pragma Add Driver Live Location
 
 -(void)addDriverLiveLocation:(NSArray *)driverArray
 {
@@ -371,5 +372,25 @@
 -(NSArray *)getDriverLiveLocation
 {
     return [driverLiveLocationDict allValues];
+}
+
+#pragma Add Setting
+
+-(void)addSetting:(NSArray *)settingArray
+{
+    [settingDict removeAllObjects];
+    if (settingArray != nil && [settingArray count] > 0)
+    {
+        for (int  i= 0; i< [settingArray count]; i++)
+        {
+            SettingMaster * fund = [settingArray objectAtIndex:i];
+            [settingDict setValue:fund forKey:fund.id];
+        }
+    }
+}
+
+-(NSArray *)getSetting
+{
+    return [settingDict allValues];
 }
 @end

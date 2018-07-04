@@ -19,7 +19,7 @@
     IBOutlet UIView *_mapViewContainer;
     IBOutlet UILabel *lblRatingHint,*lblRating;
     IBOutlet UILabel *lblBookingDateTime,*lblCarTypeBookingNo, *lblDriverName,*lblCarName;
-    IBOutlet UILabel *lblFare,*lblDistance,*lblDuration;
+    IBOutlet UILabel *txtRideFare,*lblFare,*lblDistance,*lblDuration;
     IBOutlet UILabel *lblStartTime, *lblEndTime, *lblPickupLocation,*lblDropLocation;
     IBOutlet UILabel *lblRideFare, *lblTaxes, *lblTotalNetFare;
     IBOutlet UIButton *btnBack;

@@ -34,6 +34,7 @@
 @synthesize total_fare;
 @synthesize total_base_fare;
 @synthesize taxes;
+@synthesize payment_type;
 
 -(id)init
 {
@@ -61,6 +62,7 @@
     self.total_distance = @"";
     self.total_base_fare = @"";
     self.taxes = @"";
+    self.payment_type = @"";
     
     return self;
 }
@@ -91,6 +93,7 @@
     self.total_time = [jsonObjects valueForKey:@"total_time"];
     self.total_base_fare = [jsonObjects valueForKey:@"total_base_fare"];
     self.taxes = [jsonObjects valueForKey:@"taxes"];
+    self.payment_type = [jsonObjects valueForKey:@"payment_type"];
     
     return self;
 }

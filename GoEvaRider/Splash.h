@@ -14,6 +14,7 @@
     AppDelegate *appDel;
     IBOutlet UIView *viewLocationServiceDisabled;
     NSMutableArray *riderArray;
+    NSMutableArray *settingArray;
 }
 @property (strong, nonatomic) UIWindow *window;
 @property CLLocationManager * locationManager;

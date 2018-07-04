@@ -61,9 +61,9 @@
             lblRating.hidden =YES;
             UIButton *btnRateUs = [UIButton buttonWithType:UIButtonTypeCustom];
             [btnRateUs addTarget:self action:@selector(rateUsNow:) forControlEvents:UIControlEventTouchUpInside];
-            [btnRateUs setTitle:@"Rate Us" forState:UIControlStateNormal];
+            [btnRateUs setTitle:@"Rate Driver" forState:UIControlStateNormal];
             btnRateUs.titleLabel.font = [UIFont systemFontOfSize:12];
-            btnRateUs.frame = CGRectMake(63.0, 25.0, 80.0, 20.0);
+            btnRateUs.frame = CGRectMake(63.0, 25.0, 100.0, 20.0);
             btnRateUs.layer.backgroundColor = [[UIColor redColor] CGColor];
             btnRateUs.layer.cornerRadius = 5;
             [viewDriverProfile addSubview:btnRateUs];
@@ -102,7 +102,7 @@
     }
     
     lblCarName.text = [NSString stringWithFormat:@"%@ - %@",[bookingObj car_category_name], [bookingObj car_name]];
-    if ([[bookingObj booking_status] isEqualToString:@"1"]) {
+    if ([[bookingObj booking_status] isEqualToString:@"1"] && [[bookingObj payment_type] isEqualToString:@"1"]) {
         viewPaymentDetails.hidden = NO;
         innerView.frame = CGRectMake(0, 0, innerView.frame.size.width, _mapViewContainer.frame.size.height + viewDriverProfile.frame.size.height+viewCarProfile.frame.size.height+viewFare.frame.size.height+viewLocation.frame.size.height+viewPaymentDetails.frame.size.height+35);
         CGSize scrollViewSize = CGSizeMake(innerView.bounds.size.width,innerView.bounds.size.height);
@@ -114,19 +114,41 @@
         imgCancel.hidden=YES;
         lblStartTime.text = [bookingObj ride_start_time];
         lblEndTime.text = [bookingObj ride_completion_time];
-        viewPaymentDetails.hidden = NO;
-        lblRideFare.text = [bookingObj total_base_fare];
-        lblTotalNetFare.text = [bookingObj total_fare];
+        lblRideFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_base_fare]];
+        lblTotalNetFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_fare]];
     }
     else{
-        viewPaymentDetails.hidden = YES;
-        innerView.frame = CGRectMake(0, 0, innerView.frame.size.width, _mapViewContainer.frame.size.height + viewDriverProfile.frame.size.height+viewCarProfile.frame.size.height+viewFare.frame.size.height+viewLocation.frame.size.height+35);
-        CGSize scrollViewSize = CGSizeMake(innerView.bounds.size.width,innerView.bounds.size.height);
-        [self.backGroundScroll setContentSize:scrollViewSize];
-        lblFare.text = @"---";
-        lblDistance.text = @"---";
-        lblDuration.text = @"---";
-        imgCancel.hidden=NO;
+        if ([bookingObj payment_type] == (id)[NSNull null]) {
+            viewPaymentDetails.hidden = YES;
+            innerView.frame = CGRectMake(0, 0, innerView.frame.size.width, _mapViewContainer.frame.size.height + viewDriverProfile.frame.size.height+viewCarProfile.frame.size.height+viewFare.frame.size.height+viewLocation.frame.size.height+35);
+            CGSize scrollViewSize = CGSizeMake(innerView.bounds.size.width,innerView.bounds.size.height);
+            [self.backGroundScroll setContentSize:scrollViewSize];
+            lblFare.text = @"---";
+            lblDistance.text = @"---";
+            lblDuration.text = @"---";
+            imgCancel.hidden=NO;
+        }
+        else if([[bookingObj payment_type] isEqualToString:@"2"]){
+            lblRatingHint.hidden = NO;
+            if([[bookingObj booking_status] isEqualToString:@"-100"]){
+                lblRatingHint.text = @"Cancelled by You";
+            }
+            else{
+                lblRatingHint.text = @"Cancelled by Driver";
+            }
+            viewPaymentDetails.hidden = NO;
+            innerView.frame = CGRectMake(0, 0, innerView.frame.size.width, _mapViewContainer.frame.size.height + viewDriverProfile.frame.size.height+viewCarProfile.frame.size.height+viewFare.frame.size.height+viewLocation.frame.size.height+viewPaymentDetails.frame.size.height+35);
+            CGSize scrollViewSize = CGSizeMake(innerView.bounds.size.width,innerView.bounds.size.height);
+            [self.backGroundScroll setContentSize:scrollViewSize];
+            txtRideFare.text = @"Cancellation Charges";
+            lblRideFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_base_fare]];
+            lblTotalNetFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_fare]];
+            lblFare.text = @"---";
+            lblDistance.text = @"---";
+            lblDuration.text = @"---";
+            imgCancel.hidden=NO;
+        }
+        
         
     }
     lblPickupLocation.text = ([bookingObj pickup_location]==(id)[NSNull null])?@"":[bookingObj pickup_location];

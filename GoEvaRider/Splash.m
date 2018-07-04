@@ -57,6 +57,7 @@
         //NSLog(@"Location access Permit");
         //NSLog(@"ID: %@",[MyUtils getUserDefault:@"riderID"]);
         [viewLocationServiceDisabled setHidden:YES];
+        [self getSettingData]; // Get setting Data
         if ([MyUtils getUserDefault:@"riderID"]==nil) {
             if ([MyUtils getUserDefault:@"loginMode"]==nil) {
                 [self performSelector:@selector(credentialSelector) withObject:self afterDelay:3.0 ];
@@ -87,6 +88,34 @@
     }
 }
 
+-(void) getSettingData{
+    if([RestCallManager hasConnectivity]){
+        [self.view setUserInteractionEnabled:NO];
+        [NSThread detachNewThreadSelector:@selector(requestToServerGetSetting) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+-(void)requestToServerGetSetting{
+    BOOL bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] getSettings:@"1"];
+    if(bSuccess)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            settingArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getSetting]];
+            [MyUtils setUserDefault:@"search_radius" value:[[settingArray objectAtIndex:0] search_radius]];
+            [MyUtils setUserDefault:@"min_duration_for_cancellation_charge" value:[[settingArray objectAtIndex:0] min_duration_for_cancellation_charge]];
+        });
+    }
+    else{
+        [self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
+    }
+}
+
+
 -(void)homeSelector{
     if([RestCallManager hasConnectivity]){
         [NSThread detachNewThreadSelector:@selector(requestToServerGetProfile) toTarget:self withObject:nil];
@@ -111,6 +140,7 @@
 
 -(void) responsefetchProfile{
     riderArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getRider]];
+    settingArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getSetting]];
     [MyUtils setUserDefault:@"riderMobileNo" value:[[riderArray objectAtIndex:0] rider_mobile]];
     [MyUtils setUserDefault:@"riderEmail" value:[[riderArray objectAtIndex:0] rider_email]];
     [MyUtils setUserDefault:@"profileImage" value:[[riderArray objectAtIndex:0] profile_pic]];

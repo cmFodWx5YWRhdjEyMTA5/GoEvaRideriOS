@@ -16,7 +16,6 @@
 		1D211B2C202C1FAE00977437 /* AfterBookingLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D211B2B202C1FAE00977437 /* AfterBookingLow.xib */; };
 		1D211B30202C251C00977437 /* PayNowLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D211B2F202C251C00977437 /* PayNowLow.xib */; };
 		1D211B32202C25EC00977437 /* RateUsDriverLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D211B31202C25EC00977437 /* RateUsDriverLow.xib */; };
-		1D211B34202C288900977437 /* CancelTripLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D211B33202C288900977437 /* CancelTripLow.xib */; };
 		1D25BC6F1F0A75E800291807 /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25BC6C1F0A75E800291807 /* MYBlurIntroductionView.m */; };
 		1D25BC701F0A75E800291807 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25BC6E1F0A75E800291807 /* MYIntroductionPanel.m */; };
 		1D25BC731F0A799A00291807 /* ForkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D25BC711F0A799A00291807 /* ForkImage.png */; };
@@ -104,6 +103,7 @@
 		1DB6DE3A1F69684200FADD6D /* CancelTripRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6DE361F69684200FADD6D /* CancelTripRow.m */; };
 		1DB6DE3B1F69684200FADD6D /* CancelTripRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DB6DE371F69684200FADD6D /* CancelTripRow.xib */; };
 		1DC2CF8F1F18A0EB00D3AC3B /* simulator-location-one.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2CF8E1F18A0EB00D3AC3B /* simulator-location-one.gpx */; };
+		1DC97CD520EA541B0058A10E /* SettingMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC97CD420EA541A0058A10E /* SettingMaster.m */; };
 		1DD0031B1EFA68B000A2CCFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD0031A1EFA68B000A2CCFA /* SystemConfiguration.framework */; };
 		1DD0031D1EFA68C500A2CCFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD0031C1EFA68C500A2CCFA /* CoreGraphics.framework */; };
 		1DD9B43D1F1CF31500E11BF0 /* LocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD9B43C1F1CF31500E11BF0 /* LocationData.m */; };
@@ -169,6 +169,8 @@
 		1DE7A16F202B412200AB531A /* LegalDetailScreenLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A16E202B412200AB531A /* LegalDetailScreenLow.xib */; };
 		1DEDB2482004EDEB003AEEF2 /* RateUsDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDB2462004EDEB003AEEF2 /* RateUsDriver.m */; };
 		1DEDB2492004EDEB003AEEF2 /* RateUsDriver.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEDB2472004EDEB003AEEF2 /* RateUsDriver.xib */; };
+		1DF2C54A20E6356B00B41A2A /* whit_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DF2C54920E6356A00B41A2A /* whit_cross.png */; };
+		1DF2C54C20E6406A00B41A2A /* CancelTripLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF2C54B20E6406A00B41A2A /* CancelTripLow.xib */; };
 		1DF3BC8E1F065D76005E45F2 /* AutocompleteBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3BC8A1F065D76005E45F2 /* AutocompleteBaseViewController.m */; };
 		1DF3BC8F1F065D76005E45F2 /* BaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3BC8C1F065D76005E45F2 /* BaseDemoViewController.m */; };
 		1DF3BC931F06843E005E45F2 /* DropLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3BC911F06843E005E45F2 /* DropLocation.m */; };
@@ -195,7 +197,6 @@
 		1D211B2B202C1FAE00977437 /* AfterBookingLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AfterBookingLow.xib; sourceTree = "<group>"; };
 		1D211B2F202C251C00977437 /* PayNowLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayNowLow.xib; sourceTree = "<group>"; };
 		1D211B31202C25EC00977437 /* RateUsDriverLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateUsDriverLow.xib; sourceTree = "<group>"; };
-		1D211B33202C288900977437 /* CancelTripLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelTripLow.xib; sourceTree = "<group>"; };
 		1D25BC6B1F0A75E800291807 /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
 		1D25BC6C1F0A75E800291807 /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
 		1D25BC6D1F0A75E800291807 /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
@@ -331,6 +332,8 @@
 		1DB6DE361F69684200FADD6D /* CancelTripRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelTripRow.m; sourceTree = "<group>"; };
 		1DB6DE371F69684200FADD6D /* CancelTripRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelTripRow.xib; sourceTree = "<group>"; };
 		1DC2CF8E1F18A0EB00D3AC3B /* simulator-location-one.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "simulator-location-one.gpx"; sourceTree = "<group>"; };
+		1DC97CD320EA541A0058A10E /* SettingMaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingMaster.h; sourceTree = "<group>"; };
+		1DC97CD420EA541A0058A10E /* SettingMaster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingMaster.m; sourceTree = "<group>"; };
 		1DD0031A1EFA68B000A2CCFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1DD0031C1EFA68C500A2CCFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1DD9B43B1F1CF31500E11BF0 /* LocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationData.h; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 		1DEDB2452004EDEB003AEEF2 /* RateUsDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateUsDriver.h; sourceTree = "<group>"; };
 		1DEDB2462004EDEB003AEEF2 /* RateUsDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateUsDriver.m; sourceTree = "<group>"; };
 		1DEDB2472004EDEB003AEEF2 /* RateUsDriver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateUsDriver.xib; sourceTree = "<group>"; };
+		1DF2C54920E6356A00B41A2A /* whit_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whit_cross.png; sourceTree = "<group>"; };
+		1DF2C54B20E6406A00B41A2A /* CancelTripLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelTripLow.xib; sourceTree = "<group>"; };
 		1DF3BC891F065D76005E45F2 /* AutocompleteBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocompleteBaseViewController.h; sourceTree = "<group>"; };
 		1DF3BC8A1F065D76005E45F2 /* AutocompleteBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompleteBaseViewController.m; sourceTree = "<group>"; };
 		1DF3BC8B1F065D76005E45F2 /* BaseDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDemoViewController.h; sourceTree = "<group>"; };
@@ -587,7 +592,7 @@
 				1DB6DE321F69684200FADD6D /* CancelTrip.h */,
 				1DB6DE331F69684200FADD6D /* CancelTrip.m */,
 				1DB6DE341F69684200FADD6D /* CancelTrip.xib */,
-				1D211B33202C288900977437 /* CancelTripLow.xib */,
+				1DF2C54B20E6406A00B41A2A /* CancelTripLow.xib */,
 				1DB6DE351F69684200FADD6D /* CancelTripRow.h */,
 				1DB6DE361F69684200FADD6D /* CancelTripRow.m */,
 				1DB6DE371F69684200FADD6D /* CancelTripRow.xib */,
@@ -634,6 +639,8 @@
 				1DDE7B551FBEBC4F00AD6849 /* CardMaster.m */,
 				1D42FA5A200E3073002F5233 /* DriverLiveLocation.h */,
 				1D42FA5B200E3073002F5233 /* DriverLiveLocation.m */,
+				1DC97CD320EA541A0058A10E /* SettingMaster.h */,
+				1DC97CD420EA541A0058A10E /* SettingMaster.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -886,6 +893,7 @@
 				1DE6C66C1F3496D40016CCA5 /* splash_568.png */,
 				1D0CDA0B1F2764D600209368 /* imgSubmitDisable.png */,
 				1D1AD4B81F26357800591D1A /* red_cross.png */,
+				1DF2C54920E6356A00B41A2A /* whit_cross.png */,
 				1D2F38161F1395C00011DEE2 /* test.gif */,
 				1D2F38101F13847B0011DEE2 /* loading_2.png */,
 				1D2F38111F13847B0011DEE2 /* loading_3.png */,
@@ -995,9 +1003,9 @@
 				1D40645F1F73A8F8000FB78C /* profile_background.png in Resources */,
 				1D25BC731F0A799A00291807 /* ForkImage.png in Resources */,
 				8612ECAA1EEABD04004A2D08 /* LaunchScreen.storyboard in Resources */,
+				1DF2C54A20E6356B00B41A2A /* whit_cross.png in Resources */,
 				1D2A5BB21F6BA74D002B8721 /* YourTripCell.xib in Resources */,
 				1DE7A167202B404600AB531A /* MyProfileUpdateLow.xib in Resources */,
-				1D211B34202C288900977437 /* CancelTripLow.xib in Resources */,
 				1DDA4DD51EFA5C90001F458B /* dot.png in Resources */,
 				1DE7A165202B3F8B00AB531A /* ProfilePictureUploadLow.xib in Resources */,
 				1DE7A14E202B049F00AB531A /* YourTripsLow.xib in Resources */,
@@ -1014,6 +1022,7 @@
 				1D25D9B11F726A8900EA7F9B /* HelpCell.xib in Resources */,
 				1D2F38141F13847B0011DEE2 /* loading_3.png in Resources */,
 				1D3D49791FBC2DE3006C1E87 /* CardCell.xib in Resources */,
+				1DF2C54C20E6406A00B41A2A /* CancelTripLow.xib in Resources */,
 				1D2A5BBA1F6BB1F7002B8721 /* cancelled.png in Resources */,
 				1DDA4DE71EFA5E3B001F458B /* AddCard.xib in Resources */,
 				1DDA4E1E1EFA5FD0001F458B /* AfterBooking.xib in Resources */,
@@ -1210,6 +1219,7 @@
 				1DF3BC8E1F065D76005E45F2 /* AutocompleteBaseViewController.m in Sources */,
 				1D25BC701F0A75E800291807 /* MYIntroductionPanel.m in Sources */,
 				1DDA4E111EFA5FD0001F458B /* ForgotPassword.m in Sources */,
+				1DC97CD520EA541B0058A10E /* SettingMaster.m in Sources */,
 				1D46833B1EFA9BAA006BB09F /* AsyncImageView.m in Sources */,
 				1D51E01F1F71576600659820 /* LegalCell.m in Sources */,
 				1D4683161EFA75D7006BB09F /* Payment.m in Sources */,

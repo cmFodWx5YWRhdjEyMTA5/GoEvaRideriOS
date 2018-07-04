@@ -34,6 +34,7 @@
 @property(nonatomic,retain)NSString *total_fare;
 @property(nonatomic,retain)NSString *total_base_fare;
 @property(nonatomic,retain)NSString *taxes;
+@property(nonatomic,retain)NSString *payment_type;// 1=> complete trip, 2=> cancel trip
 
 
 -(id)init;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,10 +29,11 @@
                 <outlet property="lblPickupLocation" destination="gF8-JL-ZaU" id="mge-qE-SEq"/>
                 <outlet property="lblRating" destination="Brk-iZ-h58" id="84u-7g-LBS"/>
                 <outlet property="lblRatingHint" destination="zCu-cZ-nPY" id="rqi-m7-IEV"/>
-                <outlet property="lblRideFare" destination="Xpn-v2-lnc" id="ygR-0s-6bG"/>
+                <outlet property="lblRideFare" destination="Xpn-v2-lnc" id="zes-fw-aZ2"/>
                 <outlet property="lblStartTime" destination="Nrl-uC-5Ie" id="VnJ-Y6-cE2"/>
                 <outlet property="lblTaxes" destination="RiX-nG-gZY" id="33e-Kp-Am3"/>
                 <outlet property="lblTotalNetFare" destination="9NK-i3-prW" id="3WU-0j-9gG"/>
+                <outlet property="txtRideFare" destination="N0r-t7-DYa" id="Bh9-3G-IO4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCarProfile" destination="sa7-cC-1Xb" id="FN6-7f-Eru"/>
                 <outlet property="viewDriverImage" destination="1q0-jg-7mh" id="qHg-yb-hYX"/>
@@ -118,7 +119,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zCu-cZ-nPY">
-                                            <rect key="frame" x="63" y="25" width="66" height="15"/>
+                                            <rect key="frame" x="63" y="25" width="143" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -330,7 +331,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ride Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N0r-t7-DYa">
-                                            <rect key="frame" x="0.0" y="29" width="107" height="17"/>
+                                            <rect key="frame" x="0.0" y="29" width="171" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -418,9 +419,4 @@
         <image name="ic_meter" width="50" height="50"/>
         <image name="pickup_circle.png" width="20" height="20"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

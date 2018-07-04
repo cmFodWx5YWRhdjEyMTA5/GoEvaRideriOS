@@ -57,7 +57,7 @@
     
     UILabel *lblTitle = [[UILabel alloc] init];
     if (_pageModeForHelpAndLegalMenu==1) {
-        lblTitle.text = @"Home";
+        lblTitle.text = @"Legal";
     }
     else{
         lblTitle.text = [helpObj valueForKey:@"cat_name"];

@@ -527,7 +527,7 @@ alpha:1.0]
         // If the first location update has not yet been recieved, then jump to that
         // location.
         _firstLocationUpdate = YES;
-        
+
         /* Add My location on Map */
         locationMarker.map  = nil;
         _mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
@@ -542,11 +542,11 @@ alpha:1.0]
         //_londonView.frame = CGRectMake(self.view.frame.origin.x/2, 0, 20, 40);
         //locationMarker.tracksViewChanges = YES;
         locationMarker.position = CLLocationCoordinate2DMake(location.coordinate.latitude,location.coordinate.longitude);
-        locationMarker.map = _mapView;
+        locationMarker.map = _mapView; // this is a memory leak. please fix it
         /* End */
-        
+
         [self reverseGeoCoding:location];
-        
+
     }
 }
 

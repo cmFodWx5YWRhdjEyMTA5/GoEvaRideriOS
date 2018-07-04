@@ -44,8 +44,10 @@ alpha:1.0]
     NSTimer *timer;
     int j;
     AVAudioPlayer *player;
-    NSArray *cardBrand;    
+    NSArray *cardBrand;
+    NSTimer *timerForArrival, *timerForStartTrip;
 }
+static NSInteger notificationModeStatic;
 @synthesize notificationDriverDetailsDict;
 
 - (void)viewDidLoad {
@@ -93,7 +95,7 @@ alpha:1.0]
     backgroundView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     backgroundView.backgroundColor = [UIColor blackColor];
     backgroundView.alpha = 0.5;
-       
+    
     btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
     [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
@@ -104,10 +106,6 @@ alpha:1.0]
     [self setData];
     
     
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:22.619160
                                                             longitude:88.398099
                                                                  zoom:12];
@@ -116,11 +114,6 @@ alpha:1.0]
     //_mapView.settings.myLocationButton = YES;
     _mapView.padding = UIEdgeInsetsMake(80, 0, 20, 0);
     _mapView.delegate=self;
-    
-    [_mapView addObserver:self
-               forKeyPath:@"myLocation"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
     [_mapViewContainer addSubview:_mapView];
     // Ask for My Location data after the map has already been added to the UI.
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -158,14 +151,36 @@ alpha:1.0]
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [_mapView addObserver:self
+               forKeyPath:@"myLocation"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+   
+    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+        [self commonMethodForRefreshDriverLocationForArrival];
+        // Timer for getting update location and arrival time of Driver
+        timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
+                                                                     target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
+    }
+    else if (notificationModeStatic==4) {
+        [self commonMethodForRefreshEstimatedTime];
+        // Timer for getting update location and arrival time of Driver
+        timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
+                                                           target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
+    }
+}
+
 
 -(void) setData{
-    
-    NSString *driver_id = [notificationDriverDetailsDict valueForKey:@"driver_id"];
-    NSString *total_distance_in_mile = [notificationDriverDetailsDict valueForKey:@"total_distance_in_mile"];
+    // start/set ride timer for tracking in case of cancellation. If more than 4 minutes.
+    NSDate *currentDate = [NSDate date];
+    [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:@"rideTimer"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     _bookingID = [notificationDriverDetailsDict valueForKey:@"request_id"];
-    
     lblDriverName.text = [notificationDriverDetailsDict valueForKey:@"driver_name"];
     lblPlateNo.text = [notificationDriverDetailsDict valueForKey:@"car_plate_no"];
     lblCarName.text = [notificationDriverDetailsDict valueForKey:@"car_name"];
@@ -347,6 +362,8 @@ alpha:1.0]
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
     [self.view setUserInteractionEnabled:YES];
 
+    notificationModeStatic = notification_mode;
+    
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:backgroundView];
     viewNotification.frame = CGRectMake(0, -117, 320, 117);
@@ -384,6 +401,10 @@ alpha:1.0]
     lblRatingANotification.text = ([[notificationDriverDetailsDict valueForKey:@"driver_ratting"] isEqualToString:@""] || [notificationDriverDetailsDict valueForKey:@"driver_ratting"] == nil)?@"0.0":[NSString stringWithFormat:@"%0.1f", [[notificationDriverDetailsDict valueForKey:@"driver_ratting"] floatValue]];
     
     if (notification_mode == 3) {
+        
+        [timerForArrival invalidate];
+        timerForArrival = nil;
+        
         [lblStatusNotification setText:[notificationDict valueForKey:@"alert"]];
         [viewOnTheWay setHidden:NO];
         [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
@@ -402,6 +423,9 @@ alpha:1.0]
         
     }
     else if(notification_mode == 4){
+        
+        timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
+                                                             target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
         
         [lblStatusNotification setText:[notificationDict valueForKey:@"alert"]];
         [viewOnTheWay setHidden:NO];
@@ -466,6 +490,13 @@ alpha:1.0]
 
 - (void) pushNotificationForCancelTrip:(NSNotification *)notification{
     [self.view setUserInteractionEnabled:YES];
+    /* Start*/
+    /* Invalidate All Timer after cancel trip */
+    [timerForArrival invalidate];
+    timerForArrival = nil;
+    [timerForStartTrip invalidate];
+    timerForStartTrip = nil;
+    /*End*/
     NSDictionary *dict = [notification userInfo];
     NSDictionary *notificationDict= [dict valueForKey:@"aps"];
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
@@ -493,24 +524,37 @@ alpha:1.0]
 
 - (void) pushNotificationForTripComplete:(NSNotification *)notification{
     
-    
+    /* Start*/
+    /* Invalidate All Timer after trip complete */
+    [timerForArrival invalidate];
+    timerForArrival = nil;
+    [timerForStartTrip invalidate];
+    timerForStartTrip = nil;
+    /*End*/
     [self.view setUserInteractionEnabled:YES];
-    NSDictionary *dict = [notification userInfo];
-    NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-    BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
     
-    [self.view setUserInteractionEnabled:YES];
-    [loadingView setHidden:YES];
-    CompleteRide *registerController;
-    if (appDel.iSiPhone5) {
-        registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
-    }
-    else{
-        registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
-    }
-    registerController.bookingObj = bookingObj;
-    registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
-    [self presentViewController:registerController animated:YES completion:nil];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Trip Completed!!!" message:@"Trip successfully completed. Press OK button to view fare summary." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+        NSDictionary *dict = [notification userInfo];
+        NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+        BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
+        
+        [self.view setUserInteractionEnabled:YES];
+        [loadingView setHidden:YES];
+        CompleteRide *registerController;
+        if (appDel.iSiPhone5) {
+            registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
+        }
+        else{
+            registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
+        }
+        registerController.bookingObj = bookingObj;
+        registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+        [self presentViewController:registerController animated:YES completion:nil];
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
@@ -607,6 +651,16 @@ alpha:1.0]
     
 }
 - (void)cancelBooking:(UIButton *)sender{
+    NSDate *myDate = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"rideTimer"];
+    NSDate *currentDate = [[NSDate alloc] init];
+    if (myDate!=nil) {
+        NSLog(@"%f",fabs([currentDate timeIntervalSinceDate:myDate]));
+        int minimum_duration = [[MyUtils getUserDefault:@"min_duration_for_cancellation_charge"] intValue];//
+        if (fabs([currentDate timeIntervalSinceDate:myDate]) > 60*minimum_duration)
+                self.isCancellationCharge=YES;
+        else
+                self.isCancellationCharge=NO;
+    }
     if([RestCallManager hasConnectivity]){
         [self.view setUserInteractionEnabled:NO];
         UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
@@ -635,6 +689,13 @@ alpha:1.0]
 -(void) responsefetchCancelReason{
     [loadingView removeFromSuperview];
     [self.view setUserInteractionEnabled:YES];
+    /* Start*/
+    /* Invalidate All Timer after new cancel view controller called  */
+    [timerForArrival invalidate];
+    timerForArrival = nil;
+    [timerForStartTrip invalidate];
+    timerForStartTrip = nil;
+    /*End*/
     CancelTrip *cancelTripController;
     if (appDel.iSiPhone5) {
         cancelTripController = [[CancelTrip alloc] initWithNibName:@"CancelTrip" bundle:nil];
@@ -645,6 +706,7 @@ alpha:1.0]
     cancelTripController.bookingID = _bookingID;
     cancelTripController.userCurrentLat = _userCurrentLat;
     cancelTripController.userCurrentLong = _userCurrentLong;
+    cancelTripController.isCancellationCharge=self.isCancellationCharge;
     cancelTripController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     [self presentViewController:cancelTripController animated:YES completion:nil];
 }
@@ -655,9 +717,25 @@ alpha:1.0]
     [self.view setUserInteractionEnabled:YES];
 }
 
+- (void)refreshDriverStartTripTimer:(NSTimer *)myTimer{
+    [self commonMethodForRefreshEstimatedTime];
+}
+
+- (void)refreshDriverArrivalTimer:(NSTimer *)myTimer{
+    [self commonMethodForRefreshDriverLocationForArrival];
+}
+
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
+    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+        [self commonMethodForRefreshDriverLocationForArrival];
+    }
+    else if(notificationModeStatic==4){
+        [self commonMethodForRefreshEstimatedTime];
+    }
+}
+
+-(void)commonMethodForRefreshDriverLocationForArrival{
     if([RestCallManager hasConnectivity]){
-        
         btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
         [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
         [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
@@ -674,11 +752,35 @@ alpha:1.0]
 }
 
 -(void)requestToServerForFetchDriverLocation{
-    BOOL bSuccess;
-    bSuccess = [[RestCallManager sharedInstance] getDriverLocation:[notificationDriverDetailsDict valueForKey:@"driver_id"] bookingID:_bookingID];
-    if(bSuccess)
+    NSString *bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] getDriverLocationForArriving:[notificationDriverDetailsDict valueForKey:@"driver_id"] bookingID:_bookingID];
+    if([bSuccess isEqualToString:@"0"])
     {
         [self performSelectorOnMainThread:@selector(responseGetDriverLocation) withObject:nil waitUntilDone:YES];
+    }
+    else if([bSuccess isEqualToString:@"-200"]){ // In case where booking already cancelled by Driver but not recieve APNS
+        dispatch_async(dispatch_get_main_queue(), ^{
+            /* Start*/
+            /* Invalidate All Timer after cancel trip */
+            [timerForArrival invalidate];
+            timerForArrival = nil;
+            [timerForStartTrip invalidate];
+            timerForStartTrip = nil;
+            /*End*/
+            [self.view setUserInteractionEnabled:YES];
+            UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"Ride has been cancelled"
+                                                                          message:@""
+                                                                   preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action)
+                                        {
+                                            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                        }];
+            
+            [alert addAction:yesButton];
+            [self presentViewController:alert animated:YES completion:nil];
+        });
     }
     else{
         [self performSelectorOnMainThread:@selector(responseLocationFailed) withObject:nil waitUntilDone:YES];
@@ -698,10 +800,16 @@ alpha:1.0]
     if (driverLiveArray.count>0 && [[driverLiveArray objectAtIndex:0] current_lat]!= (id)[NSNull null]) {
         
         int minAway = [[[driverLiveArray objectAtIndex:0] remaining_time] intValue];
-        lblAwayTime.text = [NSString stringWithFormat:@"%d min away",minAway];
+        if(minAway<=1)
+            lblAwayTime.text = [NSString stringWithFormat:@"%d min away",minAway];
+        else
+            lblAwayTime.text = [NSString stringWithFormat:@"%d mins away",minAway];
         driverMarker.map=nil;
         driverMarker = [[GMSMarker alloc] init];
-        driverMarker.snippet = [NSString stringWithFormat:@"%d MINS AWAY", minAway];
+        if(minAway<=1)
+            driverMarker.snippet = [NSString stringWithFormat:@"%d MIN AWAY", minAway];
+        else
+            driverMarker.snippet = [NSString stringWithFormat:@"%d MINS AWAY", minAway];
         _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
         driverMarker.iconView = _londonView;
         driverMarker.position = CLLocationCoordinate2DMake([[[driverLiveArray objectAtIndex:0] current_lat] floatValue],[[[driverLiveArray objectAtIndex:0] current_long] floatValue]);
@@ -715,9 +823,91 @@ alpha:1.0]
 }
 
 -(void)responseLocationFailed{
-    
     [self.view setUserInteractionEnabled:YES];
-    
+    btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
+    [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
+    btnRefreshDriver.layer.cornerRadius=5;
+    btnRefreshDriver.clipsToBounds=YES;
+    btnRefreshDriver.userInteractionEnabled=YES;
+    UIAlertController * alert=[UIAlertController alertControllerWithTitle:@""
+                                                                  message:@"Failed to find your location. Please try again."
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    //[self homepageSelector];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+-(void)commonMethodForRefreshEstimatedTime{
+    if([RestCallManager hasConnectivity]){
+        btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
+        [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
+        [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
+        btnRefreshDriver.layer.cornerRadius=5;
+        btnRefreshDriver.clipsToBounds=YES;
+        btnRefreshDriver.userInteractionEnabled=NO;
+        [self.view setUserInteractionEnabled:NO];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForGetEstimatedTime) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+-(void)requestToServerForGetEstimatedTime{
+    NSString *bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] getEstimatedTimeOfRideAfterStartTrip:[notificationDriverDetailsDict valueForKey:@"driver_id"] bookingID:_bookingID driverCurrentlat:_userCurrentLat driverCurrentLong:_userCurrentLong];
+    if([bSuccess isEqualToString:@"0"])
+    {
+        [self performSelectorOnMainThread:@selector(responseGetEstimatedTime) withObject:nil waitUntilDone:YES];
+    }
+    else if([bSuccess isEqualToString:@"1"]){ // In case where booking already completed by Driver but not recieve APNS
+        dispatch_async(dispatch_get_main_queue(), ^{
+            /* Start*/
+            /* Invalidate All Timer after trip complete */
+            [timerForArrival invalidate];
+            timerForArrival=nil;
+            [timerForStartTrip invalidate];
+            timerForStartTrip = nil;
+            /*End*/
+            [self.view setUserInteractionEnabled:YES];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Trip Completed!!!" message:@"Trip successfully completed. Press OK button to view fare summary." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                /*NSDictionary *dict = [notification userInfo];
+                NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+                BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
+                
+                [self.view setUserInteractionEnabled:YES];
+                [loadingView setHidden:YES];
+                CompleteRide *registerController;
+                if (appDel.iSiPhone5) {
+                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
+                }
+                else{
+                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
+                }
+                registerController.bookingObj = bookingObj;
+                registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+                [self presentViewController:registerController animated:YES completion:nil];*/
+            }];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
+    else{
+        [self performSelectorOnMainThread:@selector(responseLocationFailed) withObject:nil waitUntilDone:YES];
+    }
+}
+
+-(void) responseGetEstimatedTime{
+    [self.view setUserInteractionEnabled:YES];
     btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
     [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
@@ -725,36 +915,16 @@ alpha:1.0]
     btnRefreshDriver.clipsToBounds=YES;
     btnRefreshDriver.userInteractionEnabled=YES;
     
-    
-    UIAlertController * alert=[UIAlertController alertControllerWithTitle:@""
-                                                                  message:@"Failed to find your location. Please try again."
-                                                           preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
-                                                        style:UIAlertActionStyleDefault
-                                                      handler:^(UIAlertAction * action)
-                                {
-                                    //[self homepageSelector];
-                                }];
-    
-    [alert addAction:yesButton];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    // My OK button
-    
-    if (alertView.tag==200) {
-        
-        if (buttonIndex == alertView.cancelButtonIndex) {
-            [MyUtils removeParticularObjectFromNSUserDefault:@"pickupLocation"];
-            [MyUtils removeParticularObjectFromNSUserDefault:@"dropLocation"];
-            [DashboardCaller homepageSelector:self];
-        }
+    driverLiveArray = [NSMutableArray arrayWithArray:[[DataStore sharedInstance] getDriverLiveLocation]];
+    if (driverLiveArray.count>0 && [[driverLiveArray objectAtIndex:0] remaining_time]!= (id)[NSNull null]) {
+        int minAway = [[[driverLiveArray objectAtIndex:0] remaining_time] intValue];
+        lblAwayTime.text = [NSString stringWithFormat:@"%d min away",minAway];
+    }
+    else{
+        UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+        [currentWindow makeToast:@"Unknown Location. Please try again after sometime."];
     }
 }
-
 
 -(void)setCardData{
     [self.view setUserInteractionEnabled:YES];

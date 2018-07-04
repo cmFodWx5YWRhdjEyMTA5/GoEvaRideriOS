@@ -116,12 +116,17 @@
     }
     cell.lblBookingDateTime.text = [bookingObj booking_datetime];
     cell.lblCarTypeBookingNo.text = [NSString stringWithFormat:@"%@. CEN %@",[bookingObj car_category_name], [bookingObj booking_id]];
-    if ([[bookingObj booking_status] isEqualToString:@"1"]) {
+    if ([[bookingObj booking_status] isEqualToString:@"1"] && [[bookingObj payment_type] isEqualToString:@"1"] ) {
         cell.lblFare.text = [NSString stringWithFormat:@"$%@",[bookingObj total_fare]];
         cell.imgCancel.hidden=YES;
     }
     else{
-        cell.lblFare.text = @"$0.00";
+        if ([bookingObj payment_type] == (id)[NSNull null]) {
+            cell.lblFare.text = @"$0.00";
+        }
+        else if([[bookingObj payment_type] isEqualToString:@"2"]){
+            cell.lblFare.text = [NSString stringWithFormat:@"$%@",[bookingObj total_fare]];
+        }
         cell.imgCancel.hidden=NO;
     }
     cell.imgDriverImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -182,7 +187,7 @@
                                     if([RestCallManager hasConnectivity]){
                                         [self.view setUserInteractionEnabled:NO];
                                         UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
-                                        loadingView = [MyUtils customLoaderFullWindowWithText:self.window loadingText:@"LOADING..."];
+                                        loadingView = [MyUtils customLoaderWithText:self.window loadingText:@"LOADING..."];
                                         [currentWindow addSubview:loadingView];
                                         [NSThread detachNewThreadSelector:@selector(requestToServerForFetchTrip) toTarget:self withObject:nil];
                                     }

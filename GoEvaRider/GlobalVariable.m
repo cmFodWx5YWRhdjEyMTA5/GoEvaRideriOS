@@ -16,6 +16,7 @@ static NSString *globalMessage;
 static NSString *deviceTokenStatic;
 static NSString *bookingID;
 
+
 +(void)setGlobalMessage:(NSString *)message{
     globalMessage=message;
 }
