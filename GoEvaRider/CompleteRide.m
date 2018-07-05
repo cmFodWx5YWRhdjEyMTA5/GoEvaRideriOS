@@ -52,7 +52,7 @@
     
     UIButton *btnRateUs = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnRateUs addTarget:self action:@selector(rateUsNow:) forControlEvents:UIControlEventTouchUpInside];
-    [btnRateUs setTitle:@"Rate us driver " forState:UIControlStateNormal];
+    [btnRateUs setTitle:@"Rate your driver " forState:UIControlStateNormal];
     btnRateUs.titleLabel.font = [UIFont systemFontOfSize:14];
     btnRateUs.frame = CGRectMake(63.0, 25.0, 150.0, 30.0);
     btnRateUs.layer.backgroundColor = [[UIColor redColor] CGColor];

@@ -34,7 +34,7 @@ alpha:1.0]
     GMSMarker *locationMarker;
     UIImageView *_londonView;
     AVAudioPlayer *player;
-    CLLocation *location;
+    CLLocation *userCurrentLocation;
     NSTimer *sec10Timer;
 }
 
@@ -464,9 +464,18 @@ alpha:1.0]
 
 -(void)goToChooseCar{
     
+    [loadingView removeFromSuperview];
+    [self.view setUserInteractionEnabled:YES];
+    self.navigationController.navigationBar.userInteractionEnabled = YES;
+    self.navigationController.view.userInteractionEnabled = YES;
+    
     NSString *awayTime=@"";
     NSString *estimatedFareCostPerMile=@"";
     returnPickupAddressMode=0;
+    if ([sec10Timer isValid]) {
+        [sec10Timer invalidate];
+    }
+    sec10Timer = nil;
     
     for (CarAvailablity *carObj in carAvailablityArray) {
         if ([[carObj car_type_id] isEqualToString:selectedCarType]) {
@@ -520,8 +529,8 @@ alpha:1.0]
                         change:(NSDictionary *)change
                        context:(void *)context {
     
-    location = [change objectForKey:NSKeyValueChangeNewKey];
-    NSLog(@"Jasim %f, %f",location.coordinate.latitude,location.coordinate.longitude);
+    userCurrentLocation = [change objectForKey:NSKeyValueChangeNewKey];
+    NSLog(@"Jasim %f, %f",userCurrentLocation.coordinate.latitude,userCurrentLocation.coordinate.longitude);
     
     if (!_firstLocationUpdate) {
         // If the first location update has not yet been recieved, then jump to that
@@ -530,7 +539,7 @@ alpha:1.0]
 
         /* Add My location on Map */
         locationMarker.map  = nil;
-        _mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+        _mapView.camera = [GMSCameraPosition cameraWithTarget:userCurrentLocation.coordinate
                                                          zoom:14];
         locationMarker = [[GMSMarker alloc] init];
         locationMarker.appearAnimation=kGMSMarkerAnimationPop;
@@ -541,11 +550,11 @@ alpha:1.0]
         locationMarker.iconView = _londonView;
         //_londonView.frame = CGRectMake(self.view.frame.origin.x/2, 0, 20, 40);
         //locationMarker.tracksViewChanges = YES;
-        locationMarker.position = CLLocationCoordinate2DMake(location.coordinate.latitude,location.coordinate.longitude);
+        locationMarker.position = CLLocationCoordinate2DMake(userCurrentLocation.coordinate.latitude,userCurrentLocation.coordinate.longitude);
         locationMarker.map = _mapView; // this is a memory leak. please fix it
         /* End */
 
-        [self reverseGeoCoding:location];
+        [self reverseGeoCoding:userCurrentLocation];
 
     }
 }
@@ -556,7 +565,7 @@ alpha:1.0]
         fromLocation = [[CLLocation alloc] initWithLatitude:[pickupLocation.latitude doubleValue] longitude:[pickupLocation.longitude doubleValue]];
     }
     else{
-        fromLocation = location;
+        fromLocation = userCurrentLocation;
     }
     [self reverseGeoCoding:fromLocation];
 }

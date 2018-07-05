@@ -606,7 +606,6 @@ alpha:1.0]
             
             if (checkLoop==3) {
                 [self.view setUserInteractionEnabled:YES];
-                [loadingView setHidden:YES];
                 
                 [timerForCheckBooking invalidate];
                 timerForCheckBooking = nil;
@@ -654,7 +653,7 @@ alpha:1.0]
     if(bSuccess)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [loadingView setHidden:YES];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No cars available at the moment. Please try again in a few minutes." message:@"" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
                 [UIView beginAnimations:nil context:NULL];
@@ -668,7 +667,7 @@ alpha:1.0]
         });
     }
     else{
-        
+        [loadingView setHidden:YES];
     }
 }
 

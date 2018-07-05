@@ -111,7 +111,21 @@
         });
     }
     else{
-        [self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!!!" message:@"We are having an issue connecting to the server. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self getSettingData];
+            
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [NSThread sleepForTimeInterval:2.0];
+            exit(0);
+        }];
+        [alertController addAction:action];
+        [alertController addAction:action2];
+        [self presentViewController:alertController animated:YES completion:nil];
+        });
     }
 }
 
