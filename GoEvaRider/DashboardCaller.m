@@ -10,6 +10,8 @@
 #import "Dashboard.h"
 #import "MFSideMenu.h"
 #import "SideMenuViewController.h"
+#import "PickCar.h"
+#import "MyUtils.h"
 
 #define CDV_IsIPhone5() ([[UIScreen mainScreen] bounds].size.height == 568 && [[UIScreen mainScreen] bounds].size.width == 320)
 
@@ -36,9 +38,29 @@ static UIViewController *mvc;
     return merchantList;
 }
 
+/*+ (PickCar *)pickCarController {
+    
+    PickCar *merchantList;
+    if (CDV_IsIPhone5()) {
+        merchantList = [[PickCar alloc] initWithNibName:@"PickCar" bundle:nil];
+    }
+    else{
+        merchantList = [[PickCar alloc] initWithNibName:@"PickCarLow" bundle:nil];
+    }
+    merchantList.pageTitle=@"Pick Car";
+    return merchantList;
+}*/
+
 + (UINavigationController *)navigationController {
-    return [[UINavigationController alloc]
-            initWithRootViewController:[self homeController]];
+    /*if ([[MyUtils getUserDefault:@"rideMode"] isEqualToString:@"1"]) {*/
+        return [[UINavigationController alloc]
+                initWithRootViewController:[self homeController]];
+    /*}
+    else{
+        return [[UINavigationController alloc]
+                initWithRootViewController:[self pickCarController]];
+    }*/
+    
 }
 
 +(void)homepageSelector:(UIViewController *)controller{

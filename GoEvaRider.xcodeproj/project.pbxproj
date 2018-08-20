@@ -51,6 +51,9 @@
 		1D30575E1F14C22100AF7780 /* BookingMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D30575D1F14C22100AF7780 /* BookingMaster.m */; };
 		1D3184BB1FC444AC00CB67E2 /* PayNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3184B91FC444AC00CB67E2 /* PayNow.m */; };
 		1D3184BC1FC444AC00CB67E2 /* PayNow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3184BA1FC444AC00CB67E2 /* PayNow.xib */; };
+		1D357A5A212AD3FD00425395 /* AfterBookingRestartApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D357A59212AD3FD00425395 /* AfterBookingRestartApp.m */; };
+		1D357A5C212AD52B00425395 /* AfterBookingRestartApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D357A5B212AD52B00425395 /* AfterBookingRestartApp.xib */; };
+		1D357A60212AD5D900425395 /* AfterBookingRestartAppLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D357A5F212AD5D900425395 /* AfterBookingRestartAppLow.xib */; };
 		1D3D49781FBC2DE3006C1E87 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D49761FBC2DE3006C1E87 /* CardCell.m */; };
 		1D3D49791FBC2DE3006C1E87 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3D49771FBC2DE3006C1E87 /* CardCell.xib */; };
 		1D40645F1F73A8F8000FB78C /* profile_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D40645E1F73A8F8000FB78C /* profile_background.png */; };
@@ -84,6 +87,9 @@
 		1D4683331EFA94D6006BB09F /* MyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4683321EFA94D6006BB09F /* MyUtils.m */; };
 		1D4683371EFA954C006BB09F /* MKNumberBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4683361EFA954C006BB09F /* MKNumberBadgeView.m */; };
 		1D46833B1EFA9BAA006BB09F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D46833A1EFA9BAA006BB09F /* AsyncImageView.m */; };
+		1D46CC2E2105B0F10046AB82 /* ChooseRideServiceLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D46CC2D2105B0F10046AB82 /* ChooseRideServiceLow.xib */; };
+		1D46CC302105B22E0046AB82 /* PickCarLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D46CC2F2105B22E0046AB82 /* PickCarLow.xib */; };
+		1D46CC322105B5100046AB82 /* PickCarDetailLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D46CC312105B5100046AB82 /* PickCarDetailLow.xib */; };
 		1D51E01F1F71576600659820 /* LegalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D51E01D1F71576600659820 /* LegalCell.m */; };
 		1D51E0201F71576600659820 /* LegalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D51E01E1F71576600659820 /* LegalCell.xib */; };
 		1D51E0231F7158C400659820 /* LegalMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D51E0221F7158C400659820 /* LegalMaster.m */; };
@@ -93,6 +99,8 @@
 		1D5B789F1F8CB9C100338E7A /* PickCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B789D1F8CB9C100338E7A /* PickCar.m */; };
 		1D5B78A01F8CB9C100338E7A /* PickCar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B789E1F8CB9C100338E7A /* PickCar.xib */; };
 		1D5EF07420160101001C09AC /* rider_rating.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D5EF07320160101001C09AC /* rider_rating.png */; };
+		1D6C6E46210EF77100652369 /* user_choice.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6C6E45210EF77100652369 /* user_choice.png */; };
+		1D6C6E48210EF8D700652369 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6C6E47210EF8D700652369 /* close.png */; };
 		1D75D5851F682645005A9171 /* BookingDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D75D5841F682645005A9171 /* BookingDetailMaster.m */; };
 		1D7FF9841F86467000924E78 /* dash_horizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D7FF9831F86467000924E78 /* dash_horizontal.png */; };
 		1DB2B9B12029DBCC00153766 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB2B9B02029DBCC00153766 /* splash.png */; };
@@ -157,9 +165,7 @@
 		1DE7A156202B132000AB531A /* SideMenuViewControllerLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A155202B132000AB531A /* SideMenuViewControllerLow.xib */; };
 		1DE7A159202B180600AB531A /* DashboardCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE7A158202B180600AB531A /* DashboardCaller.m */; };
 		1DE7A15B202B251E00AB531A /* DashboardLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A15A202B251E00AB531A /* DashboardLow.xib */; };
-		1DE7A15D202B30A000AB531A /* PickCarLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A15C202B30A000AB531A /* PickCarLow.xib */; };
 		1DE7A15F202B369A00AB531A /* ChooseCarLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A15E202B369A00AB531A /* ChooseCarLow.xib */; };
-		1DE7A161202B37AE00AB531A /* PickCarDetailLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A160202B37AE00AB531A /* PickCarDetailLow.xib */; };
 		1DE7A163202B390E00AB531A /* MyProfilesLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A162202B390E00AB531A /* MyProfilesLow.xib */; };
 		1DE7A165202B3F8B00AB531A /* ProfilePictureUploadLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A164202B3F8B00AB531A /* ProfilePictureUploadLow.xib */; };
 		1DE7A167202B404600AB531A /* MyProfileUpdateLow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE7A166202B404600AB531A /* MyProfileUpdateLow.xib */; };
@@ -178,6 +184,8 @@
 		1DF3BC9A1F068B77005E45F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3BC9C1F068B77005E45F2 /* Localizable.strings */; };
 		1DF3C8BA1F33129200DCB97A /* foo.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3C8B81F33129200DCB97A /* foo.caf */; };
 		1DF3C8BB1F33129200DCB97A /* foo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3C8B91F33129200DCB97A /* foo.mp3 */; };
+		1DFCFCF920FF5FF900D2A081 /* ChooseRideService.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DFCFCF720FF5FF900D2A081 /* ChooseRideService.xib */; };
+		1DFCFCFC20FF665600D2A081 /* ChooseRideService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFCFCFB20FF665600D2A081 /* ChooseRideService.m */; };
 		8612EC9C1EEABD04004A2D08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612EC9B1EEABD04004A2D08 /* main.m */; };
 		8612EC9F1EEABD04004A2D08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612EC9E1EEABD04004A2D08 /* AppDelegate.m */; };
 		8612ECA21EEABD04004A2D08 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612ECA11EEABD04004A2D08 /* ViewController.m */; };
@@ -252,6 +260,10 @@
 		1D3184B81FC444AC00CB67E2 /* PayNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayNow.h; sourceTree = "<group>"; };
 		1D3184B91FC444AC00CB67E2 /* PayNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayNow.m; sourceTree = "<group>"; };
 		1D3184BA1FC444AC00CB67E2 /* PayNow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayNow.xib; sourceTree = "<group>"; };
+		1D357A58212AD3FD00425395 /* AfterBookingRestartApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AfterBookingRestartApp.h; sourceTree = "<group>"; };
+		1D357A59212AD3FD00425395 /* AfterBookingRestartApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AfterBookingRestartApp.m; sourceTree = "<group>"; };
+		1D357A5B212AD52B00425395 /* AfterBookingRestartApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AfterBookingRestartApp.xib; sourceTree = "<group>"; };
+		1D357A5F212AD5D900425395 /* AfterBookingRestartAppLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AfterBookingRestartAppLow.xib; sourceTree = "<group>"; };
 		1D3D49751FBC2DE3006C1E87 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
 		1D3D49761FBC2DE3006C1E87 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
 		1D3D49771FBC2DE3006C1E87 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
@@ -305,6 +317,9 @@
 		1D4683361EFA954C006BB09F /* MKNumberBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNumberBadgeView.m; sourceTree = "<group>"; };
 		1D4683391EFA9BAA006BB09F /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		1D46833A1EFA9BAA006BB09F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		1D46CC2D2105B0F10046AB82 /* ChooseRideServiceLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseRideServiceLow.xib; sourceTree = "<group>"; };
+		1D46CC2F2105B22E0046AB82 /* PickCarLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCarLow.xib; sourceTree = "<group>"; };
+		1D46CC312105B5100046AB82 /* PickCarDetailLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCarDetailLow.xib; sourceTree = "<group>"; };
 		1D51E01C1F71576600659820 /* LegalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalCell.h; sourceTree = "<group>"; };
 		1D51E01D1F71576600659820 /* LegalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalCell.m; sourceTree = "<group>"; };
 		1D51E01E1F71576600659820 /* LegalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalCell.xib; sourceTree = "<group>"; };
@@ -319,6 +334,8 @@
 		1D5B789D1F8CB9C100338E7A /* PickCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickCar.m; sourceTree = "<group>"; };
 		1D5B789E1F8CB9C100338E7A /* PickCar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCar.xib; sourceTree = "<group>"; };
 		1D5EF07320160101001C09AC /* rider_rating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rider_rating.png; sourceTree = "<group>"; };
+		1D6C6E45210EF77100652369 /* user_choice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_choice.png; sourceTree = "<group>"; };
+		1D6C6E47210EF8D700652369 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		1D75D5831F682645005A9171 /* BookingDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailMaster.h; sourceTree = "<group>"; };
 		1D75D5841F682645005A9171 /* BookingDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailMaster.m; sourceTree = "<group>"; };
 		1D7FF9831F86467000924E78 /* dash_horizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash_horizontal.png; sourceTree = "<group>"; };
@@ -406,9 +423,7 @@
 		1DE7A157202B180600AB531A /* DashboardCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCaller.h; sourceTree = "<group>"; };
 		1DE7A158202B180600AB531A /* DashboardCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCaller.m; sourceTree = "<group>"; };
 		1DE7A15A202B251E00AB531A /* DashboardLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardLow.xib; sourceTree = "<group>"; };
-		1DE7A15C202B30A000AB531A /* PickCarLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCarLow.xib; sourceTree = "<group>"; };
 		1DE7A15E202B369A00AB531A /* ChooseCarLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCarLow.xib; sourceTree = "<group>"; };
-		1DE7A160202B37AE00AB531A /* PickCarDetailLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCarDetailLow.xib; sourceTree = "<group>"; };
 		1DE7A162202B390E00AB531A /* MyProfilesLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfilesLow.xib; sourceTree = "<group>"; };
 		1DE7A164202B3F8B00AB531A /* ProfilePictureUploadLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePictureUploadLow.xib; sourceTree = "<group>"; };
 		1DE7A166202B404600AB531A /* MyProfileUpdateLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileUpdateLow.xib; sourceTree = "<group>"; };
@@ -433,6 +448,10 @@
 		1DF3C8B71F33101400DCB97A /* GoEva.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoEva.entitlements; sourceTree = "<group>"; };
 		1DF3C8B81F33129200DCB97A /* foo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = foo.caf; sourceTree = "<group>"; };
 		1DF3C8B91F33129200DCB97A /* foo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = foo.mp3; sourceTree = "<group>"; };
+		1DFCFCF520FF5FF800D2A081 /* GoEvaRider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoEvaRider-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DFCFCF720FF5FF900D2A081 /* ChooseRideService.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseRideService.xib; sourceTree = "<group>"; };
+		1DFCFCFA20FF665600D2A081 /* ChooseRideService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseRideService.h; sourceTree = "<group>"; };
+		1DFCFCFB20FF665600D2A081 /* ChooseRideService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseRideService.m; sourceTree = "<group>"; };
 		50616B0EF98A108F3FAA4837 /* Pods-GoEvaRiderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoEvaRiderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoEvaRiderUITests/Pods-GoEvaRiderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6C79C7D8064C5FC9399EF809 /* libPods-GoEvaRiderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoEvaRiderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8612EC971EEABD04004A2D08 /* GoEva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoEva.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -557,6 +576,10 @@
 				1DB2B9B42029ECD000153766 /* SplashLow.xib */,
 				8612ECA01EEABD04004A2D08 /* ViewController.h */,
 				8612ECA11EEABD04004A2D08 /* ViewController.m */,
+				1DFCFCFA20FF665600D2A081 /* ChooseRideService.h */,
+				1DFCFCFB20FF665600D2A081 /* ChooseRideService.m */,
+				1DFCFCF720FF5FF900D2A081 /* ChooseRideService.xib */,
+				1D46CC2D2105B0F10046AB82 /* ChooseRideServiceLow.xib */,
 				1DDA4DF11EFA5FCF001F458B /* Dashboard.h */,
 				1DDA4DF21EFA5FCF001F458B /* Dashboard.m */,
 				1DDA4DF31EFA5FCF001F458B /* Dashboard.xib */,
@@ -564,7 +587,7 @@
 				1D5B789C1F8CB9C100338E7A /* PickCar.h */,
 				1D5B789D1F8CB9C100338E7A /* PickCar.m */,
 				1D5B789E1F8CB9C100338E7A /* PickCar.xib */,
-				1DE7A15C202B30A000AB531A /* PickCarLow.xib */,
+				1D46CC2F2105B22E0046AB82 /* PickCarLow.xib */,
 				1DDA4DE81EFA5FCF001F458B /* ChooseCar.h */,
 				1DDA4DE91EFA5FCF001F458B /* ChooseCar.m */,
 				1DDA4DEA1EFA5FCF001F458B /* ChooseCar.xib */,
@@ -572,11 +595,15 @@
 				1D58FBF91F8F8B3A009D624E /* PickCarDetail.h */,
 				1D58FBFA1F8F8B3A009D624E /* PickCarDetail.m */,
 				1D58FBFB1F8F8B3A009D624E /* PickCarDetail.xib */,
-				1DE7A160202B37AE00AB531A /* PickCarDetailLow.xib */,
+				1D46CC312105B5100046AB82 /* PickCarDetailLow.xib */,
 				1DDA4E061EFA5FD0001F458B /* AfterBooking.h */,
 				1DDA4E071EFA5FD0001F458B /* AfterBooking.m */,
 				1DDA4E081EFA5FD0001F458B /* AfterBooking.xib */,
 				1D211B2B202C1FAE00977437 /* AfterBookingLow.xib */,
+				1D357A58212AD3FD00425395 /* AfterBookingRestartApp.h */,
+				1D357A59212AD3FD00425395 /* AfterBookingRestartApp.m */,
+				1D357A5B212AD52B00425395 /* AfterBookingRestartApp.xib */,
+				1D357A5F212AD5D900425395 /* AfterBookingRestartAppLow.xib */,
 				1DDA4DEB1EFA5FCF001F458B /* CompleteRide.h */,
 				1DDA4DEC1EFA5FCF001F458B /* CompleteRide.m */,
 				1DDA4DED1EFA5FCF001F458B /* CompleteRide.xib */,
@@ -602,6 +629,7 @@
 				1DDE959D1FAAF8B300D96241 /* CardPaymentNow.h */,
 				1DDE959E1FAAF8B300D96241 /* CardPaymentNow.m */,
 				1DDE959F1FAAF8B300D96241 /* CardPaymentNow.xib */,
+				1DFCFCF520FF5FF800D2A081 /* GoEvaRider-Bridging-Header.h */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -882,6 +910,8 @@
 		8612ECD21EEABDE1004A2D08 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1D6C6E45210EF77100652369 /* user_choice.png */,
+				1D6C6E47210EF8D700652369 /* close.png */,
 				1D5EF07320160101001C09AC /* rider_rating.png */,
 				1D7FF9831F86467000924E78 /* dash_horizontal.png */,
 				1D40645E1F73A8F8000FB78C /* profile_background.png */,
@@ -962,6 +992,7 @@
 					8612EC961EEABD04004A2D08 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 4B6926W9K5;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1015,17 +1046,20 @@
 				1D4064691F73AC11000FB78C /* ChangePassword.xib in Resources */,
 				1D0A9F32202AD615000D225E /* LoginPageLow.xib in Resources */,
 				1DDA4E0C1EFA5FD0001F458B /* CompleteRide.xib in Resources */,
+				1DFCFCF920FF5FF900D2A081 /* ChooseRideService.xib in Resources */,
 				1DDE95A11FAAF8B300D96241 /* CardPaymentNow.xib in Resources */,
 				1D2A5BB71F6BADE5002B8721 /* drop_circle.png in Resources */,
 				1D1AD4B91F26357800591D1A /* red_cross.png in Resources */,
 				1D5EF07420160101001C09AC /* rider_rating.png in Resources */,
 				1D25D9B11F726A8900EA7F9B /* HelpCell.xib in Resources */,
 				1D2F38141F13847B0011DEE2 /* loading_3.png in Resources */,
+				1D6C6E48210EF8D700652369 /* close.png in Resources */,
 				1D3D49791FBC2DE3006C1E87 /* CardCell.xib in Resources */,
 				1DF2C54C20E6406A00B41A2A /* CancelTripLow.xib in Resources */,
 				1D2A5BBA1F6BB1F7002B8721 /* cancelled.png in Resources */,
 				1DDA4DE71EFA5E3B001F458B /* AddCard.xib in Resources */,
 				1DDA4E1E1EFA5FD0001F458B /* AfterBooking.xib in Resources */,
+				1D6C6E46210EF77100652369 /* user_choice.png in Resources */,
 				1D211B2C202C1FAE00977437 /* AfterBookingLow.xib in Resources */,
 				1DC2CF8F1F18A0EB00D3AC3B /* simulator-location-one.gpx in Resources */,
 				1D46830F1EFA7270006BB09F /* SideMenuViewController.xib in Resources */,
@@ -1036,6 +1070,7 @@
 				1DDA4DDB1EFA5C90001F458B /* imgSubmit.png in Resources */,
 				1D46832B1EFA765C006BB09F /* HelpScreen.xib in Resources */,
 				1D58FBFD1F8F8B3A009D624E /* PickCarDetail.xib in Resources */,
+				1D46CC322105B5100046AB82 /* PickCarDetailLow.xib in Resources */,
 				1D2F38131F13847B0011DEE2 /* loading_2.png in Resources */,
 				1D4683171EFA75D7006BB09F /* Payment.xib in Resources */,
 				1DE6C66D1F3496D40016CCA5 /* splash_568.png in Resources */,
@@ -1049,6 +1084,7 @@
 				8612ECA51EEABD04004A2D08 /* Main.storyboard in Resources */,
 				1D46830E1EFA7270006BB09F /* SidebarRow.xib in Resources */,
 				1D2F38151F13847B0011DEE2 /* loading_1.png in Resources */,
+				1D46CC302105B22E0046AB82 /* PickCarLow.xib in Resources */,
 				1D0CDA0C1F2764D600209368 /* imgSubmitDisable.png in Resources */,
 				1D51E0201F71576600659820 /* LegalCell.xib in Resources */,
 				1D4683261EFA762E006BB09F /* MyProfiles.xib in Resources */,
@@ -1062,6 +1098,7 @@
 				1D0A9F34202ADCA5000D225E /* RegistrationPageLow.xib in Resources */,
 				1DDA4E141EFA5FD0001F458B /* LoginPage.xib in Resources */,
 				1DF3C8BA1F33129200DCB97A /* foo.caf in Resources */,
+				1D357A5C212AD52B00425395 /* AfterBookingRestartApp.xib in Resources */,
 				1DDFF365207FA32D001ECC2D /* CompleteRideLow.xib in Resources */,
 				1DDA4E101EFA5FD0001F458B /* Dashboard.xib in Resources */,
 				1D2A5BB81F6BADE5002B8721 /* pickup_circle.png in Resources */,
@@ -1070,12 +1107,13 @@
 				1DF3BC941F06843E005E45F2 /* DropLocation.xib in Resources */,
 				1DE7A156202B132000AB531A /* SideMenuViewControllerLow.xib in Resources */,
 				1D2A5BB41F6BAD88002B8721 /* dash.png in Resources */,
-				1DE7A161202B37AE00AB531A /* PickCarDetailLow.xib in Resources */,
 				1D4064641F73AB5C000FB78C /* MyProfileUpdate.xib in Resources */,
 				1DE7A16D202B410300AB531A /* LegalScreenLow.xib in Resources */,
 				1D211B32202C25EC00977437 /* RateUsDriverLow.xib in Resources */,
 				1D46831C1EFA75F6006BB09F /* YourTrips.xib in Resources */,
 				1DB6DE3B1F69684200FADD6D /* CancelTripRow.xib in Resources */,
+				1D46CC2E2105B0F10046AB82 /* ChooseRideServiceLow.xib in Resources */,
+				1D357A60212AD5D900425395 /* AfterBookingRestartAppLow.xib in Resources */,
 				1DE6C66B1F3496210016CCA5 /* Splash.xib in Resources */,
 				1D4683211EFA761D006BB09F /* OffersController.xib in Resources */,
 				1DE7A154202B128C00AB531A /* DropLocationLow.xib in Resources */,
@@ -1084,7 +1122,6 @@
 				1DE7A16F202B412200AB531A /* LegalDetailScreenLow.xib in Resources */,
 				1D211B30202C251C00977437 /* PayNowLow.xib in Resources */,
 				1DE7A15F202B369A00AB531A /* ChooseCarLow.xib in Resources */,
-				1DE7A15D202B30A000AB531A /* PickCarLow.xib in Resources */,
 				1D5B78A01F8CB9C100338E7A /* PickCar.xib in Resources */,
 				1DDA4DD61EFA5C90001F458B /* driver_pick.png in Resources */,
 				1DDA4DD41EFA5C90001F458B /* car_pick.png in Resources */,
@@ -1187,9 +1224,11 @@
 				1D4064631F73AB5C000FB78C /* MyProfileUpdate.m in Sources */,
 				1DE65A3B1F162E0C00C73C6B /* GlobalVariable.m in Sources */,
 				1D3184BB1FC444AC00CB67E2 /* PayNow.m in Sources */,
+				1D357A5A212AD3FD00425395 /* AfterBookingRestartApp.m in Sources */,
 				1D46830C1EFA7270006BB09F /* SidebarRow.m in Sources */,
 				1D51E0261F715DFE00659820 /* HelpMaster.m in Sources */,
 				1DB6DE381F69684200FADD6D /* CancelTrip.m in Sources */,
+				1DFCFCFC20FF665600D2A081 /* ChooseRideService.m in Sources */,
 				1D30574C1F14C16500AF7780 /* RiderMaster.m in Sources */,
 				1D58FBFC1F8F8B3A009D624E /* PickCarDetail.m in Sources */,
 				1DE6C6441F175F3800CEC9FB /* UIView+Toast.m in Sources */,
@@ -1354,6 +1393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1366,6 +1406,9 @@
 				PRODUCT_NAME = GoEva;
 				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
 				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
+				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1376,6 +1419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1388,6 +1432,8 @@
 				PRODUCT_NAME = GoEva;
 				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
 				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
+				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

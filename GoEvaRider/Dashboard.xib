@@ -16,6 +16,9 @@
                 <outlet property="img_editFrom" destination="N88-jE-HtJ" id="YQA-uP-5DL"/>
                 <outlet property="img_editTo" destination="he2-3z-Y0C" id="4CH-Iw-fBv"/>
                 <outlet property="inputViewContainer" destination="M8V-w1-oSs" id="4dG-3K-xHp"/>
+                <outlet property="lblBadge1" destination="zja-ye-kOm" id="Uxn-hX-psh"/>
+                <outlet property="lblBadge2" destination="cdx-HO-N4x" id="VNf-Oe-KXv"/>
+                <outlet property="lblBadge3" destination="kRo-eT-RJv" id="kb8-Pk-rPW"/>
                 <outlet property="lblCar" destination="G5j-Mq-KFe" id="1rd-sS-fHT"/>
                 <outlet property="lblCarGRP" destination="hNx-fj-tUp" id="cEh-hu-lbP"/>
                 <outlet property="lblCarPro" destination="Iud-pI-W4x" id="Fla-eA-HpH"/>
@@ -35,6 +38,9 @@
                 <outlet property="txtDropLocation" destination="7i9-uL-ane" id="4WD-ID-Kof"/>
                 <outlet property="txtPickupLocation" destination="CZG-60-VHp" id="Sh5-rc-Gjz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBadge1" destination="Kq5-b5-JFS" id="cBx-eJ-1gF"/>
+                <outlet property="viewBadge2" destination="abw-0h-XuP" id="uSW-Gl-p0d"/>
+                <outlet property="viewBadge3" destination="YSU-58-4MS" id="1BC-lE-vGp"/>
                 <outlet property="viewChooseCar" destination="zXx-dI-ufV" id="ZmZ-Ta-gnW"/>
                 <outlet property="viewChooseCarGRP" destination="kL5-MS-1Q2" id="fus-Su-FoP"/>
                 <outlet property="viewChooseCarPro" destination="QKG-30-Oii" id="cIF-4p-fZc"/>
@@ -172,6 +178,48 @@
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" misplaced="YES" id="Kq5-b5-JFS">
+                                    <rect key="frame" x="77" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zja-ye-kOm">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" misplaced="YES" id="abw-0h-XuP">
+                                    <rect key="frame" x="174" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cdx-HO-N4x">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" misplaced="YES" id="YSU-58-4MS">
+                                    <rect key="frame" x="266" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kRo-eT-RJv">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

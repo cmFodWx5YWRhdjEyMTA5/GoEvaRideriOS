@@ -23,6 +23,7 @@
 @synthesize estimated_time;
 @synthesize distance_wise_rate;
 @synthesize time_wise_rate;
+@synthesize count_avacar;
 
 -(id)init
 {
@@ -39,6 +40,7 @@
     self.estimated_time = @"";
     self.distance_wise_rate = @"";
     self.time_wise_rate = @"";
+    self.count_avacar = @"";
     
     return self;
 }
@@ -58,6 +60,7 @@
     self.estimated_time = [jsonObjects valueForKey:@"estimated_time"];
     self.distance_wise_rate = [jsonObjects valueForKey:@"distance_wise_rate"];
     self.time_wise_rate = [jsonObjects valueForKey:@"time_wise_rate"];
+    self.count_avacar = [jsonObjects valueForKey:@"count_avacar"];
     
     return self;
 }

@@ -19,6 +19,13 @@
 #import "DataStore.h"
 #import "GlobalVariable.h"
 #import "DashboardCaller.h"
+#import "ChooseRideService.h"
+#import "AfterBookingRestartApp.h"
+
+#import "Constant.h"
+#import <Stripe/Stripe.h>
+#import "CardMaster.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface Splash ()
 
@@ -108,6 +115,7 @@
             settingArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getSetting]];
             [MyUtils setUserDefault:@"search_radius" value:[[settingArray objectAtIndex:0] search_radius]];
             [MyUtils setUserDefault:@"min_duration_for_cancellation_charge" value:[[settingArray objectAtIndex:0] min_duration_for_cancellation_charge]];
+            [MyUtils setUserDefault:@"cancellation_charge" value:[[settingArray objectAtIndex:0] cancellation_charge]];
         });
     }
     else{
@@ -160,13 +168,21 @@
     [MyUtils setUserDefault:@"profileImage" value:[[riderArray objectAtIndex:0] profile_pic]];
     [MyUtils setUserDefault:@"riderName" value:[[riderArray objectAtIndex:0] rider_name] == (id)[NSNull null]?@"NO NAME":[[riderArray objectAtIndex:0] rider_name]];
     [MyUtils setUserDefault:@"riderRating" value:[[riderArray objectAtIndex:0] ratting]];
+    
+    if ([MyUtils getUserDefault:@"bookingID"]!=nil) {
+        [self checkIncompleteRideInRiderEnd];
+    }
+    else{
     [DashboardCaller homepageSelector:self];
+    //[self chooseRideServiceSelector];
+    }
+    
 }
 
 -(void)responseFailed{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!!!" message:@"We are having an issue connecting to the server. Please try again." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
-            [self homeSelector];
+        [self homeSelector];
         
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
@@ -176,6 +192,58 @@
     [alertController addAction:action];
     [alertController addAction:action2];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void)checkIncompleteRideInRiderEnd{
+    if([RestCallManager hasConnectivity]){
+        [NSThread detachNewThreadSelector:@selector(requestToServerGetTripDetails) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+-(void)requestToServerGetTripDetails{
+    NSMutableDictionary *bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] checkIncompleteRideInRiderEnd:[MyUtils getUserDefault:@"bookingID"]];
+    
+    if ([[GlobalVariable getGlobalMessage] isEqualToString:@"0"]) {
+        [self performSelectorOnMainThread:@selector(responsefetchTripDetails:) withObject:bSuccess waitUntilDone:YES];
+    }
+    else if ([[GlobalVariable getGlobalMessage] isEqualToString:@"1"]) {
+        
+    }
+    else{
+        [self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
+    }
+}
+
+-(void)responsefetchTripDetails:(NSMutableDictionary *)notificationDict{
+    
+    [self getDefaultCard]; // Get default card
+    LocationData *pickupLocation =[[LocationData alloc] init];
+    pickupLocation.locationAddress = [notificationDict valueForKey:@"pickup_location"];
+    pickupLocation.latitude = [notificationDict valueForKey:@"ride_source_lat"];
+    pickupLocation.longitude = [notificationDict valueForKey:@"ride_source_long"];
+    [MyUtils saveCustomObject:pickupLocation key:@"pickupLocation"];
+    
+    LocationData *dropLocation =[[LocationData alloc] init];
+    dropLocation.locationAddress = [notificationDict valueForKey:@"drop_location"];
+    dropLocation.latitude = [notificationDict valueForKey:@"ride_dest_lat"];
+    dropLocation.longitude = [notificationDict valueForKey:@"ride_dest_long"];
+    [MyUtils saveCustomObject:dropLocation key:@"dropLocation"];
+    
+    AfterBookingRestartApp *registerController;
+    if (appDel.iSiPhone5) {
+        registerController = [[AfterBookingRestartApp alloc] initWithNibName:@"AfterBookingRestartApp" bundle:nil];
+    }
+    else{
+        registerController = [[AfterBookingRestartApp alloc] initWithNibName:@"AfterBookingRestartAppLow" bundle:nil];
+    }
+    registerController.notificationDriverDetailsDict = notificationDict;
+    registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    [self presentViewController:registerController animated:YES completion:nil];
 }
 
 -(void) credentialSelector{
@@ -199,8 +267,69 @@
     [self presentViewController:loginController animated:YES completion:nil];
 }
 
+-(void) chooseRideServiceSelector{
+    if ([MyUtils getUserDefault:@"rideMode"]==nil){
+    ChooseRideService *loginController;
+    if(appDel.iSiPhone5){
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideService" bundle:nil];
+    }else{
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideServiceLow" bundle:nil];
+    }
+    loginController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:loginController animated:YES completion:nil];
+    }
+    else{
+        [DashboardCaller homepageSelector:self];
+    }
+}
 
 
+-(void)getDefaultCard{
+    
+    if (!BackendBaseURL) {
+        NSError *error = [NSError errorWithDomain:StripeDomain
+                                             code:STPInvalidRequestError
+                                         userInfo:@{NSLocalizedDescriptionKey: @"You must set a backend base URL in Constants.m to create a charge."}];
+        [self exampleViewController:self didFinishWithError:error];
+        return;
+    }
+    [self.view setUserInteractionEnabled:NO];
+    NSString *URL = [NSString stringWithFormat:@"%@get_default_card.php",BackendBaseURL];
+    NSDictionary *params =  @{
+                              @"rider_id": [MyUtils getUserDefault:@"riderID"]
+                              };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([[responseObject valueForKey:@"status"] isEqualToString:@"0"]) {
+            NSData *JSONdata = [[responseObject valueForKey:@"Mycard"] dataUsingEncoding:NSUTF8StringEncoding];
+            if (JSONdata != nil) {
+                NSError * error =nil;
+                NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
+                NSMutableArray * arr = [[NSMutableArray alloc]init];
+                for (int i = 0; i < [jsonUserInfo count]; i++) {
+                    CardMaster * fund = [[CardMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
+                    [arr addObject:fund];
+                }
+                [[DataStore sharedInstance] addCards:arr];
+            }
+        }
+        else{
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self exampleViewController:self didFinishWithError:error];
+    }];
+    
+}
+
+- (void)exampleViewController:(UIViewController *)controller didFinishWithError:(NSError *)error {
+    [self.view setUserInteractionEnabled:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+        //[self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alertController addAction:action];
+    [controller presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

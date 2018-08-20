@@ -632,6 +632,13 @@ alpha:1.0]
     [_mapView removeFromSuperview] ;
     _mapView = nil ;
     
+    // start/set ride timer for tracking in case of cancellation. If more than 4 minutes.
+    NSDate *currentDate = [NSDate date];
+    [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:@"rideTimer"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [MyUtils setUserDefault:@"bookingID" value:[GlobalVariable getBookingID]];
+    
     AfterBooking *registerController ;
     if (appDel.iSiPhone5) {
         registerController = [[AfterBooking alloc] initWithNibName:@"AfterBooking" bundle:nil];

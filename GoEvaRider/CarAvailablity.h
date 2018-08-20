@@ -23,6 +23,7 @@
 @property(nonatomic,retain)NSString *estimated_time;
 @property(nonatomic,retain)NSString *distance_wise_rate;
 @property(nonatomic,retain)NSString *time_wise_rate;
+@property(nonatomic,retain)NSString *count_avacar;
 
 -(id)init;
 -(id)initWithJsonData:(NSDictionary *)jsonObjects;

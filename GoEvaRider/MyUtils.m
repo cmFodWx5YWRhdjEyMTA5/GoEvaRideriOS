@@ -9,7 +9,7 @@
 #import "MyUtils.h"
 #import "MFSideMenu.h"
 #import "SideMenuViewController.h"
-
+#import "ChooseRideService.h"
 
 #define UIColorFromRGB(rgbValue) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -137,7 +137,7 @@ static NSString *titleLable;
     
 }
 
-// Get Custom Object into NSUserDefault
+// Get Custom Object from NSUserDefault
 + (LocationData *)loadCustomObjectWithKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
@@ -160,7 +160,7 @@ static NSString *titleLable;
     userDefaults = [NSUserDefaults standardUserDefaults];
     titleLable = title;
     
-    controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
+    //controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
     /*if(controller.menuContainerViewController.menuState == MFSideMenuStateClosed &&
        ![[controller.navigationController.viewControllers objectAtIndex:0] isEqual:controller]) {
         controller.navigationItem.leftBarButtonItem = [self backBarButtonItem:controller];
@@ -171,7 +171,7 @@ static NSString *titleLable;
     else {
         controller.navigationItem.leftBarButtonItems = @[[self leftMenuBarButtonItem:controller],[self leftMenuBarButtonItem2:controller]];
     }*/
-    controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
+    //controller.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem1:controller];
     if(controller.menuContainerViewController.menuState == MFSideMenuStateClosed &&
        ![[controller.navigationController.viewControllers objectAtIndex:0] isEqual:controller]) {
         controller.navigationItem.leftBarButtonItem = [self backBarButtonItem:controller];
@@ -217,11 +217,11 @@ static NSString *titleLable;
 
 - (UIBarButtonItem *)rightMenuBarButtonItem1:(UIViewController *)controller {
     
-    CGRect frameimg = CGRectMake(0, 0, 90, 30);
+    CGRect frameimg = CGRectMake(0, 0, 100, 30);
     UIButton *loginButton = [[UIButton alloc] initWithFrame:frameimg];
-    [loginButton setTitle:@"Pick Car" forState:UIControlStateNormal];
+    [loginButton setTitle:@"Change ride" forState:UIControlStateNormal];
     [loginButton setBackgroundColor:UIColorFromRGB(0x923831)];
-    loginButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    loginButton.titleLabel.font = [UIFont systemFontOfSize:13];
     loginButton.layer.cornerRadius=15;
     loginButton.clipsToBounds=YES;
     [loginButton addTarget:instanceOfAnotherClass action:@selector(rightSideMenuButtonPressed1:)
@@ -264,15 +264,22 @@ static NSString *titleLable;
 }
 
 - (void)rightSideMenuButtonPressed1:(id)sender {
-    PickCar *ptr1;
+    /*PickCar *ptr1;
     if (appDel.iSiPhone5) {
         ptr1 = [[PickCar alloc] initWithNibName:@"PickCar" bundle:nil];
     }
     else{
         ptr1 = [[PickCar alloc] initWithNibName:@"PickCarLow" bundle:nil];
     }
-    [mvc presentViewController:ptr1 animated:YES completion:nil];
-    
+    [mvc presentViewController:ptr1 animated:YES completion:nil];*/
+    /*ChooseRideService *loginController;
+    if(appDel.iSiPhone5){
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideService" bundle:nil];
+    }else{
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideServiceLow" bundle:nil];
+    }
+    loginController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    [mvc presentViewController:loginController animated:YES completion:nil];*/
 }
 
 

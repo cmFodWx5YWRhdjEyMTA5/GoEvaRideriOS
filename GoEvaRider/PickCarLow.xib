@@ -1,123 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickCar">
             <connections>
-                <outlet property="_mapViewContainer" destination="fBx-p4-Giz" id="qOU-eA-GAV"/>
+                <outlet property="_mapViewContainer" destination="EqN-63-FKf" id="NGx-KZ-pvf"/>
+                <outlet property="btnRideNow" destination="dFr-ke-cXt" id="EdJ-Nl-3FK"/>
                 <outlet property="img_editFrom" destination="ByP-Ac-nBQ" id="tNg-Dw-6lK"/>
                 <outlet property="img_editTo" destination="WTb-gU-cBA" id="f9w-LR-BdW"/>
                 <outlet property="inputViewContainer" destination="e7T-Ii-aOZ" id="es5-fu-tXP"/>
-                <outlet property="lblCar" destination="L9b-0J-hTL" id="28o-dr-2f7"/>
-                <outlet property="lblCarGRP" destination="Qxs-rt-ioz" id="hTy-3s-taL"/>
-                <outlet property="lblCarPro" destination="b1s-gm-am2" id="0pT-yQ-GxL"/>
-                <outlet property="lblViewChooseCar" destination="WqK-VE-QnV" id="fc7-qb-Xa0"/>
-                <outlet property="lblViewChooseCarGRP" destination="8K3-ph-Rtr" id="ZbU-4m-0MC"/>
-                <outlet property="lblViewChooseCarPro" destination="0DD-dG-LUf" id="1c6-QX-5Kv"/>
+                <outlet property="lblBadge1" destination="FEV-b0-exb" id="c3G-qB-Y5x"/>
+                <outlet property="lblBadge2" destination="RzZ-sM-mCr" id="cn9-M6-WEq"/>
+                <outlet property="lblBadge3" destination="Nql-cS-bLX" id="eVW-My-xe5"/>
+                <outlet property="lblCar" destination="TFO-hv-jIe" id="Ysv-Be-zSg"/>
+                <outlet property="lblCarGRP" destination="NUS-uh-KzF" id="6Vh-fU-qvP"/>
+                <outlet property="lblCarPro" destination="04z-yP-eLm" id="2Ng-tF-6WY"/>
+                <outlet property="lblViewChooseCar" destination="Jsl-aN-TTO" id="MZ8-7b-6Cy"/>
+                <outlet property="lblViewChooseCarGRP" destination="rDa-tt-MRx" id="7EB-hv-EaP"/>
+                <outlet property="lblViewChooseCarPro" destination="LeF-BF-Juo" id="qfW-bd-XCL"/>
                 <outlet property="markerFrom" destination="O5L-4g-AMp" id="ExG-Uh-FDg"/>
                 <outlet property="markerTo" destination="J1z-uj-ZGw" id="amU-8f-w36"/>
                 <outlet property="outerViewFrom" destination="bgE-kg-Egn" id="loY-HY-79O"/>
                 <outlet property="outerViewTo" destination="UEt-CT-6tb" id="sac-id-opa"/>
                 <outlet property="txtDropLocation" destination="ldz-2U-fB9" id="lLx-2g-QZm"/>
                 <outlet property="txtPickupLocation" destination="k6D-3A-hx1" id="tUC-3g-Uss"/>
-                <outlet property="view" destination="CTW-dB-rQE" id="4Sg-EO-iOF"/>
-                <outlet property="viewChooseCar" destination="PAN-rm-EcV" id="oLs-Xu-lyw"/>
-                <outlet property="viewChooseCarGRP" destination="6oE-8U-OF3" id="egf-TO-zEH"/>
-                <outlet property="viewChooseCarPro" destination="Ha6-Pl-oFw" id="n4b-pG-kfh"/>
+                <outlet property="view" destination="9nP-rk-EIJ" id="xPf-tY-3nq"/>
+                <outlet property="viewBadge1" destination="aoH-cZ-wc4" id="zuc-Mh-KqJ"/>
+                <outlet property="viewBadge2" destination="ywI-Qb-TlZ" id="rX7-TG-zLM"/>
+                <outlet property="viewBadge3" destination="pd9-nV-ysa" id="TKb-ZG-Hqb"/>
+                <outlet property="viewChooseCar" destination="lBv-S8-SUI" id="oJY-3e-S3x"/>
+                <outlet property="viewChooseCarGRP" destination="LMi-lQ-3gU" id="V2m-DJ-CCW"/>
+                <outlet property="viewChooseCarPro" destination="gmq-xh-dyy" id="O3v-WN-n53"/>
                 <outlet property="viewFrom" destination="19T-Ma-3XR" id="UeD-8K-DTR"/>
                 <outlet property="viewTo" destination="c1o-7r-9qu" id="7zq-dp-asu"/>
             </connections>
         </placeholder>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CTW-dB-rQE">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9nP-rk-EIJ">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snm-C3-Ced">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6o-Bz-WRX">
-                            <rect key="frame" x="5" y="23" width="49" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="ic_back"/>
-                            <connections>
-                                <action selector="backToHomePage:" destination="-1" eventType="touchUpInside" id="0Yn-Yg-vVQ"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Car" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDj-Sl-634">
-                            <rect key="frame" x="95" y="24" width="129" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.85446757080000002" green="0.25465527180000003" blue="0.19213142990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBx-p4-Giz" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="209" width="320" height="159"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqN-63-FKf" customClass="GMSMapView">
+                    <rect key="frame" x="0.0" y="149" width="320" height="158"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3r-gg-a1v">
-                    <rect key="frame" x="0.0" y="327" width="320" height="105"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-z7-PI0">
+                    <rect key="frame" x="0.0" y="267" width="320" height="105"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQs-zT-1sn">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inW-XK-V22">
                             <rect key="frame" x="0.0" y="40" width="320" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ky1-gW-sAG">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8L-mD-Pcy">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-rm-EcV">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBv-S8-SUI">
                                     <rect key="frame" x="33" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car" translatesAutoresizingMaskIntoConstraints="NO" id="RB4-s6-yEs">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car" translatesAutoresizingMaskIntoConstraints="NO" id="msu-cy-0SE">
                                             <rect key="frame" x="8" y="7" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ha6-Pl-oFw">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmq-xh-dyy">
                                     <rect key="frame" x="130" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car_pro" translatesAutoresizingMaskIntoConstraints="NO" id="WI3-8K-wqw">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car_pro" translatesAutoresizingMaskIntoConstraints="NO" id="KMM-jo-AkX">
                                             <rect key="frame" x="8" y="7" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oE-8U-OF3">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMi-lQ-3gU">
                                     <rect key="frame" x="222" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car_grp" translatesAutoresizingMaskIntoConstraints="NO" id="Lud-MU-4Ri">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_car_grp" translatesAutoresizingMaskIntoConstraints="NO" id="2sq-lj-8w4">
                                             <rect key="frame" x="8" y="7" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WqK-VE-QnV">
-                                    <rect key="frame" x="23" y="74" width="80" height="20"/>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jsl-aN-TTO">
+                                    <rect key="frame" x="23" y="78" width="80" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9b-0J-hTL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-hv-jIe">
                                             <rect key="frame" x="2" y="0.0" width="75" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -127,11 +111,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0DD-dG-LUf">
-                                    <rect key="frame" x="120" y="74" width="80" height="20"/>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LeF-BF-Juo">
+                                    <rect key="frame" x="120" y="78" width="80" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva Pro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1s-gm-am2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva Pro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04z-yP-eLm">
                                             <rect key="frame" x="2" y="3" width="75" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -141,11 +125,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-ph-Rtr">
-                                    <rect key="frame" x="213" y="74" width="80" height="20"/>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDa-tt-MRx">
+                                    <rect key="frame" x="213" y="78" width="80" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva GRP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxs-rt-ioz">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GoEva GRP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUS-uh-KzF">
                                             <rect key="frame" x="2" y="3" width="75" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -154,6 +138,48 @@
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoH-cZ-wc4">
+                                    <rect key="frame" x="77" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEV-b0-exb">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywI-Qb-TlZ">
+                                    <rect key="frame" x="174" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzZ-sM-mCr">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pd9-nV-ysa">
+                                    <rect key="frame" x="266" y="11" width="18" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nql-cS-bLX">
+                                            <rect key="frame" x="4" y="4" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -161,8 +187,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL9-dO-uBB">
-                    <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFr-ke-cXt">
+                    <rect key="frame" x="0.0" y="370" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.75294117650000003" green="0.22352941179999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -170,15 +196,16 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="rideNowBtn:" destination="-1" eventType="touchUpInside" id="U4V-ra-Leg"/>
+                        <action selector="rideNowBtn:" destination="-1" eventType="touchUpInside" id="AkX-Ui-s3z"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="25" y="79"/>
         </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="e7T-Ii-aOZ">
             <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -303,7 +330,6 @@
     <resources>
         <image name="dot.png" width="12" height="12"/>
         <image name="edit_search" width="50" height="50"/>
-        <image name="ic_back" width="30" height="30"/>
         <image name="ic_car" width="100" height="100"/>
         <image name="ic_car_grp" width="100" height="100"/>
         <image name="ic_car_pro" width="100" height="100"/>

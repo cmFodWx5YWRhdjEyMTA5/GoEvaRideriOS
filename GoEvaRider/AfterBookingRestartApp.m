@@ -1,12 +1,12 @@
 //
-//  AfterBooking.m
+//  AfterBookingRestartApp.m
 //  GoEvaRider
 //
-//  Created by Kalyan Paul on 15/06/17.
-//  Copyright © 2017 Kalyan Paul. All rights reserved.
+//  Created by Kalyan Mohan Paul on 8/20/18.
+//  Copyright © 2018 Kalyan Paul. All rights reserved.
 //
 
-#import "AfterBooking.h"
+#import "AfterBookingRestartApp.h"
 #import "CompleteRide.h"
 #import "RestCallManager.h"
 #import "DataStore.h"
@@ -33,11 +33,11 @@ green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
 blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
 alpha:1.0]
 
-@interface AfterBooking ()
+@interface AfterBookingRestartApp ()
 
 @end
 
-@implementation AfterBooking{
+@implementation AfterBookingRestartApp{
     GMSMapView *_mapView;
     GMSMarker *driverMarker;
     GMSMarker *pickerMarker;
@@ -79,7 +79,7 @@ static NSInteger notificationModeStatic;
     [imgCard setHidden:YES];
     [lblCardNameWithLast4 setHidden:YES];
     
-    [viewOnTheWay setHidden:YES];
+    
     _arrayPolylineGreen = [[NSMutableArray alloc] init];
     _path2 = [[GMSMutablePath alloc]init];
     
@@ -87,7 +87,7 @@ static NSInteger notificationModeStatic;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForDriverArrivalAndStartTrip:) name:@"pushNotificationForDriverArrivalAndStartTrip" object:nil];
     
     // For Cancel Trip By Driver
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForCancelTrip:) name:@"pushNotificationForCancelTrip" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForCancelTrip:) name:@"pushNotificationForCancelTrip" object:nil];
     
     // For Fare Summary after Complete Trip
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForTripComplete:) name:@"pushNotificationForTripComplete" object:nil];
@@ -121,34 +121,25 @@ static NSInteger notificationModeStatic;
         _mapView.myLocationEnabled = YES;
     });
     
-    
+    /*lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
     driverMarker = [[GMSMarker alloc] init];
-    //pickupMarker.title = @"Pickup Location";
-    driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
-    //pickupMarker.snippet = pickupLocation.locationAddress;
-    lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
     _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
     driverMarker.iconView = _londonView;
     driverMarker.position = CLLocationCoordinate2DMake([[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue],[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue]);
-    //    pickupMarker.appearAnimation = kGMSMarkerAnimationPop;
-    //    pickupMarker.flat = YES;
-    //    pickupMarker.groundAnchor = CGPointMake(0.5, 0.5);
+    
     driverMarker.map = _mapView;
     [_mapView setSelectedMarker:driverMarker];
     
     
     pickerMarker = [[GMSMarker alloc] init];
     pickerMarker.title = @"My Pickup Location";
-    pickerMarker.snippet = pickupLocation.locationAddress;
+    //pickerMarker.snippet = pickupLocation.locationAddress;
     _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
     pickerMarker.iconView = _londonView;
     pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
-    //    dropMarker.appearAnimation = kGMSMarkerAnimationPop;
-    //    dropMarker.flat = YES;
-    //    dropMarker.groundAnchor = CGPointMake(0.5, 0.5);
     pickerMarker.map = _mapView;
     
-    [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
+    [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];*/
     
 }
 
@@ -159,28 +150,23 @@ static NSInteger notificationModeStatic;
                forKeyPath:@"myLocation"
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
-   
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    
+    if ((notificationModeStatic!=3 && notificationModeStatic<4) || [[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
         [self commonMethodForRefreshDriverLocationForArrival];
         // Timer for getting update location and arrival time of Driver
         timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
-                                                                     target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
+                                                           target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
     }
-    else if (notificationModeStatic==4) {
+    else if (notificationModeStatic==4 || [[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]) {
         [self commonMethodForRefreshEstimatedTime];
         // Timer for getting update location and arrival time of Driver
         timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
-                                                           target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
+                                                             target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
     }
 }
 
 
 -(void) setData{
-    // start/set ride timer for tracking in case of cancellation. If more than 4 minutes.
-    NSDate *currentDate = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:@"rideTimer"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     _bookingID = [notificationDriverDetailsDict valueForKey:@"request_id"];
     lblDriverName.text = [notificationDriverDetailsDict valueForKey:@"driver_name"];
     lblPlateNo.text = [notificationDriverDetailsDict valueForKey:@"car_plate_no"];
@@ -231,18 +217,106 @@ static NSInteger notificationModeStatic;
     pickupLocation = [MyUtils loadCustomObjectWithKey:@"pickupLocation"];
     dropLocation = [MyUtils loadCustomObjectWithKey:@"dropLocation"];
     
-    NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:[[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"] integerValue]*60];
-    //To get date in  `hour:minute` format.
-    NSDateFormatter *dateFormatterHHMM=[NSDateFormatter new];
-    [dateFormatterHHMM setDateFormat:@"hh:mm a"];
-    NSString *timeString=[dateFormatterHHMM stringFromDate:dateToFire];
-    [lblArrivalTime setText:[NSString stringWithFormat:@"Expected Time of Arrival %@", timeString]];
-    
-    [lblPickupAddress setText:[NSString stringWithFormat:@"%@",pickupLocation.locationAddress]];
+    if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]){//Fresh booking
+        [viewOnTheWay setHidden:YES];
+        NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:[[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"] integerValue]*60];
+        //To get date in  `hour:minute` format.
+        NSDateFormatter *dateFormatterHHMM=[NSDateFormatter new];
+        [dateFormatterHHMM setDateFormat:@"hh:mm a"];
+        NSString *timeString=[dateFormatterHHMM stringFromDate:dateToFire];
+        [lblArrivalTime setText:[NSString stringWithFormat:@"Expected Time of Arrival %@", timeString]];
+        lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
+        [lblPickupAddress setText:[NSString stringWithFormat:@"%@",pickupLocation.locationAddress]];
+        
+        driverMarker = [[GMSMarker alloc] init];
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        driverMarker.iconView = _londonView;
+        driverMarker.position = CLLocationCoordinate2DMake([[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue],[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue]);
+        driverMarker.map = _mapView;
+        [_mapView setSelectedMarker:driverMarker];
+        
+        
+        pickerMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"My Pickup Location";
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        pickerMarker.iconView = _londonView;
+        pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
+        pickerMarker.map = _mapView;
+        
+        [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
+    }
+    else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"3"]){//Driver Arrived
+        [viewOnTheWay setHidden:NO];
+        [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
+        
+        [timerForArrival invalidate];
+        timerForArrival = nil;
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+        [animation setToValue:[NSNumber numberWithFloat:0.0]];
+        [animation setDuration:0.5f];
+        [animation setTimingFunction:[CAMediaTimingFunction
+                                      functionWithName:kCAMediaTimingFunctionLinear]];
+        [animation setAutoreverses:YES];
+        [animation setRepeatCount:20000];
+        [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
+        
+        [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
+    }
+    else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]){
+        [viewOnTheWay setHidden:NO];
+        [lblDriverRunningStatus setText:@"ON THE WAY"];
+        
+        timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
+                                                             target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+        [animation setToValue:[NSNumber numberWithFloat:0.0]];
+        [animation setDuration:0.5f];
+        [animation setTimingFunction:[CAMediaTimingFunction
+                                      functionWithName:kCAMediaTimingFunctionLinear]];
+        [animation setAutoreverses:YES];
+        [animation setRepeatCount:20000];
+        [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
+        
+        [lblPickupAddress setText:dropLocation.locationAddress];
+        
+        [btnContactDriver setHidden:YES];
+        [btnCancelBook setHidden:YES];
+        
+        NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:[[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"] integerValue]*60];
+        //To get date in  `hour:minute` format.
+        NSDateFormatter *dateFormatterHHMM=[NSDateFormatter new];
+        [dateFormatterHHMM setDateFormat:@"hh:mm a"];
+        NSString *timeString=[dateFormatterHHMM stringFromDate:dateToFire];
+        [lblArrivalTime setText:[NSString stringWithFormat:@"Expected Time of Arrival %@", timeString]];
+        [_mapView clear];
+        
+        
+        lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
+        driverMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"My Location";
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        driverMarker.iconView = _londonView;
+        driverMarker.position = CLLocationCoordinate2DMake([_userCurrentLat floatValue],[_userCurrentLong floatValue]);
+        driverMarker.map = _mapView;
+        [_mapView setSelectedMarker:driverMarker];
+        
+        pickerMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"Drop Location";
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        pickerMarker.iconView = _londonView;
+        pickerMarker.position = CLLocationCoordinate2DMake([dropLocation.latitude floatValue],[dropLocation.longitude floatValue]);
+        pickerMarker.map = _mapView;
+        
+        [self createPolyLine:[_userCurrentLat floatValue] pickupLong:[_userCurrentLong floatValue] dropLat:[dropLocation.latitude floatValue] dropLong:[dropLocation.longitude floatValue] timeInterval:0.003];
+    }
     /*
-    //code for my location on map
+     //code for my location on map
      
-    */
+     */
     
     //Get Card Details
     [self setCardData];
@@ -287,14 +361,14 @@ static NSInteger notificationModeStatic;
             
             // animate green path with timer
             /*timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:true block:^(NSTimer * _Nonnull timer) {
-                [self animate:path];
-            }];*/
+             [self animate:path];
+             }];*/
             
         }
         @catch (NSException * e) {
             //NSLog(@"Exception: %@", e);
             /* UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Oops!!!" message:@"There is no any routes available. Please choose another drop location." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [loginAlert show];*/
+             [loginAlert show];*/
         }
     }
     else {
@@ -362,7 +436,7 @@ static NSInteger notificationModeStatic;
     NSDictionary *notificationDict= [dict valueForKey:@"aps"];
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
     [self.view setUserInteractionEnabled:YES];
-
+    
     notificationModeStatic = notification_mode;
     
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
@@ -503,8 +577,8 @@ static NSInteger notificationModeStatic;
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
     
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Driver cancelled the Trip"
-                                                                  message:@""
-                                                           preferredStyle:UIAlertControllerStyleAlert];
+                                                                 message:@""
+                                                          preferredStyle:UIAlertControllerStyleAlert];
     
     
     UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"OK"
@@ -580,8 +654,8 @@ static NSInteger notificationModeStatic;
 - (IBAction)contactDriver:(UIButton *)sender{
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:backgroundView];
-//    viewContact.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-//    [currentWindow addSubview:viewContact];
+    //    viewContact.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    //    [currentWindow addSubview:viewContact];
     
     
     viewContact.frame = CGRectMake(20, 568, 280, 143);
@@ -649,7 +723,7 @@ static NSInteger notificationModeStatic;
                          [viewContact removeFromSuperview];
                          [backgroundView removeFromSuperview];
                      }];
-   
+    
     
     
 }
@@ -660,9 +734,9 @@ static NSInteger notificationModeStatic;
         NSLog(@"%f",fabs([currentDate timeIntervalSinceDate:myDate]));
         int minimum_duration = [[MyUtils getUserDefault:@"min_duration_for_cancellation_charge"] intValue];//
         if (fabs([currentDate timeIntervalSinceDate:myDate]) > 60*minimum_duration)
-                self.isCancellationCharge=YES;
+            self.isCancellationCharge=YES;
         else
-                self.isCancellationCharge=NO;
+            self.isCancellationCharge=NO;
     }
     if([RestCallManager hasConnectivity]){
         [self.view setUserInteractionEnabled:NO];
@@ -835,13 +909,13 @@ static NSInteger notificationModeStatic;
 
 -(void) responseGetDriverLocation{
     [self.view setUserInteractionEnabled:YES];
-        btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
-        [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
-        btnRefreshDriver.layer.cornerRadius=5;
-        btnRefreshDriver.clipsToBounds=YES;
-        btnRefreshDriver.userInteractionEnabled=YES;
-        
+    btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
+    [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnRefreshDriver setTitle:@"Refresh" forState:UIControlStateNormal];
+    btnRefreshDriver.layer.cornerRadius=5;
+    btnRefreshDriver.clipsToBounds=YES;
+    btnRefreshDriver.userInteractionEnabled=YES;
+    
     driverLiveArray = [NSMutableArray arrayWithArray:[[DataStore sharedInstance] getDriverLiveLocation]];
     if (driverLiveArray.count>0 && [[driverLiveArray objectAtIndex:0] current_lat]!= (id)[NSNull null]) {
         
@@ -927,21 +1001,21 @@ static NSInteger notificationModeStatic;
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Trip Completed!!!" message:@"Trip successfully completed. Press OK button to view fare summary." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
                 /*NSDictionary *dict = [notification userInfo];
-                NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-                BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
-                
-                [self.view setUserInteractionEnabled:YES];
-                [loadingView setHidden:YES];
-                CompleteRide *registerController;
-                if (appDel.iSiPhone5) {
-                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
-                }
-                else{
-                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
-                }
-                registerController.bookingObj = bookingObj;
-                registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
-                [self presentViewController:registerController animated:YES completion:nil];*/
+                 NSDictionary *notificationDict= [dict valueForKey:@"aps"];
+                 BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
+                 
+                 [self.view setUserInteractionEnabled:YES];
+                 [loadingView setHidden:YES];
+                 CompleteRide *registerController;
+                 if (appDel.iSiPhone5) {
+                 registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
+                 }
+                 else{
+                 registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
+                 }
+                 registerController.bookingObj = bookingObj;
+                 registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+                 [self presentViewController:registerController animated:YES completion:nil];*/
             }];
             [alertController addAction:action];
             [self presentViewController:alertController animated:YES completion:nil];

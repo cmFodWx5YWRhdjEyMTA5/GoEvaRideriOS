@@ -33,9 +33,7 @@
     self = [super init];
     if ( self )
     {
-        
     }
-    
     return self;
 }
 
@@ -48,10 +46,8 @@
 
 -(NSString *)getBaseUrl
 {
-   
     //return @"http://goeva.co/goevaapp/webservice/";
     return @"http://goeva.co/goevaapp/webservice-beta/";
-    
 }
 
 
@@ -275,12 +271,19 @@
 
 // Get Nearest Car
 
--(BOOL)getNearestCar:(NSString *)currentLat currentLong:(NSString *)currentLong carTypeID:(NSString *)carTypeID pickCar:(NSString *)pickCar{
+-(BOOL)getNearestCar:(NSString *)currentLat
+         currentLong:(NSString *)currentLong
+           carTypeID:(NSString *)carTypeID
+             pickCar:(NSString *)pickCar{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@get_nearest_car",baseUrl];
     
-    NSString *dataUrl = [NSString stringWithFormat:@"current_lattitude=%@&current_longitude=%@&car_type_id=%@&pick_car=%@",[self getEncodedString:currentLat],[self getEncodedString:currentLong], [self getEncodedString:carTypeID],pickCar];
+    NSString *dataUrl = [NSString stringWithFormat:@"current_lattitude=%@&current_longitude=%@&car_type_id=%@&pick_car=%@",
+                         [self getEncodedString:currentLat],
+                         [self getEncodedString:currentLong],
+                         [self getEncodedString:carTypeID],
+                         pickCar];
     
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
@@ -309,11 +312,20 @@
     return false;
 }
 
--(BOOL)check_distance_range: (NSString *)rider_id sourceLat:(NSString *)sourceLat sourceLong:(NSString *)sourceLong descLat:(NSString *)descLat descLong:(NSString *)descLong{
+-(BOOL)check_distance_range: (NSString *)rider_id
+                  sourceLat:(NSString *)sourceLat
+                 sourceLong:(NSString *)sourceLong
+                    descLat:(NSString *)descLat
+                   descLong:(NSString *)descLong{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@check_distance_range",baseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"rider_id=%@&ride_source_lat=%@&ride_source_long=%@&ride_dest_lat=%@&ride_dest_long=%@",rider_id, sourceLat, sourceLong, descLat, descLong];
+    NSString *dataUrl = [NSString stringWithFormat:@"rider_id=%@&ride_source_lat=%@&ride_source_long=%@&ride_dest_lat=%@&ride_dest_long=%@",
+                         rider_id,
+                         sourceLat,
+                         sourceLong,
+                         descLat,
+                         descLong];
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
@@ -329,12 +341,31 @@
 
 // Request Booking
 
--(BOOL)requestBooking:(NSString *)rider_id availabilityID:(NSString *)availabilityID carTypeID:(NSString *)carTypeID pickupLocation:(NSString *)pickupLocation dropLocation:(NSString *)dropLocation sourceLat:(NSString *)sourceLat sourceLong:(NSString *)sourceLong descLat:(NSString *)descLat descLong:(NSString *)descLong pickCar:(NSString *)pickCar{
+-(BOOL)requestBooking:(NSString *)rider_id
+       availabilityID:(NSString *)availabilityID
+            carTypeID:(NSString *)carTypeID
+       pickupLocation:(NSString *)pickupLocation
+         dropLocation:(NSString *)dropLocation
+            sourceLat:(NSString *)sourceLat
+           sourceLong:(NSString *)sourceLong
+              descLat:(NSString *)descLat
+             descLong:(NSString *)descLong
+              pickCar:(NSString *)pickCar{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@confirm_booking",baseUrl];
     
-    NSString *dataUrl = [NSString stringWithFormat:@"rider_id=%@&availability_id=%@&car_type_id=%@&pickup_location=%@&drop_location=%@&ride_source_lat=%@&ride_source_long=%@&ride_dest_lat=%@&ride_dest_long=%@&pick_car=%@",rider_id,availabilityID, carTypeID,pickupLocation,dropLocation, sourceLat, sourceLong, descLat, descLong, pickCar];
+    NSString *dataUrl = [NSString stringWithFormat:@"rider_id=%@&availability_id=%@&car_type_id=%@&pickup_location=%@&drop_location=%@&ride_source_lat=%@&ride_source_long=%@&ride_dest_lat=%@&ride_dest_long=%@&pick_car=%@",
+                         rider_id,
+                         availabilityID,
+                         carTypeID,
+                         pickupLocation,
+                         dropLocation,
+                         sourceLat,
+                         sourceLong,
+                         descLat,
+                         descLong,
+                         pickCar];
     
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
@@ -353,7 +384,6 @@
 
 
 -(NSMutableDictionary *)checkRequestStatus:(NSString *)requestID{
-    
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@check_driver_confirmation_from_rider_end?request_id=%@",baseUrl,requestID];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
@@ -367,25 +397,47 @@
             jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
             return jsonUserInfo;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return nil;
     }
-    
+    return nil;
+}
+
+-(NSMutableDictionary *)checkIncompleteRideInRiderEnd:(NSString *)bookingID{
+    NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    NSString *strURL=[NSString stringWithFormat:@"%@check_incomplete_ride_in_rider_end?booking_id=%@",baseUrl,bookingID];
+    WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
+    NSMutableDictionary *jsonUserInfo;
+    if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
+        if (JSONdata != nil) {
+            NSError * error =nil;
+            jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
+        }
+        [GlobalVariable setGlobalMessage:webResponse.StatusCode];
+        return jsonUserInfo;
+    }
+    else if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"1"] && webResponse.Data != nil)
+    {
+        [GlobalVariable setGlobalMessage:webResponse.StatusCode];
+        return nil;
+    }
+    else{
+        [GlobalVariable setGlobalMessage:@"We are having an issue connecting to the server. Please try again."];
+        return nil;
+    }
     return nil;
 }
 
 
 -(BOOL)getCarDetails:(NSString *)carID{
-    
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@get_car_details?car_id=%@",baseUrl,carID];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
@@ -400,26 +452,24 @@
                 [arr addObject:fund];
                 }
                 [[DataStore sharedInstance] addCar:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
 
--(NSString *)requestRegistrationOTP:(NSString *)mobileNo is_resend:(NSString *)is_resend{
-    
+-(NSString *)requestRegistrationOTP:(NSString *)mobileNo
+                          is_resend:(NSString *)is_resend{
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"mobile_number=%@&is_resend=%@",mobileNo, is_resend];
+    NSString *dataUrl = [NSString stringWithFormat:@"mobile_number=%@&is_resend=%@",
+                         mobileNo,
+                         is_resend];
     NSString *strURL=[NSString stringWithFormat:@"%@rider_get_signup_otp",baseUrl];
     
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
@@ -428,52 +478,49 @@
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return webResponse.StatusCode;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return @"-1001";
     }
-    
     return nil;
 }
 
--(BOOL)registrationByOTP:(NSString *)mobileNumber sendOtp:(NSString *)sendOtp deviceID:(NSString *)deviceID deviceType:(NSString *)deviceType deviceToken:(NSString *)deviceToken{
-    
+-(BOOL)registrationByOTP:(NSString *)mobileNumber
+                 sendOtp:(NSString *)sendOtp
+                deviceID:(NSString *)deviceID
+              deviceType:(NSString *)deviceType
+             deviceToken:(NSString *)deviceToken{
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"mobile_number=%@&send_otp=%@&device_id=%@&device_type=%@&device_token=%@",mobileNumber, sendOtp,deviceID, deviceType, deviceToken];
+    NSString *dataUrl = [NSString stringWithFormat:@"mobile_number=%@&send_otp=%@&device_id=%@&device_type=%@&device_token=%@",
+                         mobileNumber,
+                         sendOtp,
+                         deviceID,
+                         deviceType,
+                         deviceToken];
     NSString *strURL=[NSString stringWithFormat:@"%@rider_check_signup_otp",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 RiderMaster * fund = [[RiderMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addRider:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
@@ -481,58 +528,49 @@
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@rider_signup",baseUrl];
      WebServiceResponse *webResponse = [self postCallWithUrl:strURL postJsonString:input];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 RiderMaster * fund = [[RiderMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addRider:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
 // request for Login OTP
--(NSString *)requestLoginOTP:(NSString *)emailIdOrmobileNo loginThroughOTP:(NSString *)loginThroughOTP{
+-(NSString *)requestLoginOTP:(NSString *)emailIdOrmobileNo
+             loginThroughOTP:(NSString *)loginThroughOTP{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"mobileNoOrEmailID=%@&loginThroughOTP=%@",emailIdOrmobileNo,loginThroughOTP];
+    NSString *dataUrl = [NSString stringWithFormat:@"mobileNoOrEmailID=%@&loginThroughOTP=%@",
+                         emailIdOrmobileNo,
+                         loginThroughOTP];
     NSString *strURL=[NSString stringWithFormat:@"%@rider_signin",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return webResponse.StatusCode;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return @"-1001";
     }
-    
     return nil;
 }
 
@@ -542,27 +580,21 @@
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@rider_signin_step_2",baseUrl];
     WebServiceResponse *webResponse = [self postCallWithUrl:strURL postJsonString:input];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 RiderMaster * fund = [[RiderMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addRider:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
@@ -586,16 +618,13 @@
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 CancelReason * fund = [[CancelReason alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addCancelReason:arr];
-            
             return true;
         }
     }
@@ -612,10 +641,21 @@
 }
 
 
--(BOOL)cancelRide:(NSString *)bookingID userType:(NSString *)userType isCharged:(NSString *)isCharged riderCurrentLat:(NSString *)riderCurrentLat riderCurrentLong:(NSString *)riderCurrentLong cancelReasonID:(NSString *)cancelReasonID{
+-(BOOL)cancelRide:(NSString *)bookingID
+         userType:(NSString *)userType
+        isCharged:(NSString *)isCharged
+  riderCurrentLat:(NSString *)riderCurrentLat
+ riderCurrentLong:(NSString *)riderCurrentLong
+   cancelReasonID:(NSString *)cancelReasonID{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&is_charged=%@&user_current_lat=%@&user_current_long=%@&cancel_reason_id=%@",bookingID,userType,isCharged,riderCurrentLat,riderCurrentLong,cancelReasonID];
+    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&is_charged=%@&user_current_lat=%@&user_current_long=%@&cancel_reason_id=%@",
+             bookingID,
+             userType,
+             isCharged,
+             riderCurrentLat,
+             riderCurrentLong,
+             cancelReasonID];
     NSString *strURL=[NSString stringWithFormat:@"%@cancel_trip",baseUrl];
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
@@ -633,14 +673,20 @@
         [GlobalVariable setGlobalMessage:@"There are some problem with Server. Try after some time."];
         return false;
     }
-    
     return false;
 }
 
--(BOOL)rateUsDriver:(NSString *)bookingID userType:(NSString *)userType ratingValue:(NSString *)ratingValue comments:(NSString *)comments{
+-(BOOL)rateUsDriver:(NSString *)bookingID
+           userType:(NSString *)userType
+        ratingValue:(NSString *)ratingValue
+           comments:(NSString *)comments{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&ratting=%@&comment=%@",bookingID,userType,ratingValue, comments];
+    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&ratting=%@&comment=%@",
+                         bookingID,
+                         userType,
+                         ratingValue,
+                         comments];
     NSString *strURL=[NSString stringWithFormat:@"%@give_rate",baseUrl];
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
@@ -668,33 +714,26 @@
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@fetch_legal_content?user_type=%@",baseUrl,user_type];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 LegalMaster * fund = [[LegalMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addLegalMenu:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
@@ -703,7 +742,6 @@
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@fetch_help_content?user_type=%@",baseUrl,user_type];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
@@ -718,52 +756,46 @@
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addHelpMenu:arr];
-            
             return true;
         }
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
--(BOOL)getRiderDetails:(NSString *)userID userType:(NSString *)userType{
+-(BOOL)getRiderDetails:(NSString *)userID
+              userType:(NSString *)userType{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *strURL=[NSString stringWithFormat:@"%@get_profile_details?user_id=%@&user_type=%@",baseUrl,userID,userType];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_profile_details?user_id=%@&user_type=%@",
+                      baseUrl,
+                      userID,
+                      userType];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 RiderMaster * fund = [[RiderMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
                 [arr addObject:fund];
             }
             [[DataStore sharedInstance] addRider:arr];
-            
             return true;
         }
-        
     }
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
@@ -771,13 +803,11 @@
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@update_profile_image",baseUrl];
     WebServiceResponse *webResponse = [self postCallWithUrl:strURL postJsonString:input];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
          [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
@@ -795,7 +825,6 @@
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
@@ -804,27 +833,29 @@
     return false;
 }
 
--(BOOL)changePassword:(NSString *)riderID userType:(NSString *)userType oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword{
+-(BOOL)changePassword:(NSString *)riderID
+             userType:(NSString *)userType
+          oldPassword:(NSString *)oldPassword
+          newPassword:(NSString *)newPassword{
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    
-    NSString *dataUrl = [NSString stringWithFormat:@"user_id=%@&user_type=%@&old_password=%@&new_password=%@",riderID,userType,oldPassword,newPassword];
+    NSString *dataUrl = [NSString stringWithFormat:@"user_id=%@&user_type=%@&old_password=%@&new_password=%@",
+                         riderID,
+                         userType,
+                         oldPassword,
+                         newPassword];
     
     NSString *strURL=[NSString stringWithFormat:@"%@change_password",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
@@ -832,69 +863,53 @@
 -(BOOL)forgotPasswordStep1:mobileOrEmail{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    
     NSString *dataUrl = [NSString stringWithFormat:@"mobileNoOrEmailID=%@",mobileOrEmail];
-    
     NSString *strURL=[NSString stringWithFormat:@"%@rider_reset_password_step_1",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
 -(BOOL)forgotPasswordStep2:(NSString *)mobileOrEmail otpValue:(NSString *)otpValue{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    
     NSString *dataUrl = [NSString stringWithFormat:@"mobileNoOrEmailID=%@&otp=%@",mobileOrEmail,otpValue];
-    
     NSString *strURL=[NSString stringWithFormat:@"%@rider_reset_password_step_2",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
-    
     return false;
 }
 
--(BOOL)forgotPasswordStep3:(NSString *)mobileOrEmail newPassword:(NSString *)newPassword{
+-(BOOL)forgotPasswordStep3:(NSString *)mobileOrEmail
+               newPassword:(NSString *)newPassword{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    
     NSString *dataUrl = [NSString stringWithFormat:@"mobileNoOrEmailID=%@&password=%@",mobileOrEmail,newPassword];
-    
     NSString *strURL=[NSString stringWithFormat:@"%@rider_reset_password_step_3",baseUrl];
-    
     WebServiceResponse *webResponse = [self postCallWithUrlDirectly:strURL postJsonString:dataUrl];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return true;
-        
     }
-    
     else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         [GlobalVariable setGlobalMessage:webResponse.Data];
@@ -904,22 +919,16 @@
     return false;
 }
 
-
-
-
 -(BOOL)getTripList:(NSString *)riderID{
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
     NSString *strURL=[NSString stringWithFormat:@"%@trip_list?rider_id=%@",baseUrl,riderID];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
-    
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 BookingDetailMaster *fund = [[BookingDetailMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
@@ -938,19 +947,21 @@
 }
 
 
--(NSString *)getDriverLocationForArriving:(NSString *)driverID bookingID:(NSString *)bookingID{
+-(NSString *)getDriverLocationForArriving:(NSString *)driverID
+                                bookingID:(NSString *)bookingID{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *strURL=[NSString stringWithFormat:@"%@get_driver_location_for_arriving?driver_id=%@&booking_id=%@",baseUrl,driverID,bookingID];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_driver_location_for_arriving?driver_id=%@&booking_id=%@",
+                      baseUrl,
+                      driverID,
+                      bookingID];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
         NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
         if (JSONdata != nil) {
             NSError * error =nil;
-            
             NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
-            
             NSMutableArray * arr = [[NSMutableArray alloc]init];
             for (int i = 0; i < [jsonUserInfo count]; i++) {
                 DriverLiveLocation *fund = [[DriverLiveLocation alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
@@ -968,10 +979,20 @@
     return nil;
 }
 
--(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID bookingID:(NSString *)bookingID driverCurrentlat:(NSString *)driverCurrentlat driverCurrentLong:(NSString *)driverCurrentLong{
+-(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID
+                                         userType:(NSString *)userType
+                                        bookingID:(NSString *)bookingID
+                                 driverCurrentlat:(NSString *)driverCurrentlat
+                                driverCurrentLong:(NSString *)driverCurrentLong{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *strURL=[NSString stringWithFormat:@"%@get_estimated_timeOf_ride_after_startTrip?driver_id=%@&booking_id=%@&driver_current_lat=%@&driver_current_long=%@",baseUrl,driverID,bookingID,driverCurrentlat,driverCurrentLong];
+    NSString *strURL=[NSString stringWithFormat:@"%@get_estimated_timeOf_ride_after_startTrip?driver_id=%@&user_type=%@&booking_id=%@&driver_current_lat=%@&driver_current_long=%@",
+                      baseUrl,
+                      driverID,
+                      userType,
+                      bookingID,
+                      driverCurrentlat,
+                      driverCurrentLong];
     WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
     if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
     {
@@ -1046,7 +1067,7 @@
         return false;
     }
     else{
-        [GlobalVariable setGlobalMessage:@"There are some problem with Server. Try after some time."];
+        [GlobalVariable setGlobalMessage:@"We are having an issue connecting to the server. Please try again."];
         return false;
     }
     return false;

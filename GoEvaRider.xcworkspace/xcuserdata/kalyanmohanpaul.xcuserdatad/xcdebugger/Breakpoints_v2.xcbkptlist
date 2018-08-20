@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.709229"
+            timestampString = "555250164.722965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "860"
-            endingLineNumber = "860"
+            startingLineNumber = "870"
+            endingLineNumber = "870"
             landmarkName = "-sendDatafromPickupToDashboard:"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.709712"
+            timestampString = "555250164.723513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "947"
-            endingLineNumber = "947"
+            startingLineNumber = "957"
+            endingLineNumber = "957"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.7100151"
+            timestampString = "555250164.723835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "943"
-            endingLineNumber = "943"
+            startingLineNumber = "953"
+            endingLineNumber = "953"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9295861"
+            timestampString = "556468781.600003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.930037"
+            timestampString = "556468781.600085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.710353"
+            timestampString = "555250164.7242759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "983"
-            endingLineNumber = "983"
+            startingLineNumber = "993"
+            endingLineNumber = "993"
             landmarkName = "-showContactDialog"
             landmarkType = "7">
             <Locations>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.930462"
+            timestampString = "556468781.60017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.930812"
+            timestampString = "556468781.600227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "289"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.710687"
+            timestampString = "555250164.72469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "-viewSelectedCar:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.170216"
+            timestampString = "556468781.60031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "412"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.170282"
+            timestampString = "556468781.600386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "439"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.17033"
+            timestampString = "556468781.600435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.711032"
+            timestampString = "555250164.725069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "873"
+            endingLineNumber = "873"
             landmarkName = "-sendDatafromDropToDashboard:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.711315"
+            timestampString = "555250164.7253571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "960"
-            endingLineNumber = "960"
+            startingLineNumber = "970"
+            endingLineNumber = "970"
             landmarkName = "-requestToServer"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.711596"
+            timestampString = "555250164.725642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
+            startingLineNumber = "544"
+            endingLineNumber = "544"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.711881"
+            timestampString = "555250164.725914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.7121609"
+            timestampString = "555250164.726186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.712436"
+            timestampString = "555250164.72647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.712709"
+            timestampString = "555250164.726739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-applicationIsActive:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.712978"
+            timestampString = "555250164.727006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-applicationEnteredForeground:"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.713245"
+            timestampString = "555250164.727271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "671"
+            endingLineNumber = "671"
             landmarkName = "-pickupLocationController"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.713519"
+            timestampString = "555250164.727543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "662"
-            endingLineNumber = "662"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "-pickupLocationController"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.713797"
+            timestampString = "555250164.7278301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "937"
-            endingLineNumber = "937"
+            startingLineNumber = "947"
+            endingLineNumber = "947"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.714072"
+            timestampString = "555250164.728107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "936"
-            endingLineNumber = "936"
+            startingLineNumber = "946"
+            endingLineNumber = "946"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.714343"
+            timestampString = "555250164.7283829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "982"
-            endingLineNumber = "982"
+            startingLineNumber = "992"
+            endingLineNumber = "992"
             landmarkName = "-showContactDialog"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.7147779"
+            timestampString = "555250164.728888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "860"
-            endingLineNumber = "860"
+            startingLineNumber = "870"
+            endingLineNumber = "870"
             landmarkName = "-sendDatafromPickupToDashboard:"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,12 +602,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.93211"
+            timestampString = "556468781.600965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "387"
             endingLineNumber = "387"
-            landmarkName = "-getCarDetails:"
+            landmarkName = "-checkRequestStatus:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715083"
+            timestampString = "553615268.38977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "203"
@@ -634,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.71514"
+            timestampString = "553615268.389842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
@@ -650,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715188"
+            timestampString = "553615268.389891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
@@ -666,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715234"
+            timestampString = "553615268.389935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "308"
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715279"
+            timestampString = "553615268.389979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "315"
@@ -698,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715324"
+            timestampString = "553615268.390022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -714,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715368"
+            timestampString = "553615268.390063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
@@ -730,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715413"
+            timestampString = "553615268.390106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
@@ -746,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715457"
+            timestampString = "553615268.390149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
@@ -762,28 +762,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9326349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
-            landmarkName = "-registrationByOTP:sendOtp:deviceID:deviceType:deviceToken:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.932973"
+            timestampString = "556468781.601216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "391"
             endingLineNumber = "391"
-            landmarkName = "-getCarDetails:"
+            landmarkName = "-checkRequestStatus:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -794,28 +778,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.933308"
+            timestampString = "556468781.601272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "392"
             endingLineNumber = "392"
-            landmarkName = "-getCarDetails:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.933636"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
-            landmarkName = "-registrationByNormal:"
+            landmarkName = "-checkRequestStatus:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -826,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/LoginPage.m"
-            timestampString = "551797706.512841"
+            timestampString = "555250164.729628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-requestToServerForLogin"
             landmarkType = "7">
          </BreakpointContent>
@@ -841,24 +809,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.933993"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
-            landmarkName = "-registrationByNormal:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.715609"
+            timestampString = "553615268.390292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
@@ -927,8 +879,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
-            landmarkType = "7">
+            landmarkName = "CredentailPage"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -970,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.934523"
+            timestampString = "556468781.601493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "-registrationByNormal:"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.71578"
+            timestampString = "555250164.729911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "946"
-            endingLineNumber = "946"
+            startingLineNumber = "956"
+            endingLineNumber = "956"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1002,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.716076"
+            timestampString = "555250164.730196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "-rideNowBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/LoginPage.m"
-            timestampString = "551797706.5134521"
+            timestampString = "555250164.730469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "-handlingResponseForLogin"
             landmarkType = "7">
          </BreakpointContent>
@@ -1034,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.716382"
+            timestampString = "556468781.601615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1050,7 +1002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.171941"
+            timestampString = "556468781.60201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "296"
@@ -1066,7 +1018,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9350179"
+            timestampString = "556468781.602066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
@@ -1082,12 +1034,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.935344"
+            timestampString = "556468781.602121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "336"
             endingLineNumber = "336"
-            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
+            landmarkName = "-check_distance_range:sourceLat:sourceLong:descLat:descLong:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1098,7 +1050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.7164921"
+            timestampString = "553615268.39069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -1114,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.935673"
+            timestampString = "556468781.602203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "-getCarDetails:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,12 +1082,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9359961"
+            timestampString = "556468781.602257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
-            landmarkName = "-registrationByNormal:"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
+            landmarkName = "-registrationByOTP:sendOtp:deviceID:deviceType:deviceToken:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1146,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/LoginPage.m"
-            timestampString = "551797706.513926"
+            timestampString = "555250164.730859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "-handlingResponseForLogin"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,12 +1114,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.936344"
+            timestampString = "556468781.602334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
             endingLineNumber = "340"
-            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
+            landmarkName = "-check_distance_range:sourceLat:sourceLong:descLat:descLong:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1178,12 +1130,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9366601"
+            timestampString = "556468781.602388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "335"
             endingLineNumber = "335"
-            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
+            landmarkName = "-check_distance_range:sourceLat:sourceLong:descLat:descLong:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1194,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.716629"
+            timestampString = "555250164.730999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "942"
-            endingLineNumber = "942"
+            startingLineNumber = "952"
+            endingLineNumber = "952"
             landmarkName = "-didTapMyLocationButtonForMapView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,7 +1162,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.172558"
+            timestampString = "556468781.602465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "560"
@@ -1226,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.716936"
+            timestampString = "555250164.731313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
             landmarkName = "-reverseGeoCoding:"
             landmarkType = "7">
             <Locations>
@@ -1274,7 +1226,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9371181"
+            timestampString = "556468781.6025389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
@@ -1290,7 +1242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.037492"
+            timestampString = "556468781.602596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -1306,7 +1258,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.172744"
+            timestampString = "556468781.602641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "461"
@@ -1322,7 +1274,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.038039"
+            timestampString = "556468781.602688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -1338,13 +1290,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.937512"
+            timestampString = "556468781.602729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "341"
             endingLineNumber = "341"
-            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
-            landmarkType = "7">
+            landmarkName = "RestCallManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1354,7 +1306,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.937844"
+            timestampString = "556468781.6027811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
@@ -1370,7 +1322,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.038197"
+            timestampString = "556468781.602832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -1386,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938186"
+            timestampString = "556468781.602875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938246"
+            timestampString = "556468781.6029249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "615"
-            endingLineNumber = "615"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
             landmarkName = "-callDriver"
             landmarkType = "7">
          </BreakpointContent>
@@ -1418,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938296"
+            timestampString = "556468781.6029691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "601"
-            endingLineNumber = "601"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "-contactDriver:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1434,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938345"
+            timestampString = "556468781.603014"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-createPolyLine:pickupLong:dropLat:dropLong:timeInterval:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1450,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938392"
+            timestampString = "556468781.6030591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "-createPolyLine:pickupLong:dropLat:dropLong:timeInterval:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1466,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938439"
+            timestampString = "556468781.603103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1482,7 +1434,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.038415"
+            timestampString = "556468781.603147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
@@ -1498,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.938513"
+            timestampString = "556468781.603187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "709"
-            endingLineNumber = "709"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
             landmarkName = "-responsefetchCancelReason"
             landmarkType = "7">
          </BreakpointContent>
@@ -1514,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.938563"
+            timestampString = "556468781.603233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
             landmarkName = "-fetchCancelReason:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1530,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.93888"
+            timestampString = "556468781.603282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "662"
+            endingLineNumber = "662"
             landmarkName = "-cancelRide:userType:isCharged:riderCurrentLat:riderCurrentLong:cancelReasonID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1601,38 +1553,6 @@
             endingLineNumber = "93"
             landmarkName = "LegalDetailScreen"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.939288"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "671"
-            endingLineNumber = "671"
-            landmarkName = "-getLegalMenu:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.939598"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "686"
-            endingLineNumber = "686"
-            landmarkName = "-getLegalMenu:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1754,12 +1674,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.940061"
+            timestampString = "556468781.6035711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "705"
-            endingLineNumber = "705"
-            landmarkName = "-getHelpMenu:"
+            startingLineNumber = "732"
+            endingLineNumber = "732"
+            landmarkName = "-getLegalMenu:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1786,12 +1706,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9404089"
+            timestampString = "556468781.603652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "738"
-            endingLineNumber = "738"
-            landmarkName = "-getRiderDetails:userType:"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
+            landmarkName = "-getHelpMenu:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1818,12 +1738,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.940761"
+            timestampString = "556468781.60373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "739"
-            endingLineNumber = "739"
-            landmarkName = "-getRiderDetails:userType:"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
+            landmarkName = "-getHelpMenu:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1834,11 +1754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.941072"
+            timestampString = "556468781.603783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1866,11 +1786,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.941156"
+            timestampString = "556468781.603856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "757"
-            endingLineNumber = "757"
+            startingLineNumber = "784"
+            endingLineNumber = "784"
             landmarkName = "-getRiderDetails:userType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1898,11 +1818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9415621"
+            timestampString = "556468781.603934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
             landmarkName = "-riderProfileImageUpload:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1914,12 +1834,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.941909"
+            timestampString = "556468781.603986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "879"
-            endingLineNumber = "879"
-            landmarkName = "-forgotPasswordStep2:otpValue:"
+            startingLineNumber = "906"
+            endingLineNumber = "906"
+            landmarkName = "-forgotPasswordStep3:newPassword:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1978,11 +1898,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.942456"
+            timestampString = "556468781.6041059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "-pushNotificationForDriverArrivalAndStartTrip:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1994,11 +1914,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.9425091"
+            timestampString = "556468781.6041631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "-pushNotificationForCancelTrip:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2010,11 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.942557"
+            timestampString = "556468781.604218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "610"
-            endingLineNumber = "610"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "-fetchCancelReason:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2025,156 +1945,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441306"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "759"
-            endingLineNumber = "759"
-            landmarkName = "-didTapMyLocationButtonForMapView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441391"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "-viewSelectedCar:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PickCar viewSelectedCar:]"
-                  moduleName = "GoEva"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
-                  timestampString = "529419160.590368"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "330"
-                  endingLineNumber = "330"
-                  offsetFromSymbolStart = "256">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PickCar viewSelectedCar:]"
-                  moduleName = "GoEva"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
-                  timestampString = "529419160.592158"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "330"
-                  endingLineNumber = "330"
-                  offsetFromSymbolStart = "272">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441453"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
-            landmarkName = "-viewSelectedCar:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441499"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "-viewSelectedCar:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "-viewSelectedCar:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.4416029"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
-            landmarkName = "-mapView:didTapMarker:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.441661"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
-            landmarkName = "-rideNowBtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/PickCarDetail.m"
-            timestampString = "548844217.186941"
+            timestampString = "556468781.6042711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-requestToServer"
             landmarkType = "7">
          </BreakpointContent>
@@ -2186,7 +1962,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.94309"
+            timestampString = "556468781.604311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "283"
@@ -2218,11 +1994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.718182"
+            timestampString = "555250164.7331671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "792"
-            endingLineNumber = "792"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
             landmarkName = "-sendDatafromPickupToDashboard:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2234,7 +2010,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.718465"
+            timestampString = "553615268.3919621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
@@ -2346,7 +2122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9436409"
+            timestampString = "556468781.604556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
@@ -2362,12 +2138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.943952"
+            timestampString = "556468781.60461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
-            landmarkName = "-getLegalMenu:"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
+            landmarkName = "-rateUsDriver:userType:ratingValue:comments:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2804,12 +2580,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9445699"
+            timestampString = "556468781.604991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
-            landmarkName = "-getHelpMenu:"
+            startingLineNumber = "735"
+            endingLineNumber = "735"
+            landmarkName = "-getLegalMenu:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2832,31 +2608,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.944903"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
-            landmarkName = "-requestRegistrationOTP:is_resend:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.945217"
+            timestampString = "556468781.605074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-getCarDetails:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2868,13 +2628,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.945527"
+            timestampString = "556468781.605127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "RestCallManager"
-            landmarkType = "3">
+            startingLineNumber = "444"
+            endingLineNumber = "444"
+            landmarkName = "-getCarDetails:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2884,11 +2644,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.945839"
+            timestampString = "556468781.605178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "-registrationByOTP:sendOtp:deviceID:deviceType:deviceToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.605227"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "-registrationByNormal:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2900,12 +2676,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.946149"
+            timestampString = "556468781.6052769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "-registrationByNormal:"
+            startingLineNumber = "833"
+            endingLineNumber = "833"
+            landmarkName = "-submitprofileData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2916,27 +2692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9465261"
+            timestampString = "556468781.605327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "806"
-            endingLineNumber = "806"
-            landmarkName = "RestCallManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.946975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "829"
-            endingLineNumber = "829"
+            startingLineNumber = "856"
+            endingLineNumber = "856"
             landmarkName = "-changePassword:userType:oldPassword:newPassword:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2948,12 +2708,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.947592"
+            timestampString = "556468781.605376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "832"
-            endingLineNumber = "832"
-            landmarkName = "-forgotPasswordStep1:"
+            startingLineNumber = "859"
+            endingLineNumber = "859"
+            landmarkName = "-changePassword:userType:oldPassword:newPassword:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2964,13 +2724,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.94801"
+            timestampString = "556468781.605425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "856"
-            endingLineNumber = "856"
-            landmarkName = "RestCallManager"
-            landmarkType = "3">
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "-forgotPasswordStep2:otpValue:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2980,13 +2740,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.948333"
+            timestampString = "556468781.605473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
-            landmarkName = "RestCallManager"
-            landmarkType = "3">
+            startingLineNumber = "540"
+            endingLineNumber = "540"
+            landmarkName = "-registrationByNormal:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2996,11 +2756,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.7191041"
+            timestampString = "555250164.734606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3012,7 +2772,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.040485"
+            timestampString = "556468781.6055501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -3028,11 +2788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9487571"
+            timestampString = "556468781.605594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "-getCarDetails:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3156,11 +2916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.719542"
+            timestampString = "555250164.735141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "795"
-            endingLineNumber = "795"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
             landmarkName = "-sendDatafromPickupToDashboard:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3172,11 +2932,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.719821"
+            timestampString = "555250164.7354161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "698"
-            endingLineNumber = "698"
+            startingLineNumber = "708"
+            endingLineNumber = "708"
             landmarkName = "-dropLocationController"
             landmarkType = "7">
          </BreakpointContent>
@@ -3188,11 +2948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.720098"
+            timestampString = "555250164.735687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "647"
-            endingLineNumber = "647"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
             landmarkName = "-pickupLocationController"
             landmarkType = "7">
          </BreakpointContent>
@@ -3203,56 +2963,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.442997"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "802"
-            endingLineNumber = "802"
-            landmarkName = "-showContactDialog"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.443042"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "856"
-            endingLineNumber = "856"
-            landmarkName = "-mapView:didTapMarker:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/PickCar.m"
-            timestampString = "549468063.443086"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "782"
-            endingLineNumber = "782"
-            landmarkName = "-requestToServer"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.04094"
+            timestampString = "556468781.605858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -3268,13 +2980,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9494849"
+            timestampString = "556468781.6059051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "881"
-            endingLineNumber = "881"
-            landmarkName = "RestCallManager"
-            landmarkType = "3">
+            startingLineNumber = "908"
+            endingLineNumber = "908"
+            landmarkName = "-forgotPasswordStep3:newPassword:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3284,11 +2996,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.949809"
+            timestampString = "556468781.605956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "759"
-            endingLineNumber = "759"
+            startingLineNumber = "762"
+            endingLineNumber = "762"
             landmarkName = "-requestToServerForFetchDriverLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -3300,11 +3012,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.949867"
+            timestampString = "556468781.606005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "911"
-            endingLineNumber = "911"
+            startingLineNumber = "938"
+            endingLineNumber = "938"
             landmarkName = "-getTripList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3316,23 +3028,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.041104"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.041199"
+            timestampString = "556468781.606058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -3348,7 +3044,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.041256"
+            timestampString = "556468781.6061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -3364,7 +3060,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.04135"
+            timestampString = "556468781.606142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
@@ -3380,23 +3076,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.04142"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.041469"
+            timestampString = "556468781.606184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
@@ -3418,22 +3098,6 @@
             startingLineNumber = "112"
             endingLineNumber = "112"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.950369"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
-            landmarkName = "-getRiderDetails:userType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3476,11 +3140,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.720669"
+            timestampString = "555250164.736306"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "Dashboard"
             landmarkType = "3">
          </BreakpointContent>
@@ -3572,11 +3236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.951021"
+            timestampString = "556468781.606419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3636,11 +3300,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9512089"
+            timestampString = "556468781.606535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
+            startingLineNumber = "638"
+            endingLineNumber = "638"
             landmarkName = "-fetchCancelReason:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3652,11 +3316,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.951524"
+            timestampString = "556468781.606589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-fetchCancelReason:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3668,12 +3332,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.721148"
+            timestampString = "556468781.606642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-requestToServerGetProfile"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-responsefetchProfile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3700,11 +3364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.951888"
+            timestampString = "556468781.606945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "-pushNotificationForDriverArrivalAndStartTrip:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3716,11 +3380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.721241"
+            timestampString = "556468781.607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3732,11 +3396,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.721289"
+            timestampString = "556468781.607258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3748,7 +3412,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.721333"
+            timestampString = "553615268.393626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "447"
@@ -3764,7 +3428,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RegistrationPage.m"
-            timestampString = "552490984.721379"
+            timestampString = "553615268.3936681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -3780,11 +3444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/LoginPage.m"
-            timestampString = "551797706.526799"
+            timestampString = "555250164.737165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "LoginPage"
             landmarkType = "3">
          </BreakpointContent>
@@ -3796,11 +3460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/LoginPage.m"
-            timestampString = "551797706.527042"
+            timestampString = "555250164.7372119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-validationAlert:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3812,11 +3476,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.7214659"
+            timestampString = "555250164.7372791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "-timeIntervalFor10Sec:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3828,12 +3492,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.721746"
+            timestampString = "556468781.6076289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-requestToServerGetProfile"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-responsefetchProfile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3844,11 +3508,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.9521461"
+            timestampString = "556468781.60789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "-contactDriver:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3860,11 +3524,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.952197"
+            timestampString = "556468781.607945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "-pushNotificationForDriverArrivalAndStartTrip:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3876,11 +3540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.952247"
+            timestampString = "556468781.607995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
+            startingLineNumber = "845"
+            endingLineNumber = "845"
             landmarkName = "-responseGetDriverLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -3892,11 +3556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.952294"
+            timestampString = "556468781.608042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-viewWillDisappear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3907,24 +3571,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.042298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.178845"
+            timestampString = "556468781.608088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "614"
@@ -3940,7 +3588,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.042732"
+            timestampString = "556468781.6081361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -3956,7 +3604,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.178946"
+            timestampString = "556468781.608178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "482"
@@ -3972,11 +3620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.952427"
+            timestampString = "556468781.608224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-pushNotificationForCancelTrip:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3988,11 +3636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9524781"
+            timestampString = "556468781.608272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "941"
-            endingLineNumber = "941"
+            startingLineNumber = "968"
+            endingLineNumber = "968"
             landmarkName = "-getDriverLocationForArriving:bookingID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4004,12 +3652,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.952791"
+            timestampString = "556468781.608323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
             endingLineNumber = "361"
-            landmarkName = "-checkRequestStatus:"
+            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4020,7 +3668,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.179191"
+            timestampString = "556468781.608374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "532"
@@ -4036,7 +3684,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.179239"
+            timestampString = "556468781.6084189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "625"
@@ -4052,11 +3700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.953145"
+            timestampString = "556468781.608465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "-setData"
             landmarkType = "7">
          </BreakpointContent>
@@ -4084,7 +3732,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AppDelegate.m"
-            timestampString = "551087141.044112"
+            timestampString = "556468781.6085401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -4100,11 +3748,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.953244"
+            timestampString = "556468781.608584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "-pushNotificationForTripComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4115,28 +3763,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.953295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "-checkRequestStatus:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.722108"
+            timestampString = "555250164.7380691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "-timeIntervalFor10Sec:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4148,11 +3780,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.722385"
+            timestampString = "555250164.738358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "-timeIntervalFor10Sec:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4164,11 +3796,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.722658"
+            timestampString = "555250164.738629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4180,11 +3812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.722929"
+            timestampString = "555250164.738894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
             landmarkName = "-reverseGeoCoding:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4227,22 +3859,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.179782"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
-            landmarkName = "-responseDriverFound:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Payment.m"
             timestampString = "548771310.814208"
             startingColumnNumber = "9223372036854775807"
@@ -4276,12 +3892,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.953904"
+            timestampString = "556468781.608802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
-            landmarkName = "-requestLoginOTP:loginThroughOTP:"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
+            landmarkName = "-registrationByNormal:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4292,11 +3908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.723314"
+            timestampString = "555250164.739424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "-requestToServerCheckDistanceRange"
             landmarkType = "7">
          </BreakpointContent>
@@ -4308,7 +3924,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.9542691"
+            timestampString = "556468781.608881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "317"
@@ -4324,7 +3940,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
-            timestampString = "549468063.444978"
+            timestampString = "556468781.608937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -4340,11 +3956,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.723639"
+            timestampString = "555250164.739805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4356,7 +3972,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
-            timestampString = "549468063.445102"
+            timestampString = "556468781.609005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -4372,7 +3988,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
-            timestampString = "549468063.44515"
+            timestampString = "556468781.609049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
@@ -4388,11 +4004,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.723959"
+            timestampString = "555250164.740165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4404,7 +4020,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
-            timestampString = "549468063.445279"
+            timestampString = "556468781.609115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -4420,7 +4036,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/MyUtils.m"
-            timestampString = "549468063.4453419"
+            timestampString = "556468781.609158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -4436,11 +4052,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.954797"
+            timestampString = "556468781.609199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "945"
-            endingLineNumber = "945"
+            startingLineNumber = "972"
+            endingLineNumber = "972"
             landmarkName = "-getDriverLocationForArriving:bookingID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4452,11 +4068,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.955112"
+            timestampString = "556468781.6092499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4468,11 +4084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.955166"
+            timestampString = "556468781.609297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4484,11 +4100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.9552161"
+            timestampString = "556468781.609341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "802"
-            endingLineNumber = "802"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
             landmarkName = "-responseGetDriverLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -4500,11 +4116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.955265"
+            timestampString = "556468781.609386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "756"
-            endingLineNumber = "756"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "-requestToServerForFetchDriverLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -4516,11 +4132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.955312"
+            timestampString = "556468781.609431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "752"
-            endingLineNumber = "752"
+            startingLineNumber = "755"
+            endingLineNumber = "755"
             landmarkName = "-commonMethodForRefreshDriverLocationForArrival"
             landmarkType = "7">
          </BreakpointContent>
@@ -4532,11 +4148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.955358"
+            timestampString = "556468781.609477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "748"
-            endingLineNumber = "748"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "-commonMethodForRefreshDriverLocationForArrival"
             landmarkType = "7">
          </BreakpointContent>
@@ -4548,12 +4164,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.955404"
+            timestampString = "556468781.6095231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "975"
-            endingLineNumber = "975"
-            landmarkName = "-getEstimatedTimeOfRideAfterStartTrip:bookingID:driverCurrentlat:driverCurrentLong:"
+            startingLineNumber = "1002"
+            endingLineNumber = "1002"
+            landmarkName = "-getEstimatedTimeOfRideAfterStartTrip:userType:bookingID:driverCurrentlat:driverCurrentLong:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4564,12 +4180,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.180693"
+            timestampString = "556468781.609574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "654"
-            endingLineNumber = "654"
-            landmarkName = "-requestToServerForCancelRequest"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
+            landmarkName = "-responseDriverFound:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4580,11 +4196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.955745"
+            timestampString = "556468781.609621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1008"
-            endingLineNumber = "1008"
+            startingLineNumber = "1035"
+            endingLineNumber = "1035"
             landmarkName = "-cancelRequestByRider:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4596,12 +4212,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.180823"
+            timestampString = "556468781.609671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "652"
-            endingLineNumber = "652"
-            landmarkName = "-requestToServerForCancelRequest"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
+            landmarkName = "-responseDriverFound:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4612,12 +4228,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.956084"
+            timestampString = "556468781.609717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "339"
             endingLineNumber = "339"
-            landmarkName = "-requestBooking:availabilityID:carTypeID:pickupLocation:dropLocation:sourceLat:sourceLong:descLat:descLong:pickCar:"
+            landmarkName = "-check_distance_range:sourceLat:sourceLong:descLat:descLong:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4628,7 +4244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.180959"
+            timestampString = "556468781.609767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "578"
@@ -4644,7 +4260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.181022"
+            timestampString = "556468781.609826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "570"
@@ -4660,7 +4276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/ChooseCar.m"
-            timestampString = "551972980.181069"
+            timestampString = "556468781.6098731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "574"
@@ -4676,11 +4292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.724529"
+            timestampString = "555250164.741021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "538"
-            endingLineNumber = "538"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4692,11 +4308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.6445431"
+            timestampString = "556468781.609949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-responsefetchLegalMenu"
             landmarkType = "7">
          </BreakpointContent>
@@ -4708,11 +4324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.644902"
+            timestampString = "556468781.609995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-showContent"
             landmarkType = "7">
          </BreakpointContent>
@@ -4724,7 +4340,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.95657"
+            timestampString = "556468781.610036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "286"
@@ -4740,11 +4356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.956887"
+            timestampString = "556468781.610087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "619"
-            endingLineNumber = "619"
+            startingLineNumber = "646"
+            endingLineNumber = "646"
             landmarkName = "-cancelRide:userType:isCharged:riderCurrentLat:riderCurrentLong:cancelReasonID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4756,7 +4372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.645565"
+            timestampString = "556468781.610137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -4772,7 +4388,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.646004"
+            timestampString = "556468781.610178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -4788,7 +4404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.6464421"
+            timestampString = "556468781.610221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -4804,7 +4420,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.646744"
+            timestampString = "556468781.610261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -4820,7 +4436,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/CancelTrip.m"
-            timestampString = "552235107.647102"
+            timestampString = "556468781.610301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
@@ -4836,11 +4452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Splash.m"
-            timestampString = "552490984.724964"
+            timestampString = "556468781.610341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-requestToServerGetSetting"
             landmarkType = "7">
          </BreakpointContent>
@@ -4848,15 +4464,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/AfterBooking.m"
-            timestampString = "552316938.957317"
+            timestampString = "556468781.610604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "659"
-            endingLineNumber = "659"
+            startingLineNumber = "662"
+            endingLineNumber = "662"
             landmarkName = "-cancelBooking:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4868,11 +4484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/RestCallManager.m"
-            timestampString = "552316938.957372"
+            timestampString = "556468781.610658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "915"
-            endingLineNumber = "915"
+            startingLineNumber = "942"
+            endingLineNumber = "942"
             landmarkName = "-getTripList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4884,12 +4500,412 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoEvaRider/Dashboard.m"
-            timestampString = "552490984.725055"
+            timestampString = "555250164.741714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "563"
-            endingLineNumber = "563"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "-timeIntervalFor10Sec:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.610741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
+            landmarkName = "-check_distance_range:sourceLat:sourceLong:descLat:descLong:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.610795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "-getNearestCar:currentLong:carTypeID:pickCar:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.444855"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1099"
+            endingLineNumber = "1099"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Dashboard.m"
+            timestampString = "555250164.742123"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1005"
+            endingLineNumber = "1005"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Dashboard.m"
+            timestampString = "555250164.7424099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1007"
+            endingLineNumber = "1007"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Dashboard showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/Dashboard.m"
+                  timestampString = "553790393.8920209"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1004"
+                  endingLineNumber = "1004"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Dashboard showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/Dashboard.m"
+                  timestampString = "553790393.894441"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1004"
+                  endingLineNumber = "1004"
+                  offsetFromSymbolStart = "632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.6109149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-getNearestCar:currentLong:carTypeID:pickCar:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.4453959"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1042"
+            endingLineNumber = "1042"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PickCar showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
+                  timestampString = "554638385.7718509"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1042"
+                  endingLineNumber = "1042"
+                  offsetFromSymbolStart = "1156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PickCar showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
+                  timestampString = "554638385.77572"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1042"
+                  endingLineNumber = "1042"
+                  offsetFromSymbolStart = "1176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.4456559"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1053"
+            endingLineNumber = "1053"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.44591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PickCar showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
+                  timestampString = "554637662.504926"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1036"
+                  endingLineNumber = "1036"
+                  offsetFromSymbolStart = "780">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PickCar showContactDialog]"
+                  moduleName = "GoEva"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kalyanmohanpaul/Desktop/Jasim%20Project/GoEvaRider/GoEvaRider/PickCar.m"
+                  timestampString = "554637662.508206"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1036"
+                  endingLineNumber = "1036"
+                  offsetFromSymbolStart = "796">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.446151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1035"
+            endingLineNumber = "1035"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638385.446389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1036"
+            endingLineNumber = "1036"
+            landmarkName = "-showContactDialog"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/PickCar.m"
+            timestampString = "554638446.830673"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1135"
+            endingLineNumber = "1135"
+            landmarkName = "-noCarFound"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.611097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
+            landmarkName = "-checkRequestStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468781.611151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "-checkRequestStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Splash.m"
+            timestampString = "556468781.611203"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-responsefetchProfile"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Splash.m"
+            timestampString = "556468781.611436"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-requestToServerGetTripDetails"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/RestCallManager.m"
+            timestampString = "556468805.314751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "-checkIncompleteRideInRiderEnd:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Splash.m"
+            timestampString = "556468896.733512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-requestToServerGetTripDetails"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoEvaRider/Splash.m"
+            timestampString = "556468919.914204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-responsefetchTripDetails:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

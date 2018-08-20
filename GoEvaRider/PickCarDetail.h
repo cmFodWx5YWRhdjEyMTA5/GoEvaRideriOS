@@ -34,6 +34,11 @@
     NSMutableArray *carAvailablityArray;
     UIView *loadingView;
     
+    IBOutlet UILabel *lblCardName,*lblCardNameWithLast4;
+    IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UIView *viewCard;
+    NSMutableArray *cardArray;
+    IBOutlet UIButton *btnAddOrChangeCard;
 }
 
 @property (nonatomic) NSString *selectedCar;
@@ -46,6 +51,7 @@
 @property (nonatomic,strong)NSMutableArray *arrayPolylineGreen;
 @property (nonatomic,strong) GMSPolyline *polylineBlue;
 @property (nonatomic,strong) GMSPolyline *polylineGreen;
+@property (nonatomic) NSInteger modeAddCard;
 
 - (IBAction)confirmBooking:(UIButton *)sender;
 - (IBAction)backToPickCarPage:(UIButton *)sender;

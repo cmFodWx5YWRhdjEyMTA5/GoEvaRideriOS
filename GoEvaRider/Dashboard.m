@@ -60,6 +60,13 @@ alpha:1.0]
     [viewChooseCarPro setUserInteractionEnabled:YES];
     [viewChooseCarGRP setUserInteractionEnabled:YES];
     
+    viewBadge1.layer.cornerRadius = viewBadge1.frame.size.width / 2;
+    viewBadge1.clipsToBounds = YES;
+    viewBadge2.layer.cornerRadius = viewBadge2.frame.size.width / 2;
+    viewBadge2.clipsToBounds = YES;
+    viewBadge3.layer.cornerRadius = viewBadge3.frame.size.width / 2;
+    viewBadge3.clipsToBounds = YES;
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(pickupLocationController)];
     
@@ -91,6 +98,9 @@ alpha:1.0]
     [lblTime2 setHidden:YES];
     [lblTime3 setHidden:YES];
     
+    [lblBadge1 setText:@"0"];
+    [lblBadge2 setText:@"0"];
+    [lblBadge3 setText:@"0"];
     returnPickupAddressMode=0;
     
 //    NSDate *dateToFire = [[NSDate date] dateByAddingTimeInterval:30*60];
@@ -155,9 +165,9 @@ alpha:1.0]
     inputViewContainer.layer.cornerRadius = 10;
     
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:22.619160
-                                                            longitude:88.398099
-                                                                 zoom:12];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.50
+                                                            longitude:-98.35
+                                                                 zoom:15];
     
     _mapView = [GMSMapView mapWithFrame:_mapViewContainer.bounds camera:camera];
     _mapView.delegate=self;
@@ -240,7 +250,7 @@ alpha:1.0]
 //        CLLocationCoordinate2D fromLocation = CLLocationCoordinate2DMake([pickupLocation.latitude doubleValue],[pickupLocation.longitude doubleValue]);
 //        locationMarker.position = fromLocation;
 //        locationMarker.map = _mapView;
-//        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:14];
+//        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:15];
 //        [_mapView animateWithCameraUpdate:updatedCamera];
     }
     if (returnDropAddressMode==1) {
@@ -253,7 +263,7 @@ alpha:1.0]
 //        CLLocationCoordinate2D toLocation = CLLocationCoordinate2DMake([dropLocation.latitude doubleValue],[dropLocation.longitude doubleValue]);
 //        locationMarker.position = toLocation;
 //        locationMarker.map = _mapView;
-//        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:14];
+//        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:15];
 //        [_mapView animateWithCameraUpdate:updatedCamera];
     }
     if (!sec10Timer) {
@@ -479,7 +489,7 @@ alpha:1.0]
     
     for (CarAvailablity *carObj in carAvailablityArray) {
         if ([[carObj car_type_id] isEqualToString:selectedCarType]) {
-            [lblTime1 setText:[carObj estimated_time]];
+            //[lblTime1 setText:[carObj estimated_time]];
             awayTime= [carObj estimated_time];
             estimatedFareCostPerMile = [carObj distance_wise_rate];
             break;
@@ -540,7 +550,7 @@ alpha:1.0]
         /* Add My location on Map */
         locationMarker.map  = nil;
         _mapView.camera = [GMSCameraPosition cameraWithTarget:userCurrentLocation.coordinate
-                                                         zoom:14];
+                                                         zoom:15];
         locationMarker = [[GMSMarker alloc] init];
         locationMarker.appearAnimation=kGMSMarkerAnimationPop;
         UIImage *house = [UIImage imageNamed:@"map_marker"];
@@ -666,7 +676,7 @@ alpha:1.0]
         CLLocationCoordinate2D fromLocation = CLLocationCoordinate2DMake([pickupLocation.latitude doubleValue],[pickupLocation.longitude doubleValue]);
         locationMarker.position = fromLocation;
         locationMarker.map = _mapView;
-        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:14];
+        GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:15];
         [_mapView animateWithCameraUpdate:updatedCamera];
         viewFrom.layer.masksToBounds = NO;
         viewFrom.layer.shadowColor = [UIColor redColor].CGColor;
@@ -769,7 +779,7 @@ alpha:1.0]
             CLLocationCoordinate2D toLocation = CLLocationCoordinate2DMake([dropLocation.latitude doubleValue],[dropLocation.longitude doubleValue]);
             locationMarker.position = toLocation;
             locationMarker.map = _mapView;
-            GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:14];
+            GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:15];
             [_mapView animateWithCameraUpdate:updatedCamera];
         }
         else{
@@ -834,7 +844,7 @@ alpha:1.0]
     CLLocationCoordinate2D fromLocation = CLLocationCoordinate2DMake([pickupLocation.latitude doubleValue],[pickupLocation.longitude doubleValue]);
     locationMarker.position = fromLocation;
     locationMarker.map = _mapView;
-    GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:14];
+    GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:fromLocation zoom:15];
     [_mapView animateWithCameraUpdate:updatedCamera];
     
     
@@ -899,11 +909,11 @@ alpha:1.0]
     
 //    GMSCameraPosition *cameraPosition = [GMSCameraPosition cameraWithLatitude:[dropLocation.latitude doubleValue]
 //                                                                    longitude:[dropLocation.longitude doubleValue]
-//                                                                         zoom:14.0];
+//                                                                         zoom:15.0];
 //    
 //    [_mapView animateToCameraPosition:cameraPosition];
     
-    GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:14];
+    GMSCameraUpdate *updatedCamera = [GMSCameraUpdate setTarget:toLocation zoom:15];
     [_mapView animateWithCameraUpdate:updatedCamera];
     
 }
@@ -996,19 +1006,36 @@ alpha:1.0]
     
     for (CarAvailablity *carObj in carAvailablityArray) {
         if ([[carObj car_type_id] isEqualToString:@"1"]) {
-            [loaderImg1 setHidden:YES];
-            [lblTime1 setHidden:NO];
-            [lblTime1 setText:[carObj estimated_time]];
+            if ([carObj estimated_time] == (id)[NSNull null]) {
+                [loaderImg1 setHidden:NO];
+            }else{
+                [loaderImg1 setHidden:YES];
+                [lblTime1 setHidden:NO];
+                [lblTime1 setText:[carObj estimated_time]];
+                [lblBadge1 setText:[carObj count_avacar]];
+            }
         }
         else if ([[carObj car_type_id] isEqualToString:@"2"]) {
-            [loaderImg2 setHidden:YES];
-            [lblTime2 setHidden:NO];
-            [lblTime2 setText:[carObj estimated_time]];
+            if ([carObj estimated_time] == (id)[NSNull null]) {
+                [loaderImg2 setHidden:NO];
+            }else{
+                [loaderImg2 setHidden:YES];
+                [lblTime2 setHidden:NO];
+                [lblTime2 setText:[carObj estimated_time]];
+                [lblBadge2 setText:[carObj count_avacar]];
+            }
+            
         }
         else if ([[carObj car_type_id] isEqualToString:@"3"]) {
-            [loaderImg3 setHidden:YES];
-            [lblTime3 setHidden:NO];
-            [lblTime3 setText:[carObj estimated_time]];
+            if ([carObj estimated_time] == (id)[NSNull null]) {
+                [loaderImg3 setHidden:NO];
+            }
+            else{
+                [loaderImg3 setHidden:YES];
+                [lblTime3 setHidden:NO];
+                [lblTime3 setText:[carObj estimated_time]];
+                [lblBadge3 setText:[carObj count_avacar]];
+            }
         }
     }
       
@@ -1019,12 +1046,16 @@ alpha:1.0]
     [self.view setUserInteractionEnabled:YES];
     self.navigationController.navigationBar.userInteractionEnabled = YES;
     self.navigationController.view.userInteractionEnabled = YES;
-            [loaderImg1 setHidden:NO];
-            [lblTime1 setHidden:YES];
-            [loaderImg2 setHidden:NO];
-            [lblTime2 setHidden:YES];
-            [loaderImg3 setHidden:NO];
-            [lblTime3 setHidden:YES];
+    [loaderImg1 setHidden:NO];
+    [lblTime1 setHidden:YES];
+    [loaderImg2 setHidden:NO];
+    [lblTime2 setHidden:YES];
+    [loaderImg3 setHidden:NO];
+    [lblTime3 setHidden:YES];
+    
+    [lblBadge1 setText:@"0"];
+    [lblBadge2 setText:@"0"];
+    [lblBadge3 setText:@"0"];
 }
 
 -(void)outOfDistanceRange{

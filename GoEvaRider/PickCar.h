@@ -12,13 +12,13 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "LocationData.h"
 
-
 @interface PickCar : UIViewController<GMSMapViewDelegate>{
     AppDelegate *appDel;
     IBOutlet UIView *viewFrom, *viewTo;
     IBOutlet UIView *outerViewFrom, *outerViewTo;
     IBOutlet UIImageView *markerFrom, *markerTo,*img_editFrom, *img_editTo;
     UIBezierPath *shadowPath, *shadowPath2;
+    IBOutlet UIButton *btnPickCar, *btnRideNow;
     IBOutlet UIView *viewChooseCar;
     IBOutlet UIView *viewChooseCarPro;
     IBOutlet UIView *viewChooseCarGRP;
@@ -35,15 +35,18 @@
     NSString *textFieldFromMode, *textFieldToMode;
     NSInteger returnPickupAddressMode, returnDropAddressMode;
     NSString *modeForViewControllerDismiss;
-
+    UIView *loadingView;
+    IBOutlet UIView *viewBadge1, *viewBadge2, *viewBadge3;
+    IBOutlet UILabel *lblBadge1, *lblBadge2, *lblBadge3;
+    
 }
+@property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) NSString *pageTitle;
 @property (nonatomic) NSArray *fromAddressArray;
 @property (nonatomic) NSString *fromAddress;
 @property (nonatomic) NSString *toAddress;
-@property (strong, nonatomic) UIWindow *window;
 @property(nonatomic, retain) NSMutableArray *googleMapsDriverPins;
 - (IBAction)rideNowBtn:(UIButton *)sender;
-- (IBAction)backToHomePage:(id)sender;
+
 
 @end

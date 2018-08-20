@@ -38,6 +38,8 @@
     NSInteger returnPickupAddressMode, returnDropAddressMode;
     NSString *modeForViewControllerDismiss;
     UIView *loadingView;
+    IBOutlet UIView *viewBadge1, *viewBadge2, *viewBadge3;
+    IBOutlet UILabel *lblBadge1, *lblBadge2, *lblBadge3;
     
 }
 @property (strong, nonatomic) UIWindow *window;

@@ -34,7 +34,7 @@
     if (self.isCancellationCharge) {
         UIColor *color = [UIColor blueColor];
         NSString *startText = @"GoEva charge you of ";
-        NSString *priceText = @"$5.00";
+        NSString *priceText = [MyUtils getUserDefault:@"cancellation_charge"];
         NSString *endingText = @" for cancellation of trip due to late response to cancel. Please refer to cancellation policy for further details.";
         NSString *lblCardDetails = [NSString stringWithFormat:@"%@ %@ %@",startText,priceText,endingText];
         NSMutableAttributedString *mutAttrStr = [[NSMutableAttributedString alloc]initWithString:lblCardDetails attributes:nil];
@@ -181,6 +181,7 @@
         [self.view setUserInteractionEnabled:YES];
         [MyUtils removeParticularObjectFromNSUserDefault:@"pickupLocation"];
         [MyUtils removeParticularObjectFromNSUserDefault:@"dropLocation"];
+        [MyUtils removeParticularObjectFromNSUserDefault:@"bookingID"];
         [MyUtils removeParticularObjectFromNSUserDefault:@"rideTimer"];
         UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"Ride has been successfully cancelled. "
                                                                       message:@""
@@ -270,7 +271,6 @@
 
 -(void) responsefetchLegalMenu{
     [self.view setUserInteractionEnabled:YES];
-    legalArray = [NSMutableArray arrayWithArray:[[DataStore sharedInstance] getAllLegalMenu]];
     legalObj = [[DataStore sharedInstance] getLegalMenuByID:@"10"];
     [self showContent];
 }

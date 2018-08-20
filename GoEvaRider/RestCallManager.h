@@ -57,8 +57,9 @@
 -(BOOL)forgotPasswordStep3:(NSString *)mobileOrEmail newPassword:(NSString *)newPassword;
 -(BOOL)getTripList:(NSString *)riderID;
 -(NSString *)getDriverLocationForArriving:(NSString *)driverID bookingID:(NSString *)bookingID;
--(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID bookingID:(NSString *)bookingID driverCurrentlat:(NSString *)driverCurrentlat driverCurrentLong:(NSString *)driverCurrentLong;
+-(NSString *)getEstimatedTimeOfRideAfterStartTrip:(NSString *)driverID userType:(NSString *)userType bookingID:(NSString *)bookingID driverCurrentlat:(NSString *)driverCurrentlat driverCurrentLong:(NSString *)driverCurrentLong;
 -(BOOL)cancelRequestByRider:(NSString *)requestID;
 -(BOOL)getSettings:(NSString *)userType;
+-(NSMutableDictionary *)checkIncompleteRideInRiderEnd:(NSString *)bookingID;
 
 @end

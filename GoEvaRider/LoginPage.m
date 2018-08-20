@@ -16,6 +16,7 @@
 #import "GlobalVariable.h"
 #import "ForgotPassword.h"
 #import "DashboardCaller.h"
+#import "ChooseRideService.h"
 
 #define UIColorFromRGB(rgbValue) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -418,6 +419,7 @@ alpha:1.0]
     }
     [MyUtils setUserDefault:@"riderRating" value:[[riderArray objectAtIndex:0] ratting]];
     [DashboardCaller homepageSelector:self];
+    //[self chooseRideServiceSelector];
 }
 
 -(void)noCarFound{
@@ -427,6 +429,17 @@ alpha:1.0]
     [btnLoginSubmit setBackgroundImage:[UIImage imageNamed:@"imgSubmit.png"] forState:UIControlStateNormal];
     [btnLoginSubmit setUserInteractionEnabled:YES];
     [self validationAlert:[GlobalVariable getGlobalMessage]];
+}
+
+-(void) chooseRideServiceSelector{
+    ChooseRideService *loginController;
+    if(appDel.iSiPhone5){
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideService" bundle:nil];
+    }else{
+        loginController = [[ChooseRideService alloc] initWithNibName:@"ChooseRideServiceLow" bundle:nil];
+    }
+    loginController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:loginController animated:YES completion:nil];
 }
 
 
