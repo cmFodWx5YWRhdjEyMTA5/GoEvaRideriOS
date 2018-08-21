@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (retain, nonatomic) IBOutlet UIScrollView *backGroundScroll;
 @property (nonatomic) NSString *bookingID;
+@property (nonatomic) BOOL isRestartApp;
 @property (nonatomic) BookingDetailMaster *bookingObj;
 @property (nonatomic,strong) GMSMutablePath *path2;
 @property (nonatomic,strong)NSMutableArray *arrayPolylineGreen;

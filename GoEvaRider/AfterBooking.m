@@ -553,6 +553,7 @@ static NSInteger notificationModeStatic;
             registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
         }
         registerController.bookingObj = bookingObj;
+        registerController.isRestartApp = NO;
         registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
         [self presentViewController:registerController animated:YES completion:nil];
     }];

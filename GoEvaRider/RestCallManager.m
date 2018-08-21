@@ -986,6 +986,8 @@
                                 driverCurrentLong:(NSString *)driverCurrentLong{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    if (driverCurrentlat==nil)  driverCurrentlat=@"";
+    if (driverCurrentLong==nil)  driverCurrentLong=@"";
     NSString *strURL=[NSString stringWithFormat:@"%@get_estimated_timeOf_ride_after_startTrip?driver_id=%@&user_type=%@&booking_id=%@&driver_current_lat=%@&driver_current_long=%@",
                       baseUrl,
                       driverID,

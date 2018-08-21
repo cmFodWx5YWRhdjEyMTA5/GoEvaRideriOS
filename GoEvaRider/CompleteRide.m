@@ -185,7 +185,12 @@
 - (IBAction)goToHomePage:(UIButton *)sender {
     [self.view setUserInteractionEnabled:YES];
     //[DashboardCaller homepageSelector:self];
-    [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (_isRestartApp) {
+        [DashboardCaller homepageSelector:self];
+    }
+    else{
+        [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

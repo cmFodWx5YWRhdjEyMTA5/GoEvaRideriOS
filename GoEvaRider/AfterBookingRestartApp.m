@@ -48,7 +48,7 @@ alpha:1.0]
     NSArray *cardBrand;
     NSTimer *timerForArrival, *timerForStartTrip;
 }
-static NSInteger notificationModeStatic;
+
 @synthesize notificationDriverDetailsDict;
 
 - (void)viewDidLoad {
@@ -104,7 +104,7 @@ static NSInteger notificationModeStatic;
     btnRefreshDriver.clipsToBounds=YES;
     btnRefreshDriver.userInteractionEnabled=YES;
     
-    [self setData];
+    
     
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.50
@@ -120,26 +120,7 @@ static NSInteger notificationModeStatic;
     dispatch_async(dispatch_get_main_queue(), ^{
         _mapView.myLocationEnabled = YES;
     });
-    
-    /*lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
-    driverMarker = [[GMSMarker alloc] init];
-    _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
-    driverMarker.iconView = _londonView;
-    driverMarker.position = CLLocationCoordinate2DMake([[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue],[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue]);
-    
-    driverMarker.map = _mapView;
-    [_mapView setSelectedMarker:driverMarker];
-    
-    
-    pickerMarker = [[GMSMarker alloc] init];
-    pickerMarker.title = @"My Pickup Location";
-    //pickerMarker.snippet = pickupLocation.locationAddress;
-    _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
-    pickerMarker.iconView = _londonView;
-    pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
-    pickerMarker.map = _mapView;
-    
-    [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];*/
+    [self setData];
     
 }
 
@@ -151,13 +132,13 @@ static NSInteger notificationModeStatic;
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     
-    if ((notificationModeStatic!=3 && notificationModeStatic<4) || [[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
+    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
         [self commonMethodForRefreshDriverLocationForArrival];
         // Timer for getting update location and arrival time of Driver
         timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
                                                            target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
     }
-    else if (notificationModeStatic==4 || [[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]) {
+    else if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]) {
         [self commonMethodForRefreshEstimatedTime];
         // Timer for getting update location and arrival time of Driver
         timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
@@ -167,50 +148,30 @@ static NSInteger notificationModeStatic;
 
 
 -(void) setData{
-    _bookingID = [notificationDriverDetailsDict valueForKey:@"request_id"];
+    _bookingID = [notificationDriverDetailsDict valueForKey:@"booking_id"];
     lblDriverName.text = [notificationDriverDetailsDict valueForKey:@"driver_name"];
     lblPlateNo.text = [notificationDriverDetailsDict valueForKey:@"car_plate_no"];
     lblCarName.text = [notificationDriverDetailsDict valueForKey:@"car_name"];
-    //lblPricePerMile.text = [NSString stringWithFormat:@"Starting at just $%@ / miles",[notificationDriverDetailsDict valueForKey:@"base_fare"]];
     
     lblRating.text = ([[notificationDriverDetailsDict valueForKey:@"driver_ratting"] isEqualToString:@""] || [notificationDriverDetailsDict valueForKey:@"driver_ratting"] == nil)?@"0.0":[NSString stringWithFormat:@"%0.1f", [[notificationDriverDetailsDict valueForKey:@"driver_ratting"] floatValue]];
     
-    AsyncImageView *asyncImageView;
-    asyncImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
-    NSURL *url=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"driver_profile_pic"]];
-    //cancel loading previous image for cell
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView];
-    asyncImageView.contentMode = UIViewContentModeScaleAspectFill;
-    asyncImageView.clipsToBounds = YES;
-    asyncImageView.tag = 99;
-    asyncImageView.imageURL = url;
-    [imgProfile addSubview:asyncImageView];
-    [imgProfile setImage:[UIImage imageNamed:@"no_image.png"]];
+    imgProfile.contentMode = UIViewContentModeScaleAspectFill;
+    imgProfile.clipsToBounds = YES;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imgProfile];
+    imgProfile.image = [UIImage imageNamed:@"no_image.png"];
+    imgProfile.imageURL = [NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"driver_profile_pic"]];
     
+    imgPlateNo.contentMode = UIViewContentModeScaleAspectFill;
+    imgPlateNo.clipsToBounds = YES;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imgPlateNo];
+    imgPlateNo.image = [UIImage imageNamed:@"no_image.png"];
+    imgPlateNo.imageURL = [NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_plate_no_pic"]];
     
-    AsyncImageView *asyncImageView2;
-    asyncImageView2 = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
-    NSURL *url2=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_plate_no_pic"]];
-    //cancel loading previous image for cell
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView2];
-    asyncImageView2.contentMode = UIViewContentModeScaleAspectFill;
-    asyncImageView2.clipsToBounds = YES;
-    asyncImageView2.tag = 99;
-    asyncImageView2.imageURL = url2;
-    [imgPlateNo addSubview:asyncImageView2];
-    [imgPlateNo setImage:[UIImage imageNamed:@"no_image.png"]];
-    
-    AsyncImageView *asyncImageView3;
-    asyncImageView3 = [[AsyncImageView alloc]initWithFrame:CGRectMake(0,0,60, 60)];
-    NSURL *url3=[NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_pic"]];
-    //cancel loading previous image for cell
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:asyncImageView3];
-    asyncImageView3.contentMode = UIViewContentModeScaleAspectFill;
-    asyncImageView3.clipsToBounds = YES;
-    asyncImageView3.tag = 99;
-    asyncImageView3.imageURL = url3;
-    [imgCar addSubview:asyncImageView3];
-    [imgCar setImage:[UIImage imageNamed:@"no_image.png"]];
+    imgCar.contentMode = UIViewContentModeScaleAspectFill;
+    imgCar.clipsToBounds = YES;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imgCar];
+    imgCar.image = [UIImage imageNamed:@"no_image.png"];
+    imgCar.imageURL = [NSURL URLWithString:[notificationDriverDetailsDict valueForKey:@"car_pic"]];
     
     
     
@@ -243,9 +204,10 @@ static NSInteger notificationModeStatic;
         pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
         pickerMarker.map = _mapView;
         
-        [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
+        [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.03];
     }
     else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"3"]){//Driver Arrived
+        
         [viewOnTheWay setHidden:NO];
         [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
         
@@ -263,13 +225,31 @@ static NSInteger notificationModeStatic;
         [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
         
         [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
+        
+        lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDriverDetailsDict valueForKey:@"total_duration_in_min"]];
+        [lblPickupAddress setText:[NSString stringWithFormat:@"%@",pickupLocation.locationAddress]];
+        
+        driverMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"Driver is here";
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        driverMarker.iconView = _londonView;
+        driverMarker.position = CLLocationCoordinate2DMake([[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue],[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue]);
+        driverMarker.map = _mapView;
+        [_mapView setSelectedMarker:driverMarker];
+        
+        
+        pickerMarker = [[GMSMarker alloc] init];
+        pickerMarker.title = @"My Pickup Location";
+        _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
+        pickerMarker.iconView = _londonView;
+        pickerMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
+        pickerMarker.map = _mapView;
+        
+        [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.03];
     }
     else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]){
         [viewOnTheWay setHidden:NO];
         [lblDriverRunningStatus setText:@"ON THE WAY"];
-        
-        timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
-                                                             target:self selector:@selector(refreshDriverStartTripTimer:) userInfo:nil repeats:YES];
         
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
         [animation setFromValue:[NSNumber numberWithFloat:1.0]];
@@ -300,7 +280,7 @@ static NSInteger notificationModeStatic;
         pickerMarker.title = @"My Location";
         _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
         driverMarker.iconView = _londonView;
-        driverMarker.position = CLLocationCoordinate2DMake([_userCurrentLat floatValue],[_userCurrentLong floatValue]);
+        driverMarker.position = CLLocationCoordinate2DMake([pickupLocation.latitude floatValue],[pickupLocation.longitude floatValue]);
         driverMarker.map = _mapView;
         [_mapView setSelectedMarker:driverMarker];
         
@@ -311,7 +291,7 @@ static NSInteger notificationModeStatic;
         pickerMarker.position = CLLocationCoordinate2DMake([dropLocation.latitude floatValue],[dropLocation.longitude floatValue]);
         pickerMarker.map = _mapView;
         
-        [self createPolyLine:[_userCurrentLat floatValue] pickupLong:[_userCurrentLong floatValue] dropLat:[dropLocation.latitude floatValue] dropLong:[dropLocation.longitude floatValue] timeInterval:0.003];
+        [self createPolyLine:[pickupLocation.latitude floatValue] pickupLong:[pickupLocation.longitude floatValue] dropLat:[dropLocation.latitude floatValue] dropLong:[dropLocation.longitude floatValue] timeInterval:0.03];
     }
     /*
      //code for my location on map
@@ -437,8 +417,6 @@ static NSInteger notificationModeStatic;
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
     [self.view setUserInteractionEnabled:YES];
     
-    notificationModeStatic = notification_mode;
-    
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:backgroundView];
     viewNotification.frame = CGRectMake(0, -117, 320, 117);
@@ -530,13 +508,12 @@ static NSInteger notificationModeStatic;
         [_mapView clear];
         
         
-        
-        driverMarker = [[GMSMarker alloc] init];
-        //pickupMarker.title = @"Pickup Location";
-        driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[notificationDict valueForKey:@"total_duration_in_min"]];
-        
         lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[notificationDict valueForKey:@"total_duration_in_min"]];
         
+        driverMarker = [[GMSMarker alloc] init];
+        driverMarker.title = @"My current location";
+        //driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[notificationDict valueForKey:@"total_duration_in_min"]];
+
         _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
         driverMarker.iconView = _londonView;
         driverMarker.position = CLLocationCoordinate2DMake([_userCurrentLat floatValue],[_userCurrentLong floatValue]);
@@ -627,6 +604,7 @@ static NSInteger notificationModeStatic;
             registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
         }
         registerController.bookingObj = bookingObj;
+        registerController.isRestartApp = YES;
         registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
         [self presentViewController:registerController animated:YES completion:nil];
     }];
@@ -803,10 +781,10 @@ static NSInteger notificationModeStatic;
 }
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
         [self commonMethodForRefreshDriverLocationForArrival];
     }
-    else if(notificationModeStatic==4){
+    else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]){
         [self commonMethodForRefreshEstimatedTime];
     }
 }
@@ -926,10 +904,10 @@ static NSInteger notificationModeStatic;
             lblAwayTime.text = [NSString stringWithFormat:@"%d mins away",minAway];
         driverMarker.map=nil;
         driverMarker = [[GMSMarker alloc] init];
-        if(minAway<=1)
+        /*if(minAway<=1)
             driverMarker.snippet = [NSString stringWithFormat:@"%d MIN AWAY", minAway];
         else
-            driverMarker.snippet = [NSString stringWithFormat:@"%d MINS AWAY", minAway];
+            driverMarker.snippet = [NSString stringWithFormat:@"%d MINS AWAY", minAway];*/
         _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];
         driverMarker.iconView = _londonView;
         driverMarker.position = CLLocationCoordinate2DMake([[[driverLiveArray objectAtIndex:0] current_lat] floatValue],[[[driverLiveArray objectAtIndex:0] current_long] floatValue]);

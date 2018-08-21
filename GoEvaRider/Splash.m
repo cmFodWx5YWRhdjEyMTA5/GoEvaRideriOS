@@ -170,7 +170,7 @@
     [MyUtils setUserDefault:@"riderRating" value:[[riderArray objectAtIndex:0] ratting]];
     
     if ([MyUtils getUserDefault:@"bookingID"]!=nil) {
-        [self checkIncompleteRideInRiderEnd];
+        [self getDefaultCard]; // Get default card
     }
     else{
     [DashboardCaller homepageSelector:self];
@@ -212,7 +212,9 @@
         [self performSelectorOnMainThread:@selector(responsefetchTripDetails:) withObject:bSuccess waitUntilDone:YES];
     }
     else if ([[GlobalVariable getGlobalMessage] isEqualToString:@"1"]) {
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [DashboardCaller homepageSelector:self];
+        });
     }
     else{
         [self performSelectorOnMainThread:@selector(responseFailed) withObject:nil waitUntilDone:YES];
@@ -221,7 +223,6 @@
 
 -(void)responsefetchTripDetails:(NSMutableDictionary *)notificationDict{
     
-    [self getDefaultCard]; // Get default card
     LocationData *pickupLocation =[[LocationData alloc] init];
     pickupLocation.locationAddress = [notificationDict valueForKey:@"pickup_location"];
     pickupLocation.latitude = [notificationDict valueForKey:@"ride_source_lat"];
@@ -312,6 +313,8 @@
                 }
                 [[DataStore sharedInstance] addCards:arr];
             }
+            
+            [self checkIncompleteRideInRiderEnd]; 
         }
         else{
         }
