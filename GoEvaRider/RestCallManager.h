@@ -61,5 +61,6 @@
 -(BOOL)cancelRequestByRider:(NSString *)requestID;
 -(BOOL)getSettings:(NSString *)userType;
 -(NSMutableDictionary *)checkIncompleteRideInRiderEnd:(NSString *)bookingID;
-
+-(BOOL)addTips:(NSString *)bookingID amount:(NSString *)amount;
+-(BOOL)removeTips:(NSString *)bookingID;
 @end

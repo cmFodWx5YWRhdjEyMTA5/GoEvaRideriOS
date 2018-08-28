@@ -72,8 +72,8 @@
         lblStartTime.text = [bookingObj ride_start_time];
         lblEndTime.text = [bookingObj ride_completion_time];
         viewPaymentDetails.hidden = NO;
-        lblRideFare.text = [bookingObj total_base_fare];
-        lblTotalNetFare.text = [bookingObj total_fare];
+        lblRideFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_base_fare]];
+        lblTotalNetFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_fare]];
     
     lblPickupLocation.text = ([bookingObj pickup_location]==(id)[NSNull null])?@"":[bookingObj pickup_location];
     lblDropLocation.text = ([bookingObj drop_location]==(id)[NSNull null])?@"":[bookingObj drop_location];

@@ -15,10 +15,13 @@
                 <outlet property="bookedCarNumber" destination="yKv-xO-fim" id="NSY-QG-rd4"/>
                 <outlet property="bookedCarType" destination="gjN-w1-svA" id="vmN-zi-5B0"/>
                 <outlet property="bookedDriver" destination="phU-QM-REa" id="Rol-WO-GCy"/>
+                <outlet property="btnAddTips" destination="T74-C1-MfT" id="mCj-4k-Pn1"/>
                 <outlet property="btnCall" destination="F6u-3a-8XZ" id="5Db-Tp-UY1"/>
                 <outlet property="btnCancelBook" destination="uhD-Nl-j3E" id="ALx-Lr-lgV"/>
+                <outlet property="btnCloseAddTips" destination="ZOj-gQ-ORk" id="aRf-U8-uNv"/>
                 <outlet property="btnContactDriver" destination="luT-SD-U5x" id="wFw-md-2gP"/>
                 <outlet property="btnMessage" destination="Qou-yl-Cr9" id="ilZ-pC-JMU"/>
+                <outlet property="btnProceedAddTips" destination="XAq-Fn-22M" id="9te-rD-fu9"/>
                 <outlet property="btnRefreshDriver" destination="v2h-aR-pY2" id="zeM-jf-z6L"/>
                 <outlet property="imgCar" destination="GCx-pt-L7v" id="JQ8-be-ZSz"/>
                 <outlet property="imgCard" destination="jQf-B6-6GF" id="aBm-MV-jAa"/>
@@ -38,7 +41,10 @@
                 <outlet property="lblRating" destination="154-Mf-jGL" id="D9R-jX-rC2"/>
                 <outlet property="lblRatingANotification" destination="paj-vc-APG" id="W0E-q1-G3W"/>
                 <outlet property="lblStatusNotification" destination="bpr-J4-g2z" id="gso-CX-x75"/>
+                <outlet property="lblTips" destination="MbA-bf-eBG" id="Mbp-IE-vco"/>
+                <outlet property="txtAddTips" destination="ore-zP-NT7" id="ssw-w8-3lS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewAddTips" destination="99z-Ck-102" id="c84-Gc-SDj"/>
                 <outlet property="viewCard" destination="dri-SM-iEc" id="04o-lR-bED"/>
                 <outlet property="viewContact" destination="uKo-Ug-N1x" id="bIz-tX-ekm"/>
                 <outlet property="viewImgDriverNotification" destination="REh-qk-Y4w" id="lfw-Rv-j9x"/>
@@ -184,6 +190,24 @@
                                         <action selector="cancelBooking:" destination="-1" eventType="touchUpInside" id="x4f-7j-k1Q"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T74-C1-MfT">
+                                    <rect key="frame" x="195" y="58" width="102" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="ADD TIP"/>
+                                    <connections>
+                                        <action selector="addTipPopup:" destination="-1" eventType="touchUpInside" id="lYm-lh-rvY"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have added $10 for tip." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbA-bf-eBG">
+                                    <rect key="frame" x="92" y="83" width="205" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.9586002803" green="0.9586002803" blue="0.9586002803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.76662003993988037" green="0.22723308205604553" blue="0.17071467638015747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
@@ -418,6 +442,65 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-335" y="76.5"/>
         </view>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="99z-Ck-102">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qAU-nv-AC5">
+                    <rect key="frame" x="28" y="27" width="265" height="181"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8H-ZQ-hZm">
+                            <rect key="frame" x="57" y="2" width="152" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.75435256439999998" green="0.2246784989" blue="0.17517639839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70J-kF-JUJ">
+                            <rect key="frame" x="0.0" y="35" width="265" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount ($)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ore-zP-NT7">
+                            <rect key="frame" x="13" y="59" width="241" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="KTW-FE-EyP"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAq-Fn-22M">
+                            <rect key="frame" x="31" y="112" width="203" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.75135165449999997" green="0.22331911330000001" blue="0.1671233177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Add Tips"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOj-gQ-ORk">
+                    <rect key="frame" x="285" y="5" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="whit_cross.png"/>
+                    <connections>
+                        <action selector="closeAddTipsPopup:" destination="-1" eventType="touchUpInside" id="ISw-1M-Gu9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="552" y="-124"/>
+        </view>
     </objects>
     <resources>
         <image name="car_pick.png" width="150" height="150"/>
@@ -430,5 +513,6 @@
         <image name="ic_meter" width="50" height="50"/>
         <image name="ic_rating_star" width="25" height="25"/>
         <image name="red_cross.png" width="50" height="50"/>
+        <image name="whit_cross.png" width="50" height="50"/>
     </resources>
 </document>

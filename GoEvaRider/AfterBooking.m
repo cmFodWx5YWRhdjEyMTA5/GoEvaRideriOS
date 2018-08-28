@@ -104,6 +104,13 @@ static NSInteger notificationModeStatic;
     btnRefreshDriver.clipsToBounds=YES;
     btnRefreshDriver.userInteractionEnabled=YES;
     
+    btnAddTips.layer.cornerRadius=5;
+    btnAddTips.clipsToBounds=YES;
+    btnAddTips.userInteractionEnabled=YES;
+    
+    btnAddTips.hidden = YES;
+    lblTips.hidden = YES;
+    
     [self setData];
     
     
@@ -432,6 +439,9 @@ static NSInteger notificationModeStatic;
         [viewOnTheWay setHidden:NO];
         [lblDriverRunningStatus setText:@"ON THE WAY"];
         
+        btnAddTips.hidden = NO;
+        lblTips.hidden = NO;
+        lblTips.text = @"Do you want to add Tips?";
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
         [animation setFromValue:[NSNumber numberWithFloat:1.0]];
         [animation setToValue:[NSNumber numberWithFloat:0.0]];
@@ -1018,10 +1028,146 @@ static NSInteger notificationModeStatic;
 }
 
 
+- (IBAction)addTipPopup:(UIButton *)sender{
+    if (btnAddTips.tag==1) {
+        UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
+        [currentWindow addSubview:backgroundView];
+        viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+        [UIView animateWithDuration:0.3
+                              delay:0.1
+                            options: UIViewAnimationCurveEaseIn
+                         animations:^{
+                             viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+                         }
+                         completion:^(BOOL finished){
+                         }];
+        [currentWindow addSubview:viewAddTips];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                              action:@selector(proceedToAddTips)];
+        [btnProceedAddTips setTitle:@"Add Tip" forState:UIControlStateNormal];
+        [btnProceedAddTips setBackgroundColor:[UIColor blackColor]];
+        btnProceedAddTips.layer.cornerRadius=5;
+        btnProceedAddTips.clipsToBounds=YES;
+        [btnProceedAddTips setUserInteractionEnabled:YES];
+        [btnProceedAddTips addGestureRecognizer:tap];
+        
+        txtAddTips.text = @"";
+    }
+    else if(btnAddTips.tag==2){
+        [self proceedToRemoveTips];
+    }
+    
+}
+
+- (IBAction)closeAddTipsPopup:(UIButton *)sender{
+    [backgroundView removeFromSuperview];
+    viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+                     }
+                     completion:^(BOOL finished){
+                         [viewAddTips removeFromSuperview];
+                     }];
+    [viewAddTips removeFromSuperview];
+}
+
+- (void)proceedToAddTips{
+    if([RestCallManager hasConnectivity]){
+        [self.view setUserInteractionEnabled:NO];
+        [btnProceedAddTips setTitle:@"Processing..." forState:UIControlStateNormal];
+        [btnProceedAddTips setBackgroundColor:[UIColor grayColor]];
+        [btnProceedAddTips setUserInteractionEnabled:NO];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForAddTips) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+
+-(void)requestToServerForAddTips{
+    BOOL bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] addTips:_bookingID amount:txtAddTips.text];
+    if(bSuccess)
+    {
+        [self performSelectorOnMainThread:@selector(responseAddTips) withObject:nil waitUntilDone:YES];
+    }
+    else{ // In case where booking already completed by Driver but not recieve APNS
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [loadingView removeFromSuperview];
+            [backgroundView removeFromSuperview];
+            [self.view setUserInteractionEnabled:YES];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!!!" message:[GlobalVariable getGlobalMessage] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                
+            }];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
+}
+-(void)responseAddTips{
+     [self.view setUserInteractionEnabled:YES];
+    [backgroundView removeFromSuperview];
+    [viewAddTips removeFromSuperview];
+    [loadingView removeFromSuperview];
+    [btnAddTips setUserInteractionEnabled:YES];
+    [btnAddTips setTag:2];
+    [btnAddTips setTitle:@"Remove Tip" forState:UIControlStateNormal];
+    [lblTips setText:[NSString stringWithFormat:@"You have added $%@ for tip",txtAddTips.text]];
+}
+
+- (void)proceedToRemoveTips{
+    if([RestCallManager hasConnectivity]){
+        [self.view setUserInteractionEnabled:NO];
+        loadingView = [MyUtils customLoaderWithText:self.window loadingText:@"Removing..."];
+        [self.view addSubview:loadingView];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForRemoveTips) toTarget:self withObject:nil];
+    }
+    else{
+        UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [loginAlert show];
+    }
+}
+
+
+-(void)requestToServerForRemoveTips{
+    BOOL bSuccess;
+    bSuccess = [[RestCallManager sharedInstance] removeTips:_bookingID];
+    if(bSuccess)
+    {
+        [self performSelectorOnMainThread:@selector(responseRemoveTips) withObject:nil waitUntilDone:YES];
+    }
+    else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view setUserInteractionEnabled:YES];
+            [loadingView removeFromSuperview];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!!!" message:[GlobalVariable getGlobalMessage] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                
+            }];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
+}
+-(void)responseRemoveTips{
+     [self.view setUserInteractionEnabled:YES];
+    [loadingView removeFromSuperview];
+    [btnAddTips setTag:1];
+    [btnAddTips setUserInteractionEnabled:YES];
+    [btnAddTips setTitle:@"Add Tip" forState:UIControlStateNormal];
+    [lblTips setText:@"Do you want to add tip?"];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

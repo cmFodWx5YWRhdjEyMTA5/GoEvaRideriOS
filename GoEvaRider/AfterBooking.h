@@ -47,6 +47,11 @@
     UIActivityIndicatorView *activityIndicator;
     IBOutlet UIView *viewCard;
     NSMutableArray *cardArray;
+    IBOutlet UIButton *btnAddTips;
+    IBOutlet UILabel *lblTips;
+    IBOutlet UIView *viewAddTips;
+    IBOutlet UIButton *btnProceedAddTips, *btnCloseAddTips;
+    IBOutlet UITextField *txtAddTips;
 }
 
 @property (strong, nonatomic) UIWindow *window;

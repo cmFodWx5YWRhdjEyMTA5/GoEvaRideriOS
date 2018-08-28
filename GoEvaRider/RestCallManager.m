@@ -1075,5 +1075,41 @@
     return false;
 }
 
+-(BOOL)addTips:(NSString *)bookingID amount:(NSString *)amount{
+    NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    NSString *strURL=[NSString stringWithFormat:@"%@add_tips?booking_id=%@&tips_amount=%@",
+                      baseUrl,
+                      bookingID,
+                      amount];
+    WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
+    if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+            return true;
+    }
+    else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        [GlobalVariable setGlobalMessage:webResponse.Data];
+        return false;
+    }
+    return false;
+}
+
+-(BOOL)removeTips:(NSString *)bookingID{
+    NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
+    NSString *strURL=[NSString stringWithFormat:@"%@remove_tips?booking_id=%@",
+                      baseUrl,
+                      bookingID];
+    WebServiceResponse *webResponse = [self getCallWithUrl:strURL];
+    if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        return true;
+    }
+    else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    {
+        [GlobalVariable setGlobalMessage:webResponse.Data];
+        return false;
+    }
+    return false;
+}
 @end
 

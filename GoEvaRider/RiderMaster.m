@@ -36,6 +36,7 @@
 
 @synthesize distance_in_mile;
 @synthesize duration_in_min;
+@synthesize booking_status;
 
 -(id)init
 {
@@ -64,6 +65,7 @@
     
     self.distance_in_mile = @"";
     self.duration_in_min = @"";
+    self.booking_status = @"";
     return self;
 }
 
@@ -95,6 +97,7 @@
     
     self.distance_in_mile = [jsonObjects valueForKey:@"distance_in_mile"];
     self.duration_in_min = [jsonObjects valueForKey:@"duration_in_min"];
+    self.booking_status = [jsonObjects valueForKey:@"booking_status"];
     return self;
 }
 
@@ -126,6 +129,7 @@
                            
                            self.distance_in_mile,@"distance_in_mile",
                            self.duration_in_min,@"duration_in_min",
+                           self.booking_status,@"booking_status",
                            nil];
     NSError *error = nil;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dict

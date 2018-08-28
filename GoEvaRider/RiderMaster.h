@@ -35,6 +35,7 @@
 
 @property(nonatomic,retain)NSString *distance_in_mile;
 @property(nonatomic,retain)NSString *duration_in_min;
+@property(nonatomic,retain)NSString *booking_status;
 
 -(id)init;
 -(id)initWithJsonData:(NSDictionary *)jsonObjects;
