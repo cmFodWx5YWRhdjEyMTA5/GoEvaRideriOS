@@ -21,7 +21,7 @@
     IBOutlet UILabel *lblBookingDateTime,*lblCarTypeBookingNo, *lblDriverName,*lblCarName;
     IBOutlet UILabel *txtRideFare,*lblFare,*lblDistance,*lblDuration;
     IBOutlet UILabel *lblStartTime, *lblEndTime, *lblPickupLocation,*lblDropLocation;
-    IBOutlet UILabel *lblRideFare, *lblTaxes, *lblTotalNetFare;
+    IBOutlet UILabel *lblRideFare, *lblTips, *lblTotalNetFare;
     IBOutlet UIButton *btnBack;
     IBOutlet UIImageView *imgDriverImage, *imgCancel, *imgCar;
     IBOutlet UIView *viewDriverProfile, *viewCarProfile, *viewFare, *viewLocation, *viewPaymentDetails;

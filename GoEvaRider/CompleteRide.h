@@ -20,7 +20,7 @@
     IBOutlet UILabel *lblBookingDateTime,*lblCarTypeBookingNo, *lblDriverName,*lblCarName;
     IBOutlet UILabel *lblFare,*lblDistance,*lblDuration;
     IBOutlet UILabel *lblStartTime, *lblEndTime, *lblPickupLocation,*lblDropLocation;
-    IBOutlet UILabel *lblRideFare, *lblTaxes, *lblTotalNetFare;
+    IBOutlet UILabel *lblRideFare, *lblTips, *lblTotalNetFare;
     IBOutlet UIImageView *imgDriverImage, *imgCar;
     IBOutlet UIView *viewDriverProfile, *viewCarProfile, *viewFare, *viewLocation, *viewPaymentDetails;
     IBOutlet UIView *viewDriverImage;

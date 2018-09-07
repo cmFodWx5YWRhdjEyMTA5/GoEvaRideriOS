@@ -202,6 +202,7 @@ alpha:1.0]
             lblBodyMessageViewOtpVerification.hidden=YES;
             txtPassword.text = @"";
             txtPassword.secureTextEntry=YES;
+            txtPassword.keyboardType = UIKeyboardTypeDefault;
             txtPassword.placeholder = @"Enter Password";
             lblNotRecieveYet.hidden = YES;
             [btnResendOTP setTitle:@"Forgot Password?" forState:UIControlStateNormal];
@@ -257,6 +258,29 @@ alpha:1.0]
         
     }
     
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField.tag == 2) {
+        // Prevent crashing undo bug – see note below.
+        if(range.length + range.location > textField.text.length)
+        {
+            return NO;
+        }
+        if ([loginThroughOTP isEqualToString:@"1"]) {
+            NSUInteger newLength = [textField.text length] + [string length] - range.length;
+            return newLength <= 6;
+        }
+        else{
+            NSUInteger newLength = [textField.text length] + [string length] - range.length;
+            return newLength;
+        }
+        
+    }
+    else if(textField.tag==1){
+        return YES;
+    }
+    return NO;
 }
 
 -(void)wrongData{

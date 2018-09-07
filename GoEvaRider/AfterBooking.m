@@ -661,8 +661,6 @@ static NSInteger notificationModeStatic;
                          [backgroundView removeFromSuperview];
                      }];
    
-    
-    
 }
 - (void)cancelBooking:(UIButton *)sender{
     NSDate *myDate = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"rideTimer"];
@@ -1032,12 +1030,15 @@ static NSInteger notificationModeStatic;
     if (btnAddTips.tag==1) {
         UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
         [currentWindow addSubview:backgroundView];
-        viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+        if(appDel.iSiPhone5)
+            viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+        else
+            viewAddTips.frame = CGRectMake(0, 480, 320, 214);
         [UIView animateWithDuration:0.3
                               delay:0.1
                             options: UIViewAnimationCurveEaseIn
                          animations:^{
-                             viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+                             viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2-60);
                          }
                          completion:^(BOOL finished){
                          }];
@@ -1052,6 +1053,7 @@ static NSInteger notificationModeStatic;
         [btnProceedAddTips addGestureRecognizer:tap];
         
         txtAddTips.text = @"";
+        [txtAddTips becomeFirstResponder];
     }
     else if(btnAddTips.tag==2){
         [self proceedToRemoveTips];
@@ -1061,17 +1063,19 @@ static NSInteger notificationModeStatic;
 
 - (IBAction)closeAddTipsPopup:(UIButton *)sender{
     [backgroundView removeFromSuperview];
-    viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    viewAddTips.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2 - 60);
     [UIView animateWithDuration:0.5
                           delay:0.1
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                         viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+                         if(appDel.iSiPhone5)
+                             viewAddTips.frame = CGRectMake(0, 568, 320, 214);
+                         else
+                             viewAddTips.frame = CGRectMake(0, 480, 320, 214);
                      }
                      completion:^(BOOL finished){
                          [viewAddTips removeFromSuperview];
                      }];
-    [viewAddTips removeFromSuperview];
 }
 
 - (void)proceedToAddTips{

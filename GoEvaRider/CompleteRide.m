@@ -67,12 +67,14 @@
         [self.backGroundScroll setContentSize:scrollViewSize];
         
         lblFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_fare]];
-        lblDistance.text = [NSString stringWithFormat:@"%@ Km",[bookingObj total_distance]];
+        lblDistance.text = [NSString stringWithFormat:@"%@ mi",[bookingObj total_distance]];
         lblDuration.text = [NSString stringWithFormat:@"%@ min",[bookingObj total_time]];
         lblStartTime.text = [bookingObj ride_start_time];
         lblEndTime.text = [bookingObj ride_completion_time];
         viewPaymentDetails.hidden = NO;
+    
         lblRideFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_base_fare]];
+        lblTips.text = [NSString stringWithFormat:@"$ %@",[bookingObj tips_amount]];
         lblTotalNetFare.text = [NSString stringWithFormat:@"$ %@",[bookingObj total_fare]];
     
     lblPickupLocation.text = ([bookingObj pickup_location]==(id)[NSNull null])?@"":[bookingObj pickup_location];

@@ -139,7 +139,7 @@
         //        [loginAlert show];
         //        return nil;
         webresponse = [[WebServiceResponse alloc] init];
-        webresponse.Data = @"Connect to the Internet to use SaltnSoap";
+        webresponse.Data = @"Connect to the Internet to use GoEva";
         webresponse.StatusCode=@"-200";
     }
     
@@ -191,7 +191,7 @@
         //        [loginAlert show];
         //        return nil;
         webresponse = [[WebServiceResponse alloc] init];
-        webresponse.Data = @"Connect to the Internet to use GeoCoupon Alert.";
+        webresponse.Data = @"Connect to the Internet to use GoEva.";
         webresponse.StatusCode = @"-200";
         
     }
@@ -244,7 +244,7 @@
         //        [loginAlert show];
         //        return nil;
         webresponse = [[WebServiceResponse alloc] init];
-        webresponse.Data = @"Connect to the Internet to use GeoCoupon Alert.";
+        webresponse.Data = @"Connect to the Internet to use GoEva.";
         webresponse.StatusCode = @"-200";
         
     }

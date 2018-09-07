@@ -15,7 +15,6 @@
     NSUserDefaults *userDefaults;
     AppDelegate *appDel;
     NSMutableArray *userDetails;
-    
 }
 
 -(id)init;

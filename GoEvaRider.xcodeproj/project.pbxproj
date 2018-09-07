@@ -1395,8 +1395,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4B6926W9K5;
 				INFOPLIST_FILE = GoEvaRider/Info.plist;
@@ -1404,8 +1404,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ild.goEva;
 				PRODUCT_NAME = GoEva;
-				PROVISIONING_PROFILE = "d9cffd83-bc9d-48b8-b28b-a8d5c616b7ac";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.ild.goEva";
+				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
+				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1421,8 +1421,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4B6926W9K5;
 				INFOPLIST_FILE = GoEvaRider/Info.plist;
@@ -1430,8 +1430,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ild.goEva;
 				PRODUCT_NAME = GoEva;
-				PROVISIONING_PROFILE = "d9cffd83-bc9d-48b8-b28b-a8d5c616b7ac";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.ild.goEva";
+				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
+				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
