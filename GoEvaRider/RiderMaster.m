@@ -26,7 +26,7 @@
 @synthesize device_token;
 @synthesize device_type;
 
-
+@synthesize booking_id;
 @synthesize pickup_address;
 @synthesize drop_address;
 @synthesize pickup_lat;
@@ -56,6 +56,7 @@
     self.device_token = @"";
     self.device_type = @"";
     
+    self.booking_id = @"";
     self.pickup_address = @"";
     self.drop_address = @"";
     self.pickup_lat = @"";
@@ -88,6 +89,7 @@
     self.device_token = [jsonObjects valueForKey:@"device_token"];
     self.device_type = [jsonObjects valueForKey:@"device_type"];
     
+    self.booking_id = [jsonObjects valueForKey:@"booking_id"];
     self.pickup_address = [jsonObjects valueForKey:@"pickup_address"];
     self.drop_address = [jsonObjects valueForKey:@"drop_address"];
     self.pickup_lat = [jsonObjects valueForKey:@"pickup_lat"];
@@ -120,6 +122,7 @@
                            self.device_token,@"device_token",
                            self.device_type,@"device_type",
                            
+                           self.booking_id,@"booking_id",
                            self.pickup_address,@"pickup_address",
                            self.drop_address,@"drop_address",
                            self.pickup_lat,@"pickup_lat",

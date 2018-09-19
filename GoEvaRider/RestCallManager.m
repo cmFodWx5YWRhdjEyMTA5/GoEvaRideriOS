@@ -682,7 +682,7 @@
            comments:(NSString *)comments{
     
     NSString *baseUrl = [[RestCallManager sharedInstance] getBaseUrl];
-    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&ratting=%@&comment=%@",
+    NSString *dataUrl = [NSString stringWithFormat:@"booking_id=%@&user_type=%@&rating=%@&comment=%@",
                          bookingID,
                          userType,
                          ratingValue,

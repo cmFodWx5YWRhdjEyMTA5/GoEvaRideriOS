@@ -12,7 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "LocationData.h"
 
-@interface Dashboard : UIViewController<GMSMapViewDelegate>{
+@interface Dashboard : UIViewController<GMSMapViewDelegate, CLLocationManagerDelegate>{
     AppDelegate *appDel;
     IBOutlet UIView *viewFrom, *viewTo;
     IBOutlet UIView *outerViewFrom, *outerViewTo;
@@ -48,6 +48,7 @@
 @property (nonatomic) NSString *fromAddress;
 @property (nonatomic) NSString *toAddress;
 - (IBAction)rideNowBtn:(UIButton *)sender;
+@property CLLocationManager * locationManager;
 
 
 @end

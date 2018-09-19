@@ -26,6 +26,7 @@
 @property(nonatomic,retain)NSString *device_token;
 @property(nonatomic,retain)NSString *device_type;
 
+@property(nonatomic,retain)NSString *booking_id;
 @property(nonatomic,retain)NSString *pickup_address;
 @property(nonatomic,retain)NSString *drop_address;
 @property(nonatomic,retain)NSString *pickup_lat;

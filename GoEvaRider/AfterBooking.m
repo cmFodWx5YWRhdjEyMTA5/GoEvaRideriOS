@@ -48,7 +48,7 @@ alpha:1.0]
     NSArray *cardBrand;
     NSTimer *timerForArrival, *timerForStartTrip;
 }
-static NSInteger notificationModeStatic;
+
 @synthesize notificationDriverDetailsDict;
 
 - (void)viewDidLoad {
@@ -167,13 +167,13 @@ static NSInteger notificationModeStatic;
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
    
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
         [self commonMethodForRefreshDriverLocationForArrival];
         // Timer for getting update location and arrival time of Driver
         timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
                                                                      target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
     }
-    else if (notificationModeStatic==4) {
+    else if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]) {
         [self commonMethodForRefreshEstimatedTime];
         // Timer for getting update location and arrival time of Driver
         timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
@@ -188,7 +188,7 @@ static NSInteger notificationModeStatic;
     [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:@"rideTimer"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    _bookingID = [notificationDriverDetailsDict valueForKey:@"request_id"];
+    _bookingID = [notificationDriverDetailsDict valueForKey:@"booking_id"];
     lblDriverName.text = [notificationDriverDetailsDict valueForKey:@"driver_name"];
     lblPlateNo.text = [notificationDriverDetailsDict valueForKey:@"car_plate_no"];
     lblCarName.text = [notificationDriverDetailsDict valueForKey:@"car_name"];
@@ -370,7 +370,6 @@ static NSInteger notificationModeStatic;
     NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
     [self.view setUserInteractionEnabled:YES];
 
-    notificationModeStatic = notification_mode;
     
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:backgroundView];
@@ -738,10 +737,10 @@ static NSInteger notificationModeStatic;
 }
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
         [self commonMethodForRefreshDriverLocationForArrival];
     }
-    else if(notificationModeStatic==4){
+    else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]){
         [self commonMethodForRefreshEstimatedTime];
     }
 }
@@ -1084,7 +1083,7 @@ static NSInteger notificationModeStatic;
         [btnProceedAddTips setTitle:@"Processing..." forState:UIControlStateNormal];
         [btnProceedAddTips setBackgroundColor:[UIColor grayColor]];
         [btnProceedAddTips setUserInteractionEnabled:NO];
-        [NSThread detachNewThreadSelector:@selector(requestToServerForAddTips) toTarget:self withObject:nil];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForAddTips:) toTarget:self withObject:txtAddTips.text];
     }
     else{
         UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -1093,9 +1092,9 @@ static NSInteger notificationModeStatic;
 }
 
 
--(void)requestToServerForAddTips{
+-(void)requestToServerForAddTips:(NSString *)tips_amount{
     BOOL bSuccess;
-    bSuccess = [[RestCallManager sharedInstance] addTips:_bookingID amount:txtAddTips.text];
+    bSuccess = [[RestCallManager sharedInstance] addTips:_bookingID amount:tips_amount];
     if(bSuccess)
     {
         [self performSelectorOnMainThread:@selector(responseAddTips) withObject:nil waitUntilDone:YES];

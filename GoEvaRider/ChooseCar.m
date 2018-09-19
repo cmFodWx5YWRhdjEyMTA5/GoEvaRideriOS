@@ -637,7 +637,7 @@ alpha:1.0]
     [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:@"rideTimer"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [MyUtils setUserDefault:@"bookingID" value:[GlobalVariable getBookingID]];
+    [MyUtils setUserDefault:@"bookingID" value:[notificationDict valueForKey:@"booking_id"]];
     
     AfterBooking *registerController ;
     if (appDel.iSiPhone5) {
