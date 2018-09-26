@@ -309,9 +309,16 @@ alpha:1.0]
             self.estimatedFareCostPerMile = [carObj distance_wise_rate];
             [lblAwayTime setText:[NSString stringWithFormat:@"%@ Away",self.awayTimeFromCustomer]];
             [lblPricePerMile setText:[NSString stringWithFormat:@"$%@ / Miles",self.estimatedFareCostPerMile]];
-            btnConfirmBooking.backgroundColor = UIColorFromRGB(0xC0392B);
-            [btnConfirmBooking setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            btnConfirmBooking.userInteractionEnabled=YES;
+            if (_modeAddCard==1) {
+                btnConfirmBooking.backgroundColor = [UIColor lightGrayColor];
+                [btnConfirmBooking setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
+                btnConfirmBooking.userInteractionEnabled=NO;
+            }
+            else{
+                btnConfirmBooking.backgroundColor = UIColorFromRGB(0xC0392B);
+                [btnConfirmBooking setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                btnConfirmBooking.userInteractionEnabled=YES;
+            }
             break;
         }
     }
@@ -622,6 +629,12 @@ alpha:1.0]
     
         [timerForCheckBooking invalidate];
         timerForCheckBooking = nil;
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    localNotification.alertBody = @"Booking Confirmed. Click here to see the details.";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
     [self.view setUserInteractionEnabled:YES];
     [loadingView setHidden:YES];

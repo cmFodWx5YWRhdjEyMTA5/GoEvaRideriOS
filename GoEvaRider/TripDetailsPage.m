@@ -54,7 +54,7 @@
     
     if ([[bookingObj booking_status] isEqualToString:@"1"]) {
         float ratingValue = 0.0;
-        if ([bookingObj rider_rating] == (id)[NSNull null] || [[bookingObj rider_rating] isEqualToString:@""])
+        if ([bookingObj rider_rating] == (id)[NSNull null] || [[bookingObj rider_rating] isEqualToString:@""] || [[bookingObj rider_rating] isEqualToString:@"0"])
         {
             lblRatingHint.hidden = YES;
             viewRatingStar.hidden = YES;
@@ -256,6 +256,7 @@
     rateUs.driverImage = [bookingObj driver_image];
     rateUs.driverName = [bookingObj driver_name];
     rateUs.screenMode = @"1";
+    rateUs.isRestartApp = NO;
     rateUs.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
     [self presentViewController:rateUs animated:YES completion:nil];
 }

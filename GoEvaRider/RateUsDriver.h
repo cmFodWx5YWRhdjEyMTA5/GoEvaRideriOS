@@ -36,6 +36,7 @@
 @property (nonatomic) NSString *ratting;
 @property (nonatomic) NSString *bookingID, *driverImage, *driverName;
 @property (nonatomic) NSString *screenMode;// 0 = means from stripe page, 1 = means from trip details page.
+@property (nonatomic) BOOL isRestartApp;
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic,assign)id delegate;
 

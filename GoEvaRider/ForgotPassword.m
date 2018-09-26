@@ -162,10 +162,10 @@ alpha:1.0]
     txtOTP.text=@"";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Send!!!" message:@"OTP send successfully. Please check your registered mobile number or Email id." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.3];
-        [UIView commitAnimations];
-        [self dismissViewControllerAnimated:YES completion:nil];
+//        [UIView beginAnimations:nil context:NULL];
+//        [UIView setAnimationDuration:0.3];
+//        [UIView commitAnimations];
+//        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated: YES completion: nil];

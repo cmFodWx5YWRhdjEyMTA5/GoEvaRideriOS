@@ -943,6 +943,11 @@
         [GlobalVariable setGlobalMessage:webResponse.Data];
         return false;
     }
+    else
+    {
+        [GlobalVariable setGlobalMessage:@"Some problem with the server. Please try again."];
+        return false;
+    }
     return false;
 }
 
@@ -1013,10 +1018,26 @@
             return webResponse.StatusCode;
         }
     }
-    else if(webResponse != nil && ![webResponse.StatusCode isEqualToString:@"0"] && webResponse.Data != nil)
+    else if(webResponse != nil && [webResponse.StatusCode isEqualToString:@"1"] && webResponse.Data != nil)
     {
-        [GlobalVariable setGlobalMessage:webResponse.Data];
-        return webResponse.StatusCode;
+        NSData *JSONdata = [webResponse.Data dataUsingEncoding:NSUTF8StringEncoding];
+        if (JSONdata != nil) {
+            NSError * error =nil;
+            
+            NSMutableArray *jsonUserInfo = [NSJSONSerialization JSONObjectWithData:JSONdata options:NSJSONReadingMutableLeaves error:&error];
+            
+            NSMutableArray * arr = [[NSMutableArray alloc]init];
+            for (int i = 0; i < [jsonUserInfo count]; i++) {
+                BookingDetailMaster *fund = [[BookingDetailMaster alloc] initWithJsonData:[jsonUserInfo objectAtIndex:i]];
+                [arr addObject:fund];
+            }
+            [[DataStore sharedInstance] addBookig:arr];
+            return webResponse.StatusCode;
+        }
+    }
+    else{
+        [GlobalVariable setGlobalMessage:@"We are having an issue connecting to the server. Please try again."];
+        return nil;
     }
    return nil;
 }

@@ -15,6 +15,7 @@
 #import "TripDetailsPage.h"
 #import "BookingDetailMaster.h"
 #import "AsyncImageView.h"
+#import "GlobalVariable.h"
 @interface YourTrips ()
 
 @end
@@ -170,7 +171,7 @@
     [self.view setUserInteractionEnabled:YES];
     
     UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"Oops!!!"
-                                                                  message:@"Some problem with the server. Please try again."
+                                                                  message:GlobalVariable.getGlobalMessage
                                                            preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* noButton = [UIAlertAction actionWithTitle:@"CANCEL"

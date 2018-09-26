@@ -48,7 +48,7 @@ alpha:1.0]
     NSArray *cardBrand;
     NSTimer *timerForArrival, *timerForStartTrip;
 }
-
+int notificationModeStatic;
 @synthesize notificationDriverDetailsDict;
 
 - (void)viewDidLoad {
@@ -111,6 +111,7 @@ alpha:1.0]
     btnAddTips.hidden = YES;
     lblTips.hidden = YES;
     
+    notificationModeStatic = 0;
     [self setData];
     
     
@@ -167,13 +168,13 @@ alpha:1.0]
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
    
-    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
+    if (notificationModeStatic!=3 && notificationModeStatic<4) {
         [self commonMethodForRefreshDriverLocationForArrival];
         // Timer for getting update location and arrival time of Driver
         timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
                                                                      target:self selector:@selector(refreshDriverArrivalTimer:) userInfo:nil repeats:YES];
     }
-    else if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]) {
+    else if (notificationModeStatic==4) {
         [self commonMethodForRefreshEstimatedTime];
         // Timer for getting update location and arrival time of Driver
         timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
@@ -367,9 +368,10 @@ alpha:1.0]
     
     NSDictionary *dict = [notification userInfo];
     NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-    NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
+    int notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] intValue];
     [self.view setUserInteractionEnabled:YES];
 
+    notificationModeStatic = notification_mode;
     
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:backgroundView];
@@ -667,7 +669,7 @@ alpha:1.0]
     if (myDate!=nil) {
         NSLog(@"%f",fabs([currentDate timeIntervalSinceDate:myDate]));
         int minimum_duration = [[MyUtils getUserDefault:@"min_duration_for_cancellation_charge"] intValue];//
-        if (fabs([currentDate timeIntervalSinceDate:myDate]) > 60*minimum_duration)
+        if (fabs([currentDate timeIntervalSinceDate:myDate]) > minimum_duration*60)
                 self.isCancellationCharge=YES;
         else
                 self.isCancellationCharge=NO;
@@ -718,6 +720,7 @@ alpha:1.0]
     cancelTripController.userCurrentLat = _userCurrentLat;
     cancelTripController.userCurrentLong = _userCurrentLong;
     cancelTripController.isCancellationCharge=self.isCancellationCharge;
+    cancelTripController.isRestartApp = NO;
     cancelTripController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     [self presentViewController:cancelTripController animated:YES completion:nil];
 }
@@ -737,10 +740,10 @@ alpha:1.0]
 }
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
-    if ([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"0"]) {
+    if (notificationModeStatic!=3 && notificationModeStatic<4) {
         [self commonMethodForRefreshDriverLocationForArrival];
     }
-    else if([[notificationDriverDetailsDict valueForKey:@"booking_status"] isEqualToString:@"2"]){
+    else if(notificationModeStatic==4){
         [self commonMethodForRefreshEstimatedTime];
     }
 }
@@ -754,7 +757,7 @@ alpha:1.0]
         btnRefreshDriver.clipsToBounds=YES;
         btnRefreshDriver.userInteractionEnabled=NO;
         [self.view setUserInteractionEnabled:NO];
-        [NSThread detachNewThreadSelector:@selector(requestToServerForFetchDriverLocation) toTarget:self withObject:nil];
+        [NSThread detachNewThreadSelector:@selector(requestToServerForFetchDriverLocationForArrival) toTarget:self withObject:nil];
     }
     else{
         UIAlertView *loginAlert = [[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Please make sure you phone is coneccted to the internet to use GoEva app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -762,7 +765,7 @@ alpha:1.0]
     }
 }
 
--(void)requestToServerForFetchDriverLocation{
+-(void)requestToServerForFetchDriverLocationForArrival{
     NSString *bSuccess;
     bSuccess = [[RestCallManager sharedInstance] getDriverLocationForArriving:[notificationDriverDetailsDict valueForKey:@"driver_id"] bookingID:_bookingID];
     if([bSuccess isEqualToString:@"0"])
@@ -934,9 +937,8 @@ alpha:1.0]
             [self.view setUserInteractionEnabled:YES];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Trip Completed!!!" message:@"Trip successfully completed. Press OK button to view fare summary." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
-                /*NSDictionary *dict = [notification userInfo];
-                NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-                BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
+                NSMutableArray *bookingData =[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getAllBooking]];
+                BookingDetailMaster *bookingObj = [bookingData objectAtIndex:0];
                 
                 [self.view setUserInteractionEnabled:YES];
                 [loadingView setHidden:YES];
@@ -949,7 +951,7 @@ alpha:1.0]
                 }
                 registerController.bookingObj = bookingObj;
                 registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
-                [self presentViewController:registerController animated:YES completion:nil];*/
+                [self presentViewController:registerController animated:YES completion:nil];
             }];
             [alertController addAction:action];
             [self presentViewController:alertController animated:YES completion:nil];

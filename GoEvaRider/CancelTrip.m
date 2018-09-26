@@ -33,10 +33,10 @@
     btnPolicy.layer.cornerRadius=5;
     if (self.isCancellationCharge) {
         UIColor *color = [UIColor blueColor];
-        NSString *startText = @"GoEva charge you of ";
+        NSString *startText = @"GoEva charge you of $";
         NSString *priceText = [MyUtils getUserDefault:@"cancellation_charge"];
         NSString *endingText = @" for cancellation of trip due to late response to cancel. Please refer to cancellation policy for further details.";
-        NSString *lblCardDetails = [NSString stringWithFormat:@"%@ %@ %@",startText,priceText,endingText];
+        NSString *lblCardDetails = [NSString stringWithFormat:@"%@%@ %@",startText,priceText,endingText];
         NSMutableAttributedString *mutAttrStr = [[NSMutableAttributedString alloc]initWithString:lblCardDetails attributes:nil];
         NSString *priceStr = priceText;
         NSDictionary *attributes = @{NSForegroundColorAttributeName:color};
@@ -137,9 +137,11 @@
                                                       handler:^(UIAlertAction * action)
                                 {
                                     
-                                    //[DashboardCaller homepageSelector:self];
+                                    if (_isRestartApp) {
+                                        [DashboardCaller homepageSelector:self];
+                                    }else{
                                     [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                                    
+                                    }
                                 }];
     
     [alert addAction:yesButton];

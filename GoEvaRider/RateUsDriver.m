@@ -186,8 +186,12 @@
     [self.view setUserInteractionEnabled:YES];
     [loadingView removeFromSuperview];
     if ([_screenMode isEqualToString:@"0"]) {
-        //[DashboardCaller homepageSelector:self];
-        [self.presentingViewController.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        
+        if (_isRestartApp) {
+            [DashboardCaller homepageSelector:self];
+        }else{
+         [self.presentingViewController.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
     }
     else{
 //        [UIView beginAnimations:nil context:NULL];
@@ -217,8 +221,13 @@
 
 - (IBAction)goToHomePage:(UIButton *)sender {
     [self.view setUserInteractionEnabled:YES];
-    //[DashboardCaller homepageSelector:self];
-    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (_isRestartApp) {
+        [DashboardCaller homepageSelector:self];
+    }
+    else{
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

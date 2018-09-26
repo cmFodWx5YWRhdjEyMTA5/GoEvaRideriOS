@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) NSString *userCurrentLat, *userCurrentLong, *bookingID;
 @property (nonatomic) BOOL isCancellationCharge;
+@property (nonatomic) BOOL isRestartApp;
 @property (strong, nonatomic) IBOutlet UITableView *tableCancelTrip;
 - (IBAction)submitCancelTripFeedback:(UIButton *)sender;
 - (IBAction)backToPage:(UIButton *)sender;

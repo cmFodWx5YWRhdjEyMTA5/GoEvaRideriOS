@@ -180,6 +180,7 @@
     rateUs.driverImage = [bookingObj driver_image];
     rateUs.driverName = [bookingObj driver_name];
     rateUs.screenMode = @"0";
+    rateUs.isRestartApp = _isRestartApp;
     rateUs.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
     [self presentViewController:rateUs animated:YES completion:nil];
 }

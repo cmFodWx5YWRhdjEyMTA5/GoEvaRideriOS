@@ -589,8 +589,8 @@ alpha:1.0]
                                     [MyUtils removeParticularObjectFromNSUserDefault:@"pickupLocation"];
                                     [MyUtils removeParticularObjectFromNSUserDefault:@"dropLocation"];
                                     [MyUtils removeParticularObjectFromNSUserDefault:@"bookingID"];
-                                    //[DashboardCaller homepageSelector:self];
-                                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                    [DashboardCaller homepageSelector:self];
+                                    //[self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                                     
                                 }];
     
@@ -786,6 +786,7 @@ alpha:1.0]
     cancelTripController.userCurrentLat = _userCurrentLat;
     cancelTripController.userCurrentLong = _userCurrentLong;
     cancelTripController.isCancellationCharge=self.isCancellationCharge;
+    cancelTripController.isRestartApp = YES;
     cancelTripController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     [self presentViewController:cancelTripController animated:YES completion:nil];
 }
@@ -1002,22 +1003,21 @@ alpha:1.0]
             [self.view setUserInteractionEnabled:YES];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Trip Completed!!!" message:@"Trip successfully completed. Press OK button to view fare summary." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
-                /*NSDictionary *dict = [notification userInfo];
-                 NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-                 BookingDetailMaster *bookingObj = [[BookingDetailMaster alloc] initWithJsonData:notificationDict];
-                 
-                 [self.view setUserInteractionEnabled:YES];
-                 [loadingView setHidden:YES];
-                 CompleteRide *registerController;
-                 if (appDel.iSiPhone5) {
-                 registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
-                 }
-                 else{
-                 registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
-                 }
-                 registerController.bookingObj = bookingObj;
-                 registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
-                 [self presentViewController:registerController animated:YES completion:nil];*/
+                NSMutableArray *bookingData =[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getAllBooking]];
+                BookingDetailMaster *bookingObj = [bookingData objectAtIndex:0];
+                
+                [self.view setUserInteractionEnabled:YES];
+                [loadingView setHidden:YES];
+                CompleteRide *registerController;
+                if (appDel.iSiPhone5) {
+                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRide" bundle:nil];
+                }
+                else{
+                    registerController = [[CompleteRide alloc] initWithNibName:@"CompleteRideLow" bundle:nil];
+                }
+                registerController.bookingObj = bookingObj;
+                registerController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+                [self presentViewController:registerController animated:YES completion:nil];
             }];
             [alertController addAction:action];
             [self presentViewController:alertController animated:YES completion:nil];
