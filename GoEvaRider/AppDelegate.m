@@ -25,12 +25,12 @@
 #define CDV_IsIPhone5() ([[UIScreen mainScreen] bounds].size.height == 568 && [[UIScreen mainScreen] bounds].size.width == 320)
 
 #define CONFIRM_BOOKING  1
-#define DRIVER_ONE_MIN_AWAY  2
+//#define DRIVER_ONE_MIN_AWAY  2
 #define DRIVER_IS_ARRIVED  3
 #define START_TRIP  4
 #define CANCEL_TRIP_BY_DRIVER  5
 #define TRIP_COMPLETE  6
-#define NO_CAB_FOUND 7
+//#define NO_CAB_FOUND 7
 
 @interface AppDelegate ()
 
@@ -195,9 +195,9 @@ AVAudioPlayer *player;
         if (notification_mode==CONFIRM_BOOKING) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForBookConfirmation" object:nil userInfo:userInfo];
         }
-        else if(notification_mode == NO_CAB_FOUND){
+        /*else if(notification_mode == NO_CAB_FOUND){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForNoCabFound" object:nil userInfo:userInfo];
-        }
+        }*/
         else if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForDriverArrivalAndStartTrip" object:nil userInfo:userInfo];
         }
@@ -219,9 +219,9 @@ AVAudioPlayer *player;
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForBookConfirmation" object:nil userInfo:userInfo];
         }
-        else if(notification_mode == NO_CAB_FOUND){
+        /*else if(notification_mode == NO_CAB_FOUND){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForNoCabFound" object:nil userInfo:userInfo];
-        }
+        }*/
         else if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForDriverArrivalAndStartTrip" object:nil userInfo:userInfo];
         }
