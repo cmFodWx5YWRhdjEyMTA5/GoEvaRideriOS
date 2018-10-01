@@ -47,8 +47,10 @@ alpha:1.0]
     AVAudioPlayer *player;
     NSArray *cardBrand;
     NSTimer *timerForArrival, *timerForStartTrip;
+    int notificationModeStatic;
+    BOOL isArrived;
 }
-int notificationModeStatic;
+
 @synthesize notificationDriverDetailsDict;
 
 - (void)viewDidLoad {
@@ -83,13 +85,13 @@ int notificationModeStatic;
     _arrayPolylineGreen = [[NSMutableArray alloc] init];
     _path2 = [[GMSMutablePath alloc]init];
     
-    // For Driver Arrive and Start Trip
+    // For Driver Arrive and Start Trip  ====> notification_mode = 3,4
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForDriverArrivalAndStartTrip:) name:@"pushNotificationForDriverArrivalAndStartTrip" object:nil];
     
-    // For Cancel Trip By Driver
+    // For Cancel Trip By Driver ====> notification_mode = 5
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForCancelTrip:) name:@"pushNotificationForCancelTrip" object:nil];
     
-    // For Fare Summary after Complete Trip
+    // Complete Trip by Driver ====> notification_mode = 6
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationForTripComplete:) name:@"pushNotificationForTripComplete" object:nil];
     
     /* Transaparent Background view */
@@ -158,6 +160,8 @@ int notificationModeStatic;
     
     [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
     
+    
+    isArrived = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -168,7 +172,7 @@ int notificationModeStatic;
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
    
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    if (notificationModeStatic<=3) { // 1.Driver is coming to pickup location and 2. Driver is arrived at ypur pickup location
         [self commonMethodForRefreshDriverLocationForArrival];
         // Timer for getting update location and arrival time of Driver
         timerForArrival = [NSTimer scheduledTimerWithTimeInterval:60.0f
@@ -409,10 +413,7 @@ int notificationModeStatic;
     [lblCarNameAndNumberNotification setText:[NSString stringWithFormat:@"%@ - %@",[notificationDriverDetailsDict valueForKey:@"car_name"],[notificationDriverDetailsDict valueForKey:@"car_plate_no"]]];
     lblRatingANotification.text = ([[notificationDriverDetailsDict valueForKey:@"driver_ratting"] isEqualToString:@""] || [notificationDriverDetailsDict valueForKey:@"driver_ratting"] == nil)?@"0.0":[NSString stringWithFormat:@"%0.1f", [[notificationDriverDetailsDict valueForKey:@"driver_ratting"] floatValue]];
     
-    if (notification_mode == 3) {
-        
-        [timerForArrival invalidate];
-        timerForArrival = nil;
+    if (notificationModeStatic == 3) {
         
         [lblStatusNotification setText:[notificationDict valueForKey:@"alert"]];
         [viewOnTheWay setHidden:NO];
@@ -431,7 +432,10 @@ int notificationModeStatic;
         [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
         
     }
-    else if(notification_mode == 4){
+    else if(notificationModeStatic == 4){
+        
+        [timerForArrival invalidate];
+        timerForArrival = nil;
         
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:@"pushNotificationForDriverArrivalAndStartTrip"                                                      object:nil];
@@ -519,9 +523,7 @@ int notificationModeStatic;
     [timerForStartTrip invalidate];
     timerForStartTrip = nil;
     /*End*/
-    NSDictionary *dict = [notification userInfo];
-    NSDictionary *notificationDict= [dict valueForKey:@"aps"];
-    NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationDict valueForKey:@"notification_mode"]] integerValue];
+    
     
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Driver cancelled the Trip"
                                                                   message:@""
@@ -549,7 +551,6 @@ int notificationModeStatic;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"pushNotificationForTripComplete"                                                      object:nil];
-    
     /* Start*/
     /* Invalidate All Timer after trip complete */
     [timerForArrival invalidate];
@@ -753,7 +754,7 @@ int notificationModeStatic;
 }
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
-    if (notificationModeStatic!=3 && notificationModeStatic<4) {
+    if (notificationModeStatic<=3) {
         [self commonMethodForRefreshDriverLocationForArrival];
     }
     else if(notificationModeStatic==4){
@@ -788,6 +789,8 @@ int notificationModeStatic;
     else if([bSuccess isEqualToString:@"3"]){ // In case where Driver already Arrived but not recieve APNS
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            notificationModeStatic = 3; // Driver Arrived
+            
             [self.view setUserInteractionEnabled:YES];
             btnRefreshDriver.backgroundColor = UIColorFromRGB(0xC0392B);
             [btnRefreshDriver setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -796,33 +799,39 @@ int notificationModeStatic;
             btnRefreshDriver.clipsToBounds=YES;
             btnRefreshDriver.userInteractionEnabled=YES;
             
-            [viewOnTheWay setHidden:NO];
-            [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
+            if (!isArrived) {
+                isArrived = YES;
+                
+                
+                [viewOnTheWay setHidden:NO];
+                [lblDriverRunningStatus setText:@"DRIVER ARRIVED"];
+                
+                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+                [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+                [animation setToValue:[NSNumber numberWithFloat:0.0]];
+                [animation setDuration:0.5f];
+                [animation setTimingFunction:[CAMediaTimingFunction
+                                              functionWithName:kCAMediaTimingFunctionLinear]];
+                [animation setAutoreverses:YES];
+                [animation setRepeatCount:20000];
+                [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
+                
+                [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
+                
+                
+                UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"GoEva has arrived at your pickup location. Please ready to pickup the GoEva."
+                                                                              message:@""
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action)
+                                            {
+                                            }];
+                
+                [alert addAction:yesButton];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
             
-            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-            [animation setFromValue:[NSNumber numberWithFloat:1.0]];
-            [animation setToValue:[NSNumber numberWithFloat:0.0]];
-            [animation setDuration:0.5f];
-            [animation setTimingFunction:[CAMediaTimingFunction
-                                          functionWithName:kCAMediaTimingFunctionLinear]];
-            [animation setAutoreverses:YES];
-            [animation setRepeatCount:20000];
-            [[lblDriverRunningStatus layer] addAnimation:animation forKey:@"opacity"];
-            
-            [lblArrivalTime setText:@"Driver Arrived. Stay at pick up location."];
-            
-            
-            UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"GoEva has arrived at your pickup location. Please ready to pickup the GoEva."
-                                                                          message:@""
-                                                                   preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
-                                                                style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action)
-                                        {
-                                        }];
-            
-            [alert addAction:yesButton];
-            [self presentViewController:alert animated:YES completion:nil];
         });
     }
     else if([bSuccess isEqualToString:@"2"]){ // In case where trip already Start by Driver
@@ -882,7 +891,7 @@ int notificationModeStatic;
             driverMarker = [[GMSMarker alloc] init];
             //pickupMarker.title = @"Pickup Location";
             //driverMarker.snippet = [NSString stringWithFormat:@"%@ MINS AWAY",[GlobalVariable getGlobalMessage]];
-            driverMarker.snippet = @"My Location";
+            //driverMarker.snippet = @"My Location";
             lblAwayTime.text = [NSString stringWithFormat:@"%@ min away",[GlobalVariable getGlobalMessage]];
             
             _londonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_marker"]];

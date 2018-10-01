@@ -80,6 +80,8 @@
     btnRateUs.backgroundColor = [UIColor blackColor];
     btnRateUs.titleLabel.textColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.5];
     btnRateUs.layer.cornerRadius=10;
+    
+    _ratting = @"5.0";
 }
 
 

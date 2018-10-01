@@ -24,7 +24,7 @@
 
 #define CDV_IsIPhone5() ([[UIScreen mainScreen] bounds].size.height == 568 && [[UIScreen mainScreen] bounds].size.width == 320)
 
-#define CONFIRM_BOOKING  1
+//#define CONFIRM_BOOKING  1
 //#define DRIVER_ONE_MIN_AWAY  2
 #define DRIVER_IS_ARRIVED  3
 #define START_TRIP  4
@@ -106,7 +106,7 @@ AVAudioPlayer *player;
     
     if (remoteNotification) {
         //NSLog(@"New App Launch with Notifiction");
-        NSDictionary *notificationArray= [remoteNotification valueForKey:@"aps"];
+        /*NSDictionary *notificationArray= [remoteNotification valueForKey:@"aps"];
         NSInteger notification_mode = [[NSString stringWithFormat:@"%@", [notificationArray valueForKey:@"notification_mode"]] integerValue];
         if (notification_mode == CONFIRM_BOOKING) {
             AfterBooking *afterBooking;
@@ -119,7 +119,7 @@ AVAudioPlayer *player;
             afterBooking.notificationDriverDetailsDict = notificationArray;
             [self.window setRootViewController:afterBooking];
             [self.window makeKeyAndVisible];
-        }
+        }*/
         
     }
     /* End */
@@ -192,13 +192,13 @@ AVAudioPlayer *player;
                                               otherButtonTitles:nil];
         alert.tag=200;
         [alert show];*/
-        if (notification_mode==CONFIRM_BOOKING) {
+        /*if (notification_mode==CONFIRM_BOOKING) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForBookConfirmation" object:nil userInfo:userInfo];
-        }
+        }*/
         /*else if(notification_mode == NO_CAB_FOUND){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForNoCabFound" object:nil userInfo:userInfo];
         }*/
-        else if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
+        if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForDriverArrivalAndStartTrip" object:nil userInfo:userInfo];
         }
         else if(notification_mode == CANCEL_TRIP_BY_DRIVER){
@@ -213,16 +213,16 @@ AVAudioPlayer *player;
     if (state == UIApplicationStateInactive || state == UIApplicationStateBackground)
     {
         
-        if (notification_mode==CONFIRM_BOOKING) {
+        /*if (notification_mode==CONFIRM_BOOKING) {
             
             NSString* contentAvailable = [NSString stringWithFormat:@"%@", [notificationArray valueForKey:@"content-available"]];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForBookConfirmation" object:nil userInfo:userInfo];
-        }
+        }*/
         /*else if(notification_mode == NO_CAB_FOUND){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForNoCabFound" object:nil userInfo:userInfo];
         }*/
-        else if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
+        if(notification_mode == DRIVER_IS_ARRIVED || notification_mode == START_TRIP){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotificationForDriverArrivalAndStartTrip" object:nil userInfo:userInfo];
         }
         else if(notification_mode == CANCEL_TRIP_BY_DRIVER){
