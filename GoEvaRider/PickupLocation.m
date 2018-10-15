@@ -59,7 +59,7 @@
     _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
     /* Filter Not Working */
     _tableDataSource.autocompleteFilter.type = kGMSPlacesAutocompleteTypeFilterAddress;
-    _tableDataSource.autocompleteFilter.country=@"IN";
+    _tableDataSource.autocompleteFilter.country=@"US";
     
     
     /*GMSCoordinateBounds* bounds =  [[GMSCoordinateBounds alloc] init];

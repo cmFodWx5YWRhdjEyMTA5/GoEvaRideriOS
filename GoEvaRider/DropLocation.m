@@ -61,7 +61,7 @@
     // Setup the results view controller.
     _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
     _tableDataSource.autocompleteFilter.type = kGMSPlacesAutocompleteTypeFilterAddress;
-    _tableDataSource.autocompleteFilter.country=@"IN";
+    _tableDataSource.autocompleteFilter.country=@"US";
     _tableDataSource.delegate = self;
     
     _resultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];

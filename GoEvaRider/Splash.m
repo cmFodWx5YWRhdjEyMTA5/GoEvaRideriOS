@@ -165,7 +165,7 @@
     riderArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getRider]];
     settingArray=[NSMutableArray arrayWithArray: [[DataStore sharedInstance] getSetting]];
     [MyUtils setUserDefault:@"riderMobileNo" value:[[riderArray objectAtIndex:0] rider_mobile]];
-    [MyUtils setUserDefault:@"riderEmail" value:[[riderArray objectAtIndex:0] rider_email]];
+    [MyUtils setUserDefault:@"riderEmail" value:[[riderArray objectAtIndex:0] rider_email] == (id)[NSNull null]?@"":[[riderArray objectAtIndex:0] rider_email]];
     [MyUtils setUserDefault:@"profileImage" value:[[riderArray objectAtIndex:0] profile_pic]];
     [MyUtils setUserDefault:@"riderName" value:[[riderArray objectAtIndex:0] rider_name] == (id)[NSNull null]?@"NO NAME":[[riderArray objectAtIndex:0] rider_name]];
     [MyUtils setUserDefault:@"riderRating" value:[[riderArray objectAtIndex:0] ratting]];

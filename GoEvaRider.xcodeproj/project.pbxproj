@@ -339,6 +339,7 @@
 		1D75D5831F682645005A9171 /* BookingDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailMaster.h; sourceTree = "<group>"; };
 		1D75D5841F682645005A9171 /* BookingDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailMaster.m; sourceTree = "<group>"; };
 		1D7FF9831F86467000924E78 /* dash_horizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash_horizontal.png; sourceTree = "<group>"; };
+		1D86015021673E2C00E052DF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		1DB2B9B02029DBCC00153766 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		1DB2B9B42029ECD000153766 /* SplashLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashLow.xib; sourceTree = "<group>"; };
 		1DB2B9B62029F42600153766 /* CredentailPageLow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CredentailPageLow.xib; sourceTree = "<group>"; };
@@ -943,6 +944,7 @@
 		B73A1EDEFB4901D8814EEE48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D86015021673E2C00E052DF /* UserNotifications.framework */,
 				1D04BE9D1F0B9B7000262E9F /* CoreLocation.framework */,
 				1D4682F71EFA7174006BB09F /* SafariServices.framework */,
 				1DDA4E261EFA6A01001F458B /* Foundation.framework */,
@@ -1395,8 +1397,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4B6926W9K5;
 				INFOPLIST_FILE = GoEvaRider/Info.plist;
@@ -1404,8 +1406,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ild.goEva;
 				PRODUCT_NAME = GoEva;
-				PROVISIONING_PROFILE = "d9cffd83-bc9d-48b8-b28b-a8d5c616b7ac";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.ild.goEva";
+				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
+				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1421,8 +1423,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEvaRider/GoEva.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4B6926W9K5;
 				INFOPLIST_FILE = GoEvaRider/Info.plist;
@@ -1430,8 +1432,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ild.goEva;
 				PRODUCT_NAME = GoEva;
-				PROVISIONING_PROFILE = "d9cffd83-bc9d-48b8-b28b-a8d5c616b7ac";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.ild.goEva";
+				PROVISIONING_PROFILE = "23c8a0a9-ec3d-4916-b6b4-3804d1508513";
+				PROVISIONING_PROFILE_SPECIFIER = GoEvaRiderProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoEvaRider/GoEvaRider-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

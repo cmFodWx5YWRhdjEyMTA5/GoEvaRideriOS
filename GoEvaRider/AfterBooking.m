@@ -114,6 +114,8 @@ alpha:1.0]
     lblTips.hidden = YES;
     
     notificationModeStatic = 0;
+    isArrived = NO;
+    
     [self setData];
     
     
@@ -161,7 +163,7 @@ alpha:1.0]
     [self createPolyLine:[[notificationDriverDetailsDict valueForKey:@"driver_current_lat"] floatValue] pickupLong:[[notificationDriverDetailsDict valueForKey:@"driver_current_long"] floatValue] dropLat:[pickupLocation.latitude floatValue] dropLong:[pickupLocation.longitude floatValue] timeInterval:0.09];
     
     
-    isArrived = NO;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -180,7 +182,7 @@ alpha:1.0]
     }
     else if (notificationModeStatic==4) {
         [self commonMethodForRefreshEstimatedTimeAfterStartTrip];
-        // Timer for getting update location and arrival time of Driver
+        // Timer for getting update location and reaching time of Driver
         timerForStartTrip = [NSTimer scheduledTimerWithTimeInterval:60.0f
                                                            target:self selector:@selector(refreshDriverAfterStartTripTimer:) userInfo:nil repeats:YES];
     }
@@ -754,6 +756,12 @@ alpha:1.0]
 }
 
 - (IBAction)refreshDriverLocation:(UIButton *)sender{
+    btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
+    [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
+    [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
+    btnRefreshDriver.layer.cornerRadius=5;
+    btnRefreshDriver.clipsToBounds=YES;
+    btnRefreshDriver.userInteractionEnabled=NO;
     if (notificationModeStatic<=3) {
         [self commonMethodForRefreshDriverLocationForArrival];
     }
@@ -764,12 +772,7 @@ alpha:1.0]
 
 -(void)commonMethodForRefreshDriverLocationForArrival{
     if([RestCallManager hasConnectivity]){
-        btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
-        [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
-        [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
-        btnRefreshDriver.layer.cornerRadius=5;
-        btnRefreshDriver.clipsToBounds=YES;
-        btnRefreshDriver.userInteractionEnabled=NO;
+        
         [self.view setUserInteractionEnabled:NO];
         [NSThread detachNewThreadSelector:@selector(requestToServerForFetchDriverLocationForArrival) toTarget:self withObject:nil];
     }
@@ -1028,12 +1031,7 @@ alpha:1.0]
 
 -(void)commonMethodForRefreshEstimatedTimeAfterStartTrip{
     if([RestCallManager hasConnectivity]){
-        btnRefreshDriver.backgroundColor = [UIColor lightGrayColor];
-        [btnRefreshDriver setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.3] forState:UIControlStateNormal];
-        [btnRefreshDriver setTitle:@"Refreshing..." forState:UIControlStateNormal];
-        btnRefreshDriver.layer.cornerRadius=5;
-        btnRefreshDriver.clipsToBounds=YES;
-        btnRefreshDriver.userInteractionEnabled=NO;
+        
         [self.view setUserInteractionEnabled:NO];
         [NSThread detachNewThreadSelector:@selector(requestToServerForGetEstimatedTimeAfterStartTrip) toTarget:self withObject:nil];
     }
